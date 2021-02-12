@@ -26,7 +26,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1358" y="-215"/>
+            <point key="canvasLocation" x="-1358" y="-246"/>
         </scene>
         <!--Item-->
         <scene sceneID="GLs-Qs-6a8">
@@ -142,7 +142,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gpK-MT-6yg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4111" y="-215"/>
+            <point key="canvasLocation" x="-5166" y="-247"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="SL5-Z1-pzw">
@@ -257,6 +257,9 @@
                                                 <state key="normal" title="Dont have an account? Sign Up">
                                                     <color key="titleColor" red="0.93333333330000001" green="0.58431372550000005" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="TB6-Ib-vQM" kind="show" identifier="LoginToSignUpSegue" id="6u8-DN-QPv"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -284,11 +287,109 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lCB-ip-rkG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3255.3846153846152" y="-215.40284360189571"/>
+            <point key="canvasLocation" x="-4045" y="-247"/>
+        </scene>
+        <!--Signup View Controller-->
+        <scene sceneID="tF5-wR-Pjk">
+            <objects>
+                <viewController id="TB6-Ib-vQM" userLabel="Signup View Controller" customClass="LoginViewController" customModule="Paradigm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xKY-NZ-qeS">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <userGuides>
+                            <userLayoutGuide location="374" affinity="minX"/>
+                            <userLayoutGuide location="16" affinity="minX"/>
+                        </userGuides>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="8hQ-YT-uRa">
+                                <rect key="frame" x="114" y="100" width="260" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create an account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApX-pw-ubR">
+                                <rect key="frame" x="34" y="207.33333333333337" width="239" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <color key="textColor" red="0.25098039220000001" green="0.28627450980000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign up so your progress is never lost" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gal-4C-cTv">
+                                <rect key="frame" x="34" y="240" width="326" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.36078431370000003" green="0.48627450979999998" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField contentMode="scaleToFill" verticalHuggingPriority="200" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="first name" textAlignment="center" minimumFontSize="17" background="Text-Border" translatesAutoresizingMaskIntoConstraints="NO" id="G4l-8q-w1t" userLabel="First Name Text Field">
+                                <rect key="frame" x="34" y="326" width="300" height="40"/>
+                                <accessibility key="accessibilityConfiguration" identifier="emailTextField"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Xmk-BJ-ztR"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="iAE-oD-fjG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="given-name"/>
+                            </textField>
+                            <textField contentMode="scaleToFill" verticalHuggingPriority="200" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="email" textAlignment="center" minimumFontSize="17" background="Text-Border" translatesAutoresizingMaskIntoConstraints="NO" id="OMy-gK-2Nc" userLabel="Email Text Field">
+                                <rect key="frame" x="34" y="452" width="300" height="40"/>
+                                <accessibility key="accessibilityConfiguration" identifier="emailTextField"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="dy2-4B-NVw"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="lmn-gT-7oD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="200" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="last name" textAlignment="center" minimumFontSize="17" background="Text-Border" translatesAutoresizingMaskIntoConstraints="NO" id="j7J-lR-0Re" userLabel="Last Name Text Field">
+                                <rect key="frame" x="34" y="390" width="300" height="40"/>
+                                <accessibility key="accessibilityConfiguration" identifier="passwordTextField"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="7tX-oc-Obb"/>
+                                    <constraint firstAttribute="height" constant="40" id="UgE-ZX-qqp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="family-name"/>
+                            </textField>
+                            <textField contentMode="scaleToFill" verticalHuggingPriority="200" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="password" textAlignment="center" minimumFontSize="17" background="Text-Border" translatesAutoresizingMaskIntoConstraints="NO" id="4Go-LW-4LS" userLabel="Password Text Field">
+                                <rect key="frame" x="34" y="516" width="300" height="40"/>
+                                <accessibility key="accessibilityConfiguration" identifier="emailTextField"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="0d5-ka-Hw5"/>
+                                    <constraint firstAttribute="height" constant="40" id="qe7-ar-Jry"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                            </textField>
+                            <button opaque="NO" contentMode="center" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqY-yO-Yh9" userLabel="Signup Button">
+                                <rect key="frame" x="23" y="627" width="322" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="2bt-Fu-SNd"/>
+                                    <constraint firstAttribute="height" constant="65" id="3jr-nW-RVd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Log In" backgroundImage="Button"/>
+                                <connections>
+                                    <action selector="loginTapped:" destination="TB6-Ib-vQM" eventType="touchUpInside" id="yc0-aq-7h0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="OBf-4e-BoV"/>
+                        <color key="backgroundColor" red="0.73333333329999995" green="0.79607843140000001" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="908-xx-vcS"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="G4l-8q-w1t" id="39X-SV-tMh"/>
+                        <outlet property="loginButton" destination="oqY-yO-Yh9" id="ei5-Uj-rnW"/>
+                        <outlet property="passwordTextField" destination="j7J-lR-0Re" id="Ork-MX-nyL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z5s-4e-oXJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4046.1538461538462" y="453.55450236966823"/>
         </scene>
     </scenes>
     <resources>
         <image name="Button" width="322" height="63"/>
+        <image name="Logo" width="260" height="88"/>
         <image name="LogoBG" width="295" height="295"/>
         <image name="Text-Border" width="315" height="46"/>
         <systemColor name="systemBackgroundColor">
