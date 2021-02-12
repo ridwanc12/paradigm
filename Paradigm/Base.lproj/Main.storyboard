@@ -27,7 +27,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2326" y="-247"/>
+            <point key="canvasLocation" x="-1358" y="-247"/>
         </scene>
         <!--Item-->
         <scene sceneID="GLs-Qs-6a8">
@@ -78,7 +78,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="py0-XB-T1w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2355" y="701"/>
+            <point key="canvasLocation" x="-2355" y="684"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="a1O-fL-Nh7">
@@ -232,6 +232,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="restoreButtonAction:" destination="dw3-xP-jYR" eventType="touchUpInside" id="Nbo-EP-Psi"/>
+                                                            <action selector="restoreButtonTapped:" destination="dw3-xP-jYR" eventType="touchUpInside" id="vha-G2-A0w"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Onw-Ge-Qc6" userLabel="LoginButton">
@@ -243,7 +244,7 @@
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                         <state key="normal" title="Log In" backgroundImage="Button"/>
                                                         <connections>
-                                                            <action selector="loginTapped:" destination="dw3-xP-jYR" eventType="touchUpInside" id="u7X-WQ-HuP"/>
+                                                            <action selector="loginButtonTapped:" destination="dw3-xP-jYR" eventType="touchUpInside" id="5LX-gB-WsR"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -259,7 +260,7 @@
                                                     <color key="titleColor" red="0.93333333330000001" green="0.58431372550000005" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="TB6-Ib-vQM" kind="show" identifier="LoginToSignUpSegue" id="6u8-DN-QPv"/>
+                                                    <segue destination="TB6-Ib-vQM" kind="show" id="S0k-Ij-wqa"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -351,7 +352,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="UgE-ZX-qqp"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="family-name"/>
+                                                <textInputTraits key="textInputTraits" textContentType="family-name"/>
                                             </textField>
                                             <textField contentMode="scaleToFill" verticalHuggingPriority="200" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="email" textAlignment="center" minimumFontSize="17" background="Text-Border" translatesAutoresizingMaskIntoConstraints="NO" id="OMy-gK-2Nc" userLabel="Email Text Field">
                                                 <rect key="frame" x="0.0" y="130" width="326" height="40"/>
@@ -418,13 +419,12 @@
                         <outlet property="emailTextField" destination="OMy-gK-2Nc" id="QzX-zt-P8s"/>
                         <outlet property="firstNameTextField" destination="G4l-8q-w1t" id="Du3-u5-heH"/>
                         <outlet property="lastNameTextField" destination="j7J-lR-0Re" id="fhQ-rs-RZg"/>
-                        <outlet property="loginButton" destination="oqY-yO-Yh9" id="ei5-Uj-rnW"/>
                         <outlet property="passwordTextField" destination="4Go-LW-4LS" id="Aw0-Qy-0ew"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z5s-4e-oXJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4046.1538461538462" y="453.55450236966823"/>
+            <point key="canvasLocation" x="-4046" y="682"/>
         </scene>
     </scenes>
     <resources>
