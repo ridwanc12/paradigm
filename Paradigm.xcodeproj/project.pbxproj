@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		56585E0F25D3C00600581351 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56585E0E25D3C00600581351 /* LoginViewController.swift */; };
+		56B0170A25D73462008C3143 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B0170925D73462008C3143 /* SignUpViewController.swift */; };
 		9351741125D1CBFC00BCFCB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351741025D1CBFC00BCFCB7 /* AppDelegate.swift */; };
 		9351741325D1CBFC00BCFCB7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351741225D1CBFC00BCFCB7 /* SceneDelegate.swift */; };
 		9351741A25D1CBFC00BCFCB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9351741825D1CBFC00BCFCB7 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		56585E0E25D3C00600581351 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		56B0170925D73462008C3143 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9351740D25D1CBFC00BCFCB7 /* Paradigm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Paradigm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9351741025D1CBFC00BCFCB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9351741225D1CBFC00BCFCB7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56B0170825D73421008C3143 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				56585E0E25D3C00600581351 /* LoginViewController.swift */,
+				56B0170925D73462008C3143 /* SignUpViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		9351740425D1CBFC00BCFCB7 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +67,13 @@
 		9351740F25D1CBFC00BCFCB7 /* Paradigm */ = {
 			isa = PBXGroup;
 			children = (
+				56B0170825D73421008C3143 /* View Controllers */,
 				9351741025D1CBFC00BCFCB7 /* AppDelegate.swift */,
 				9351741225D1CBFC00BCFCB7 /* SceneDelegate.swift */,
 				9351741825D1CBFC00BCFCB7 /* Main.storyboard */,
 				9351741B25D1CBFE00BCFCB7 /* Assets.xcassets */,
 				9351741D25D1CBFE00BCFCB7 /* LaunchScreen.storyboard */,
 				9351742025D1CBFE00BCFCB7 /* Info.plist */,
-				56585E0E25D3C00600581351 /* LoginViewController.swift */,
 			);
 			path = Paradigm;
 			sourceTree = "<group>";
@@ -140,6 +151,7 @@
 			files = (
 				56585E0F25D3C00600581351 /* LoginViewController.swift in Sources */,
 				9351741125D1CBFC00BCFCB7 /* AppDelegate.swift in Sources */,
+				56B0170A25D73462008C3143 /* SignUpViewController.swift in Sources */,
 				9351741325D1CBFC00BCFCB7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

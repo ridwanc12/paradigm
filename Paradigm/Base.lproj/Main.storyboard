@@ -13,6 +13,7 @@
         <scene sceneID="yl2-sM-qoP">
             <objects>
                 <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="SiK-78-sMW"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -26,7 +27,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1358" y="-246"/>
+            <point key="canvasLocation" x="-2326" y="-247"/>
         </scene>
         <!--Item-->
         <scene sceneID="GLs-Qs-6a8">
@@ -295,7 +296,7 @@
         <!--Signup View Controller-->
         <scene sceneID="tF5-wR-Pjk">
             <objects>
-                <viewController id="TB6-Ib-vQM" userLabel="Signup View Controller" customClass="LoginViewController" customModule="Paradigm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TB6-Ib-vQM" userLabel="Signup View Controller" customClass="SignUpViewController" customModule="Paradigm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xKY-NZ-qeS">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -386,9 +387,9 @@
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="325" id="cfM-My-tk0"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <state key="normal" title="Log In" backgroundImage="Button"/>
+                                                <state key="normal" title="Sign Up" backgroundImage="Button"/>
                                                 <connections>
-                                                    <action selector="loginTapped:" destination="TB6-Ib-vQM" eventType="touchUpInside" id="yc0-aq-7h0"/>
+                                                    <action selector="signupButtonTapped:" destination="TB6-Ib-vQM" eventType="touchUpInside" id="zVr-YL-cbA"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2rj-VP-AgW">
@@ -414,9 +415,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="908-xx-vcS"/>
                     <connections>
-                        <outlet property="emailTextField" destination="G4l-8q-w1t" id="39X-SV-tMh"/>
+                        <outlet property="emailTextField" destination="OMy-gK-2Nc" id="QzX-zt-P8s"/>
+                        <outlet property="firstNameTextField" destination="G4l-8q-w1t" id="Du3-u5-heH"/>
+                        <outlet property="lastNameTextField" destination="j7J-lR-0Re" id="fhQ-rs-RZg"/>
                         <outlet property="loginButton" destination="oqY-yO-Yh9" id="ei5-Uj-rnW"/>
-                        <outlet property="passwordTextField" destination="j7J-lR-0Re" id="Ork-MX-nyL"/>
+                        <outlet property="passwordTextField" destination="4Go-LW-4LS" id="Aw0-Qy-0ew"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z5s-4e-oXJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
