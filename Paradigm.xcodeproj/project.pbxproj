@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		56585E0F25D3C00600581351 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56585E0E25D3C00600581351 /* LoginViewController.swift */; };
 		56B0170A25D73462008C3143 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B0170925D73462008C3143 /* SignUpViewController.swift */; };
+		93050B8125D89CB200DA8BAB /* LambdaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93050B8025D89CB200DA8BAB /* LambdaRequest.swift */; };
+		93050BA025D8A47400DA8BAB /* ParadigmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93050B9F25D8A47400DA8BAB /* ParadigmTests.swift */; };
+		93050BB825D8AD1200DA8BAB /* DataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93050BB725D8AD1200DA8BAB /* DataStructures.swift */; };
 		9351741125D1CBFC00BCFCB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351741025D1CBFC00BCFCB7 /* AppDelegate.swift */; };
 		9351741325D1CBFC00BCFCB7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351741225D1CBFC00BCFCB7 /* SceneDelegate.swift */; };
 		9351741A25D1CBFC00BCFCB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9351741825D1CBFC00BCFCB7 /* Main.storyboard */; };
@@ -16,9 +19,24 @@
 		9351741F25D1CBFE00BCFCB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9351741D25D1CBFE00BCFCB7 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		93050BA225D8A47400DA8BAB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9351740525D1CBFC00BCFCB7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9351740C25D1CBFC00BCFCB7;
+			remoteInfo = Paradigm;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		56585E0E25D3C00600581351 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		56B0170925D73462008C3143 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		93050B8025D89CB200DA8BAB /* LambdaRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LambdaRequest.swift; sourceTree = "<group>"; };
+		93050B9D25D8A47400DA8BAB /* ParadigmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParadigmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		93050B9F25D8A47400DA8BAB /* ParadigmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParadigmTests.swift; sourceTree = "<group>"; };
+		93050BA125D8A47400DA8BAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93050BB725D8AD1200DA8BAB /* DataStructures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructures.swift; sourceTree = "<group>"; };
 		9351740D25D1CBFC00BCFCB7 /* Paradigm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Paradigm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9351741025D1CBFC00BCFCB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9351741225D1CBFC00BCFCB7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,6 +47,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		93050B9A25D8A47400DA8BAB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9351740A25D1CBFC00BCFCB7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -48,10 +73,29 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
+		93050B8725D8A19E00DA8BAB /* aws_endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				93050B8025D89CB200DA8BAB /* LambdaRequest.swift */,
+				93050BB725D8AD1200DA8BAB /* DataStructures.swift */,
+			);
+			path = aws_endpoint;
+			sourceTree = "<group>";
+		};
+		93050B9E25D8A47400DA8BAB /* ParadigmTests */ = {
+			isa = PBXGroup;
+			children = (
+				93050B9F25D8A47400DA8BAB /* ParadigmTests.swift */,
+				93050BA125D8A47400DA8BAB /* Info.plist */,
+			);
+			path = ParadigmTests;
+			sourceTree = "<group>";
+		};
 		9351740425D1CBFC00BCFCB7 = {
 			isa = PBXGroup;
 			children = (
 				9351740F25D1CBFC00BCFCB7 /* Paradigm */,
+				93050B9E25D8A47400DA8BAB /* ParadigmTests */,
 				9351740E25D1CBFC00BCFCB7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				9351740D25D1CBFC00BCFCB7 /* Paradigm.app */,
+				93050B9D25D8A47400DA8BAB /* ParadigmTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,6 +112,7 @@
 		9351740F25D1CBFC00BCFCB7 /* Paradigm */ = {
 			isa = PBXGroup;
 			children = (
+				93050B8725D8A19E00DA8BAB /* aws_endpoint */,
 				56B0170825D73421008C3143 /* View Controllers */,
 				9351741025D1CBFC00BCFCB7 /* AppDelegate.swift */,
 				9351741225D1CBFC00BCFCB7 /* SceneDelegate.swift */,
@@ -81,6 +127,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		93050B9C25D8A47400DA8BAB /* ParadigmTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93050BA425D8A47400DA8BAB /* Build configuration list for PBXNativeTarget "ParadigmTests" */;
+			buildPhases = (
+				93050B9925D8A47400DA8BAB /* Sources */,
+				93050B9A25D8A47400DA8BAB /* Frameworks */,
+				93050B9B25D8A47400DA8BAB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				93050BA325D8A47400DA8BAB /* PBXTargetDependency */,
+			);
+			name = ParadigmTests;
+			productName = ParadigmTests;
+			productReference = 93050B9D25D8A47400DA8BAB /* ParadigmTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		9351740C25D1CBFC00BCFCB7 /* Paradigm */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9351742325D1CBFE00BCFCB7 /* Build configuration list for PBXNativeTarget "Paradigm" */;
@@ -104,10 +168,14 @@
 		9351740525D1CBFC00BCFCB7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = team5;
 				TargetAttributes = {
+					93050B9C25D8A47400DA8BAB = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 9351740C25D1CBFC00BCFCB7;
+					};
 					9351740C25D1CBFC00BCFCB7 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
@@ -127,11 +195,19 @@
 			projectRoot = "";
 			targets = (
 				9351740C25D1CBFC00BCFCB7 /* Paradigm */,
+				93050B9C25D8A47400DA8BAB /* ParadigmTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		93050B9B25D8A47400DA8BAB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9351740B25D1CBFC00BCFCB7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -145,18 +221,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		93050B9925D8A47400DA8BAB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93050BA025D8A47400DA8BAB /* ParadigmTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9351740925D1CBFC00BCFCB7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93050B8125D89CB200DA8BAB /* LambdaRequest.swift in Sources */,
 				56585E0F25D3C00600581351 /* LoginViewController.swift in Sources */,
 				9351741125D1CBFC00BCFCB7 /* AppDelegate.swift in Sources */,
+				93050BB825D8AD1200DA8BAB /* DataStructures.swift in Sources */,
 				56B0170A25D73462008C3143 /* SignUpViewController.swift in Sources */,
 				9351741325D1CBFC00BCFCB7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		93050BA325D8A47400DA8BAB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9351740C25D1CBFC00BCFCB7 /* Paradigm */;
+			targetProxy = 93050BA225D8A47400DA8BAB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9351741825D1CBFC00BCFCB7 /* Main.storyboard */ = {
@@ -178,6 +272,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		93050BA525D8A47400DA8BAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 73757FA67G;
+				INFOPLIST_FILE = ParadigmTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = team5.ParadigmTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Paradigm.app/Paradigm";
+			};
+			name = Debug;
+		};
+		93050BA625D8A47400DA8BAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 73757FA67G;
+				INFOPLIST_FILE = ParadigmTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = team5.ParadigmTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Paradigm.app/Paradigm";
+			};
+			name = Release;
+		};
 		9351742125D1CBFE00BCFCB7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -331,6 +469,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		93050BA425D8A47400DA8BAB /* Build configuration list for PBXNativeTarget "ParadigmTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93050BA525D8A47400DA8BAB /* Debug */,
+				93050BA625D8A47400DA8BAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9351740825D1CBFC00BCFCB7 /* Build configuration list for PBXProject "Paradigm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
