@@ -14,7 +14,7 @@ def sentiment_analysis(journal):
 def lambda_handler(event, context):
     print(event)
 
-    if event['httpMethod'] != 'GET':
+    if event['httpMethod'] != 'POST':
         return {
             'statusCode': 400,
             'body': json.dumps('Not supported')
