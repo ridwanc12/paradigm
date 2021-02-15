@@ -19,5 +19,4 @@ The back-end database will use 000webhost or AWS DynamoDB or GCP Firebase to hos
 Because analysis is done in Python and this is difficult to natively integrate with XCode and iOS, an AWS Lambda function will be created to serve as an HTTP endpoint for our application. This will accept HTTP requests from the iOS front-end, process using Python in the lambda, and return the necessary data.
 
 ### Lambda Deployment
-aws configure (on aws cli)
-pip install -r requirements.txt -t .
+WIP
