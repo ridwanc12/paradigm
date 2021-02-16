@@ -32,7 +32,6 @@
         <!--Settings-->
         <scene sceneID="GLs-Qs-6a8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NAd-cr-dv4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="7qc-wS-mWB" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings-Icon" id="udz-25-qan"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TsC-GU-GrP">
@@ -43,6 +42,7 @@
                         <segue destination="W15-fF-gxj" kind="relationship" relationship="rootViewController" id="nXu-Pn-wMk"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NAd-cr-dv4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-202" y="683"/>
         </scene>
@@ -313,11 +313,11 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Privacy" id="CR8-p7-T5z">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Lt8-R1-2mk">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Lt8-R1-2mk">
                                         <rect key="frame" x="20" y="429.33333969116211" width="350" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lt8-R1-2mk" id="gpF-tV-xLI">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="318.66666666666669" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="q9E-v4-0dD">
@@ -351,18 +351,22 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="exV-jH-uiV">
-                                                    <rect key="frame" x="20.000000000000007" y="11.999999999999998" width="98.666666666666686" height="20.333333333333329"/>
+                                                    <rect key="frame" x="19.999999999999993" y="5.6666666666666679" width="99.333333333333314" height="33"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowshape.turn.up.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Gz2-vG-eaR">
-                                                            <rect key="frame" x="0.0" y="1.6666666666666643" width="21.333333333333332" height="17.333333333333336"/>
+                                                            <rect key="frame" x="0.0" y="1.6666666666666625" width="21.333333333333332" height="30.000000000000007"/>
                                                             <color key="tintColor" systemColor="labelColor"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vaA-OW-rXl">
-                                                            <rect key="frame" x="45.333333333333329" y="0.0" width="53.333333333333329" height="20.333333333333332"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WT4-TB-aHK">
+                                                            <rect key="frame" x="45.333333333333329" y="0.0" width="54" height="33"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                            <state key="normal" title="Logout">
+                                                                <color key="titleColor" systemColor="labelColor"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="logoutTapped:" destination="W15-fF-gxj" eventType="touchUpInside" id="laT-1g-R6q"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -381,18 +385,22 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="zh9-Dm-lqe">
-                                                    <rect key="frame" x="20" y="11.999999999999998" width="163" height="20.333333333333329"/>
+                                                    <rect key="frame" x="20" y="5.6666666666666679" width="163.33333333333334" height="33"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark.seal" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ium-5q-9wm">
-                                                            <rect key="frame" x="0.0" y="-0.66666666666666785" width="22.333333333333332" height="21.666666666666664"/>
+                                                            <rect key="frame" x="0.0" y="-0.66666666666666785" width="22.333333333333332" height="34.333333333333343"/>
                                                             <color key="tintColor" systemColor="labelColor"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C44-8G-BA0">
-                                                            <rect key="frame" x="46.333333333333321" y="0.0" width="116.66666666666669" height="20.333333333333332"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P58-ne-NNS">
+                                                            <rect key="frame" x="46.333333333333329" y="0.0" width="116.99999999999999" height="33"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" systemColor="systemRedColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                            <state key="normal" title="Delete Account">
+                                                                <color key="titleColor" systemColor="systemRedColor"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="deleteAccountTapped:" destination="W15-fF-gxj" eventType="touchUpInside" id="aSW-2f-bip"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
