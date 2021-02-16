@@ -22,8 +22,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    @IBAction func loginTapped(_ sender: UIButton) {
-        // When the restore password button is tapped
+    @IBAction func loginButtonTapped(_ sender: UIButton) {
+        // When the Log In button is tapped
         let username: String = emailTextField.text ?? ""
         let password: String = passwordTextField.text ?? ""
         
@@ -38,8 +38,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Handling the text fields user input through delegate callbacks
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        
-//        emailTextField.layer.cornerRadius = 18
         
     }
     
