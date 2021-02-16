@@ -1,0 +1,4 @@
+#!/bin/bash
+
+zip lambda.zip * -x deployer lambda.zip
+aws lambda update-function-code --function-name paradigm --zip-file fileb://lambda.zip
