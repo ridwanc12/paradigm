@@ -68,7 +68,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		56B0170825D73421008C3143 /* View Controllers */ = {
+		56B0170825D73421008C3143 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				56585E0E25D3C00600581351 /* LoginViewController.swift */,
@@ -76,7 +76,7 @@
 				560D867825DC3BE60009CBF2 /* HomeViewController.swift */,
 				560D867C25DC452E0009CBF2 /* SettingsViewController.swift */,
 			);
-			path = "View Controllers";
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		93050B8725D8A19E00DA8BAB /* aws_endpoint */ = {
@@ -119,7 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				93050B8725D8A19E00DA8BAB /* aws_endpoint */,
-				56B0170825D73421008C3143 /* View Controllers */,
+				56B0170825D73421008C3143 /* ViewControllers */,
 				9351741025D1CBFC00BCFCB7 /* AppDelegate.swift */,
 				9351741225D1CBFC00BCFCB7 /* SceneDelegate.swift */,
 				9351741825D1CBFC00BCFCB7 /* Main.storyboard */,

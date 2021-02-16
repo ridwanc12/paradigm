@@ -18,6 +18,9 @@ class HomeViewController: UITabBarController, UITextFieldDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // Customizing the Tab Bar
+        UITabBar.appearance().tintColor = .black
+//        UITabBar.appearance().barTintColor
     }
     
 
