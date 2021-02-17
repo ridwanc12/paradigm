@@ -55,7 +55,7 @@ struct Entity: Decodable {
 struct ResponseMetadata: Decodable {
     let RequestId: String
     let HTTPStatusCode: Int
-    let HTTPHeaders: [String: String]
+    let HTTPHeaders: HTTPHeaders
     let RetryAttempts: Int
 }
 
