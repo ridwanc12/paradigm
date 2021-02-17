@@ -25,12 +25,70 @@ class ParadigmTests: XCTestCase {
         print(analysis)
     }
     
-    func testSuccessfulPositiveRequest1() {
+    func testRequestPositive1() {
         let journal = "After classes, I took my girlfriend out to dinner at a new Thai restaurant. We had a great time walking around the park afterwards and enjoying nature."
         let analysis = getJournalAnalysis(journal: journal)!
         let sentiment = analysis.sentiment.Sentiment
         print(sentiment)
         XCTAssertEqual(sentiment, "POSITIVE")
+    }
+    
+    func testRequestNegative1() {
+        let journal = "I had a fight with one of my co-workers today. We had an argument about their lack of contribution to the team and its negative impact on the project."
+        let analysis = getJournalAnalysis(journal: journal)!
+        let sentiment = analysis.sentiment.Sentiment
+        print(sentiment)
+        XCTAssertEqual(sentiment, "NEGATIVE")
+    }
+    
+    func testRequestPolarity1() {
+        let journal = "I had a fight with one of my co-workers today. We had an argument about their lack of contribution to the team and its negative impact on the project."
+        let analysis = getJournalAnalysis(journal: journal)!
+        let polarity = analysis.sentiment.SentimentScore.Neutral
+        print(polarity)
+        XCTAssertTrue(polarity < 0.5)
+    }
+    
+    func testRequestPolarity2() {
+        let journal = "Today, I got some chores done after work, and did some meal-prep for the next few days after going to the gym."
+        let analysis = getJournalAnalysis(journal: journal)!
+        let polarity = analysis.sentiment.SentimentScore.Neutral
+        print(polarity)
+        XCTAssertTrue(polarity > 0.5)
+    }
+    
+    func testRequestTopic1() {
+        let journal = "I am so excited for valentine's day tomorrow so I can eat a lot of dessert. I want a puppy."
+        let analysis = getJournalAnalysis(journal: journal)!
+        let topics = analysis.phrases.KeyPhrases
+        
+        let expected = ["valentine", "day", "a lot", "dessert", "a puppy"]
+        var contains = false
+        
+        for topic in topics {
+            if (expected.contains(topic.Text)) {
+                contains = true
+            }
+        }
+        
+        XCTAssert(contains)
+    }
+    
+    func testRequestTopic2() {
+        let journal = "Today, I got some chores done after work, and did some meal-prep for the next few days after going to the gym."
+        let analysis = getJournalAnalysis(journal: journal)!
+        let topics = analysis.phrases.KeyPhrases
+        
+        let expected = ["some chores", "work", "some meal-prep", "the gym"]
+        var contains = false
+        
+        for topic in topics {
+            if (expected.contains(topic.Text)) {
+                contains = true
+            }
+        }
+        
+        XCTAssert(contains)
     }
 
 }
