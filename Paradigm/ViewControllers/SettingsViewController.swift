@@ -12,6 +12,16 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func logoutTapped(_ sender: Any) {
         // When the logout button is tapped
+        // Setting the User Defaults to false
+        UserDefaults.standard.set(false, forKey: "status")
+        
+        
+        // After user has successfully logged out
+  
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginView = storyboard.instantiateViewController(identifier: "LoginViewController")
+
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginView)
         
     }
     

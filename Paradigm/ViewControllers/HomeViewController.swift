@@ -9,10 +9,6 @@
 import UIKit
 
 class HomeViewController: UITabBarController, UITextFieldDelegate {
-    
-    // Storyboard ID
-    // Login - loginVC
-    // Home Page - homeVC
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -29,6 +29,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         print(username)
         print(password)
+        
+        // Using User Defaults to keep a user logged in
+        UserDefaults.standard.set(true, forKey: "status")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let homeView = storyboard.instantiateViewController(identifier: "HomeViewController")
+        
+        // Getting the SceneDelegate object from the view controller
+        // Changing the root view controller
+
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(homeView)
+        
     }
     
     override func viewDidLoad() {
