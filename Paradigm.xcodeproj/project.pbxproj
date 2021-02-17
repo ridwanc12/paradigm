@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		560D867925DC3BE60009CBF2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560D867825DC3BE60009CBF2 /* HomeViewController.swift */; };
+		560D867D25DC452E0009CBF2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560D867C25DC452E0009CBF2 /* SettingsViewController.swift */; };
 		56585E0F25D3C00600581351 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56585E0E25D3C00600581351 /* LoginViewController.swift */; };
 		56B0170A25D73462008C3143 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B0170925D73462008C3143 /* SignUpViewController.swift */; };
+		56B78C4E25DCD63B006BF8CD /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B78C4D25DCD63B006BF8CD /* ProfileTableViewController.swift */; };
 		93050B8125D89CB200DA8BAB /* LambdaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93050B8025D89CB200DA8BAB /* LambdaRequest.swift */; };
 		93050BA025D8A47400DA8BAB /* ParadigmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93050B9F25D8A47400DA8BAB /* ParadigmTests.swift */; };
 		93050BB825D8AD1200DA8BAB /* DataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93050BB725D8AD1200DA8BAB /* DataStructures.swift */; };
@@ -30,8 +33,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		560D867825DC3BE60009CBF2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		560D867C25DC452E0009CBF2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		56585E0E25D3C00600581351 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		56B0170925D73462008C3143 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		56B78C4D25DCD63B006BF8CD /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		93050B8025D89CB200DA8BAB /* LambdaRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LambdaRequest.swift; sourceTree = "<group>"; };
 		93050B9D25D8A47400DA8BAB /* ParadigmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParadigmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93050B9F25D8A47400DA8BAB /* ParadigmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParadigmTests.swift; sourceTree = "<group>"; };
@@ -64,13 +70,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		56B0170825D73421008C3143 /* View Controllers */ = {
+		56B0170825D73421008C3143 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				56585E0E25D3C00600581351 /* LoginViewController.swift */,
 				56B0170925D73462008C3143 /* SignUpViewController.swift */,
+				560D867825DC3BE60009CBF2 /* HomeViewController.swift */,
+				560D867C25DC452E0009CBF2 /* SettingsViewController.swift */,
+				56B78C4D25DCD63B006BF8CD /* ProfileTableViewController.swift */,
 			);
-			path = "View Controllers";
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		93050B8725D8A19E00DA8BAB /* aws_endpoint */ = {
@@ -113,7 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				93050B8725D8A19E00DA8BAB /* aws_endpoint */,
-				56B0170825D73421008C3143 /* View Controllers */,
+				56B0170825D73421008C3143 /* ViewControllers */,
 				9351741025D1CBFC00BCFCB7 /* AppDelegate.swift */,
 				9351741225D1CBFC00BCFCB7 /* SceneDelegate.swift */,
 				9351741825D1CBFC00BCFCB7 /* Main.storyboard */,
@@ -233,12 +242,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56B78C4E25DCD63B006BF8CD /* ProfileTableViewController.swift in Sources */,
 				93050B8125D89CB200DA8BAB /* LambdaRequest.swift in Sources */,
 				56585E0F25D3C00600581351 /* LoginViewController.swift in Sources */,
 				9351741125D1CBFC00BCFCB7 /* AppDelegate.swift in Sources */,
 				93050BB825D8AD1200DA8BAB /* DataStructures.swift in Sources */,
 				56B0170A25D73462008C3143 /* SignUpViewController.swift in Sources */,
+				560D867925DC3BE60009CBF2 /* HomeViewController.swift in Sources */,
 				9351741325D1CBFC00BCFCB7 /* SceneDelegate.swift in Sources */,
+				560D867D25DC452E0009CBF2 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
