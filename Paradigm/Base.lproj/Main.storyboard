@@ -430,7 +430,7 @@
         <!--Profile-->
         <scene sceneID="Pvz-NO-cWS">
             <objects>
-                <tableViewController id="zKl-Jz-Y8Q" sceneMemberID="viewController">
+                <tableViewController id="zKl-Jz-Y8Q" customClass="ProfileTableViewController" customModule="Paradigm" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="w8I-1S-slh">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -578,6 +578,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Profile" id="teg-Ej-6i5"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="ccn-U7-kQc" id="0nq-FA-SjP"/>
+                        <outlet property="firstNameTextField" destination="lvh-dC-aIW" id="Na9-Ho-2wn"/>
+                        <outlet property="lastNametextField" destination="skr-2i-gPC" id="r4N-YG-OJP"/>
+                        <outlet property="titleLabel" destination="1F7-Zd-4CY" id="PHf-Ya-ZM7"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m4o-CZ-1iR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
