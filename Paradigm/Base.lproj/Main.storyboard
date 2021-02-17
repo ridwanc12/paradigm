@@ -468,7 +468,28 @@
                         <view key="tableFooterView" contentMode="scaleToFill" id="AQb-yN-C2u">
                             <rect key="frame" x="0.0" y="276.00000381469727" width="390" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bfl-iu-wtN">
+                                    <rect key="frame" x="34" y="18.666666666666671" width="322" height="63"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mvn-TO-UQG">
+                                            <rect key="frame" x="0.0" y="0.0" width="322" height="63"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <state key="normal" title="Update" backgroundImage="Button">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="updateButtonTapped:" destination="zKl-Jz-Y8Q" eventType="touchUpInside" id="C4l-gL-77D"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
                             <color key="backgroundColor" red="0.25098039220000001" green="0.28627450980000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstItem="bfl-iu-wtN" firstAttribute="centerX" secondItem="AQb-yN-C2u" secondAttribute="centerX" id="TvR-QF-1wR"/>
+                                <constraint firstItem="bfl-iu-wtN" firstAttribute="centerY" secondItem="AQb-yN-C2u" secondAttribute="centerY" id="yOm-lP-YWL"/>
+                            </constraints>
                         </view>
                         <sections>
                             <tableViewSection id="UvH-55-L22">

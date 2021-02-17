@@ -15,6 +15,9 @@ class ProfileTableViewController: UITableViewController {
     @IBOutlet weak var lastNametextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
+    @IBAction func updateButtonTapped(_ sender: UIButton) {
+        // When the update button is tapped
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +27,7 @@ class ProfileTableViewController: UITableViewController {
 
         // Display an Edit button in the navigation bar for this view controller.
          self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
     }
 
     // MARK: - Table view data source
@@ -51,16 +55,20 @@ class ProfileTableViewController: UITableViewController {
         return cell
     }
     */
-
+    
     /*
+    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+    
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -70,6 +78,10 @@ class ProfileTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return UITableViewCell.EditingStyle.none
+    }
+    
     */
 
     /*
