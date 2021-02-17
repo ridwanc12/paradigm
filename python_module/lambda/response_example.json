@@ -1,0 +1,98 @@
+{
+    "sentiment": {
+        "Sentiment": "POSITIVE",
+        "SentimentScore": {
+            "Positive": 0.9704602360725403,
+            "Negative": 0.00032649742206558585,
+            "Neutral": 0.02884678542613983,
+            "Mixed": 0.00036653014831244946
+        },
+        "ResponseMetadata": {
+            "RequestId": "ea39c344-6fc3-4c5c-abca-694c602147eb",
+            "HTTPStatusCode": 200,
+            "HTTPHeaders": {
+                "x-amzn-requestid": "ea39c344-6fc3-4c5c-abca-694c602147eb",
+                "content-type": "application/x-amz-json-1.1",
+                "content-length": "166",
+                "date": "Wed, 17 Feb 2021 18:43:10 GMT"
+            },
+            "RetryAttempts": 0
+        }
+    },
+    "phrases": {
+        "KeyPhrases": [{
+                "Score": 1.0,
+                "Text": "classes",
+                "BeginOffset": 6,
+                "EndOffset": 13
+            },
+            {
+                "Score": 0.9999999403953552,
+                "Text": "my girlfriend",
+                "BeginOffset": 22,
+                "EndOffset": 35
+            },
+            {
+                "Score": 0.9999748468399048,
+                "Text": "dinner",
+                "BeginOffset": 43,
+                "EndOffset": 49
+            },
+            {
+                "Score": 1.0,
+                "Text": "a new Thai restaurant",
+                "BeginOffset": 53,
+                "EndOffset": 74
+            },
+            {
+                "Score": 1.0,
+                "Text": "a great time",
+                "BeginOffset": 83,
+                "EndOffset": 95
+            },
+            {
+                "Score": 1.0,
+                "Text": "the park",
+                "BeginOffset": 111,
+                "EndOffset": 119
+            },
+            {
+                "Score": 0.9999996423721313,
+                "Text": "nature",
+                "BeginOffset": 144,
+                "EndOffset": 150
+            }
+        ],
+        "ResponseMetadata": {
+            "RequestId": "e5d70b2e-53f1-46fc-aed4-57054cd2d58e",
+            "HTTPStatusCode": 200,
+            "HTTPHeaders": {
+                "x-amzn-requestid": "e5d70b2e-53f1-46fc-aed4-57054cd2d58e",
+                "content-type": "application/x-amz-json-1.1",
+                "content-length": "529",
+                "date": "Wed, 17 Feb 2021 18:43:10 GMT"
+            },
+            "RetryAttempts": 0
+        }
+    },
+    "entities": {
+        "Entities": [{
+            "Score": 0.8065028786659241,
+            "Type": "LOCATION",
+            "Text": "Thai",
+            "BeginOffset": 59,
+            "EndOffset": 63
+        }],
+        "ResponseMetadata": {
+            "RequestId": "c8913fcf-df92-4618-b29c-af2d0b1a2df0",
+            "HTTPStatusCode": 200,
+            "HTTPHeaders": {
+                "x-amzn-requestid": "c8913fcf-df92-4618-b29c-af2d0b1a2df0",
+                "content-type": "application/x-amz-json-1.1",
+                "content-length": "107",
+                "date": "Wed, 17 Feb 2021 18:43:10 GMT"
+            },
+            "RetryAttempts": 0
+        }
+    }
+}
