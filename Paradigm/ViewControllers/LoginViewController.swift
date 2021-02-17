@@ -27,6 +27,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let username: String = emailTextField.text ?? ""
         let password: String = passwordTextField.text ?? ""
         
+        //show alert if textfields are empty
+        if (username == "" ||
+            password == "") {
+            
+            let alert = UIAlertController(title: "Empty Field", message: "Please enter all the fields", preferredStyle: .alert)
+            alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+            
+        }
+        
         print(username)
         print(password)
     }
