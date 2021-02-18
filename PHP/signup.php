@@ -31,7 +31,7 @@ if (empty(trim($_POST["email"]))) {
                 $email = trim($_POST["email"]);
             }
         } else {
-            echo "Oops! Something went wrong. Please try again later.";
+            echo "Something went wrong.";
         }
 
         // Close statement
@@ -80,7 +80,7 @@ https://boilerbite.000webhostapp.com/paradigm/verify.php?email=' . $email . '&ha
         $headers = 'From:noreply@yourwebsite.com' . "\r\n"; // Set from headers
         mail($to, $subject, $message, $headers); // Send our email
     } else {
-        echo "Something went wrong. Please try again later.";
+        echo "Something went wrong.";
     }
 
     // Close statement
