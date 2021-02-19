@@ -7,7 +7,7 @@ $param_email = $param_password = "";
 $sql = "SELECT entry FROM journals WHERE jourID = :jID";
 if ($stmt = $pdo->prepare($sql)) {
     // Bind variables to the prepared statement as parameters
-    $id = 5;
+    $id = trim($_POST["jID"]);
     $stmt->bindParam(":jID", $id, PDO::PARAM_INT);
 
     // Attempt to execute the prepared statement
@@ -22,7 +22,7 @@ if ($stmt = $pdo->prepare($sql)) {
             $mcrypt = mcrypt_module_open('rijndael-256', '', 'cbc', '');//Opens the module
             mcrypt_generic_init($mcrypt, $key, $iv);//Open buffers
             $decryptedData = mdecrypt_generic($mcrypt, base64_decode($encrypted_entry));
-            echo PHP_EOL."Decrypted value: ".$decryptedData;
+            echo $decryptedData;
             mcrypt_generic_deinit($mcrypt);
             mcrypt_module_close($mcrypt);
             
