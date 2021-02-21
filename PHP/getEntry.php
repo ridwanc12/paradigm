@@ -21,8 +21,8 @@ if ($stmt = $pdo->prepare($sql)) {
             $encrypted_entry = $row['entry'];
             $mcrypt = mcrypt_module_open('rijndael-256', '', 'cbc', '');//Opens the module
             mcrypt_generic_init($mcrypt, $key, $iv);//Open buffers
-            $decryptedData = mdecrypt_generic($mcrypt, base64_decode($encrypted_entry));
-            echo $decryptedData;
+            $decrypted_entry = trim(mdecrypt_generic($mcrypt, base64_decode($encrypted_entry)), "\0\4");
+            echo $decrypted_entry;
             mcrypt_generic_deinit($mcrypt);
             mcrypt_module_close($mcrypt);
             
