@@ -19,8 +19,10 @@ if ($stmt = $pdo->prepare($sql)) {
             // Fetch encrypted entry from result
             $row = $stmt->fetch();
             $encrypted_entry = $row['entry'];
-            $mcrypt = mcrypt_module_open('rijndael-256', '', 'cbc', '');//Opens the module
-            mcrypt_generic_init($mcrypt, $key, $iv);//Open buffers
+            // Open mcrypt module and buffer for decryption
+            $mcrypt = mcrypt_module_open('rijndael-256', '', 'cbc', '');
+            mcrypt_generic_init($mcrypt, $key, $iv);
+            // Trim invisible padding characters from the decrypted entry
             $decrypted_entry = trim(mdecrypt_generic($mcrypt, base64_decode($encrypted_entry)), "\0\4");
             echo $decrypted_entry;
             mcrypt_generic_deinit($mcrypt);
