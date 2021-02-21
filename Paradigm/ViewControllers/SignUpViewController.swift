@@ -99,6 +99,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         return emailPred.evaluate(with: email)
     }
     
+    func databaseRequest(first: String, last: String, email: String, password: String) -> Int {
+        return 0;
+    }
+    
     /*
     // MARK: - Navigation
 
