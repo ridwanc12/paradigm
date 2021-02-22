@@ -11,6 +11,7 @@
 		560D867D25DC452E0009CBF2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560D867C25DC452E0009CBF2 /* SettingsViewController.swift */; };
 		56585E0F25D3C00600581351 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56585E0E25D3C00600581351 /* LoginViewController.swift */; };
 		56A2004425E430E20098E623 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A2004325E430E20098E623 /* EntryViewController.swift */; };
+		56A2004825E433C00098E623 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A2004725E433C00098E623 /* JournalViewController.swift */; };
 		56B0170A25D73462008C3143 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B0170925D73462008C3143 /* SignUpViewController.swift */; };
 		56B78C4E25DCD63B006BF8CD /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B78C4D25DCD63B006BF8CD /* ProfileTableViewController.swift */; };
 		93050B8125D89CB200DA8BAB /* LambdaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93050B8025D89CB200DA8BAB /* LambdaRequest.swift */; };
@@ -38,6 +39,7 @@
 		560D867C25DC452E0009CBF2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		56585E0E25D3C00600581351 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		56A2004325E430E20098E623 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
+		56A2004725E433C00098E623 /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 		56B0170925D73462008C3143 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		56B78C4D25DCD63B006BF8CD /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		93050B8025D89CB200DA8BAB /* LambdaRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LambdaRequest.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				560D867C25DC452E0009CBF2 /* SettingsViewController.swift */,
 				56B78C4D25DCD63B006BF8CD /* ProfileTableViewController.swift */,
 				56A2004325E430E20098E623 /* EntryViewController.swift */,
+				56A2004725E433C00098E623 /* JournalViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56B78C4E25DCD63B006BF8CD /* ProfileTableViewController.swift in Sources */,
+				56A2004825E433C00098E623 /* JournalViewController.swift in Sources */,
 				56A2004425E430E20098E623 /* EntryViewController.swift in Sources */,
 				93050B8125D89CB200DA8BAB /* LambdaRequest.swift in Sources */,
 				56585E0F25D3C00600581351 /* LoginViewController.swift in Sources */,
