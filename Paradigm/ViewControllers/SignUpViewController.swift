@@ -60,7 +60,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             //all account creation criteria met
             let ret = databaseRequest(first: firstname, last: lastname, email: email, password: password, confirmPassword: confirmPassword)
             if (ret != "ERROR") {
-                performSegue(withIdentifier: "accountCreatedSegue", sender: nil)
+                // performSegue(withIdentifier: "accountCreatedSegue", sender: nil)
+                // Using User Defaults to keep a user logged in
+                UserDefaults.standard.set(true, forKey: "status")
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let homeView = storyboard.instantiateViewController(identifier: "HomeViewController")
+                
+                // Getting the SceneDelegate object from the view controller
+                // Changing the root view controller
+
+                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(homeView)
             }
         }
         

@@ -63,11 +63,13 @@
             </objects>
             <point key="canvasLocation" x="-1357" y="684"/>
         </scene>
-        <!--Item-->
+        <!--Today-->
         <scene sceneID="1iJ-D1-HPz">
             <objects>
                 <navigationController id="1Wv-5A-xdp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="0Cu-6N-qdk"/>
+                    <tabBarItem key="tabBarItem" title="Today" image="sun.max" catalog="system" id="0Cu-6N-qdk">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yMn-36-5OQ">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -80,21 +82,53 @@
             </objects>
             <point key="canvasLocation" x="-2355" y="684"/>
         </scene>
-        <!--View Controller-->
+        <!--Entry View Controller-->
         <scene sceneID="a1O-fL-Nh7">
             <objects>
-                <viewController id="Lu9-uA-bpW" sceneMemberID="viewController">
+                <viewController id="Lu9-uA-bpW" customClass="EntryViewController" customModule="Paradigm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MgP-el-SSx">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Fzy-ts-px2">
+                                <rect key="frame" x="16" y="203" width="220.66666666666666" height="72"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, Isha " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXB-3L-6ds">
+                                        <rect key="frame" x="0.0" y="0.0" width="168.33333333333334" height="40.666666666666664"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How are you today?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCB-Ds-XBJ">
+                                        <rect key="frame" x="0.0" y="40.666666666666664" width="220.66666666666666" height="31.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="textColor" red="0.74205550799999997" green="0.79607843140000001" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLo-ga-OEe" userLabel="Add">
+                                <rect key="frame" x="297" y="123" width="64" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="plus" catalog="system" backgroundImage="Speech-Bubble"/>
+                                <connections>
+                                    <action selector="addButton:" destination="Lu9-uA-bpW" eventType="touchUpInside" id="OoI-lg-2XL"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="5Md-92-hfz"/>
-                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                        <color key="backgroundColor" red="0.25098039220000001" green="0.28627450980000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <navigationItem key="navigationItem" id="XM0-0t-bq8"/>
+                    <connections>
+                        <outlet property="greetingLabel" destination="jXB-3L-6ds" id="7hf-9K-PAT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QAo-gA-9fD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2355" y="1375"/>
+            <point key="canvasLocation" x="-2355.3846153846152" y="1374.8815165876777"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="lpg-qI-YLD">
@@ -896,7 +930,9 @@
                             <constraint firstAttribute="bottom" secondItem="tLT-O8-GUU" secondAttribute="bottom" constant="16" id="fTT-Ax-OJe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="908-xx-vcS"/>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="908-xx-vcS">
+                        <barButtonItem key="backBarButtonItem" title="Log In" id="yMx-yU-SeX"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="emailTextField" destination="OMy-gK-2Nc" id="QzX-zt-P8s"/>
                         <outlet property="firstNameTextField" destination="G4l-8q-w1t" id="Du3-u5-heH"/>
@@ -915,6 +951,7 @@
         <image name="Logo" width="260" height="88"/>
         <image name="LogoBG" width="295" height="295"/>
         <image name="Settings-Icon" width="25" height="25"/>
+        <image name="Speech-Bubble" width="64" height="64"/>
         <image name="Text-Border" width="315" height="46"/>
         <image name="arrowshape.turn.up.right" catalog="system" width="128" height="106"/>
         <image name="bell" catalog="system" width="128" height="124"/>
@@ -924,12 +961,11 @@
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="key" catalog="system" width="86" height="128"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="sun.max" catalog="system" width="128" height="124"/>
         <image name="xmark.seal" catalog="system" width="128" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
