@@ -56,6 +56,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             self.present(alert, animated: true)
             passwordTextField.text = ""
             //confirmPasswordTextField.text = ""
+        } else {
+            //all account creation criteria met
+            let ret = databaseRequest(first: firstname, last: lastname, email: email, password: password, confirmPassword: confirmPassword)
+            if (ret == 0) {
+                performSegue(withIdentifier: "accountCreatedSegue", sender: nil)
+            }
         }
         
         
@@ -84,7 +90,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             (password.range(of: "[A-Z]", options: .regularExpression) != nil) &&
             (password.range(of: "[0-9]", options: .regularExpression) != nil) &&
             (password.count >= 6)) {
-            debugPrint("password strong")
+            //debugPrint("password strong")
             return true
         } else {
             return false
@@ -97,6 +103,36 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
+    }
+    
+    func databaseRequest(first: String, last: String, email: String, password: String, confirmPassword: String) -> Int {
+        let semaphore = DispatchSemaphore (value: 0)
+        var arg = 0;
+        
+        let urlString = String(format: "https://boilerbite.000webhostapp.com/php/signup.php?email=%@&password=%@&confirm_password%@&firstName=%@&lastName=%@", email, password, confirmPassword, first, last)
+        var request = URLRequest(url: URL(string: urlString)!,timeoutInterval: Double.infinity)
+        
+        request.httpMethod = "POST"
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                print("ERROR")
+                print(String(describing: error))
+                return
+            }
+            
+            print("PRINTING DATA")
+            //print(String(data: data, encoding: .utf8)!)
+            let str = String(data: data, encoding: .utf8)
+            if(str == "\n\n1") {
+                print("data is newnew1")
+                arg = 1
+            }
+            semaphore.signal()
+        }
+        task.resume()
+        semaphore.wait()
+        return arg
     }
     
     /*
