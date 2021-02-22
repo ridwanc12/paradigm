@@ -56,6 +56,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             self.present(alert, animated: true)
             passwordTextField.text = ""
             //confirmPasswordTextField.text = ""
+        } else {
+            //all account creation criteria met
+            let ret = databaseRequest(first: firstname, last: lastname, email: email, password: password, confirmPassword: confirmPassword)
+            if (ret != "ERROR") {
+                performSegue(withIdentifier: "accountCreatedSegue", sender: nil)
+            }
         }
         
         
@@ -84,7 +90,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             (password.range(of: "[A-Z]", options: .regularExpression) != nil) &&
             (password.range(of: "[0-9]", options: .regularExpression) != nil) &&
             (password.count >= 6)) {
-            debugPrint("password strong")
+            //debugPrint("password strong")
             return true
         } else {
             return false
@@ -97,6 +103,36 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
+    }
+    
+    func databaseRequest(first: String, last: String, email: String, password: String, confirmPassword: String) -> String {
+        let semaphore = DispatchSemaphore (value: 0)
+        var ret = "ERROR";
+        
+        let link = "https://boilerbite.000webhostapp.com/paradigm/signup.php"
+        let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
+        request.httpMethod = "POST"
+        
+        let postString = "email=\(email)&password=\(password)&confirm_password=\(confirmPassword)&firstName=\(first)&lastName=\(last)"
+        request.httpBody = postString.data(using: String.Encoding.utf8)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+            
+            if error != nil {
+                print("ERROR")
+                print(String(describing: error!))
+                return
+            }
+            
+            print("PRINTING DATA")
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            ret = String(describing: responseString!)
+            semaphore.signal()
+            print(ret)
+        }
+        task.resume()
+        semaphore.wait()
+        return ret
     }
     
     /*

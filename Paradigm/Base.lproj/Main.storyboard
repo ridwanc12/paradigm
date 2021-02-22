@@ -902,6 +902,7 @@
                         <outlet property="firstNameTextField" destination="G4l-8q-w1t" id="Du3-u5-heH"/>
                         <outlet property="lastNameTextField" destination="j7J-lR-0Re" id="fhQ-rs-RZg"/>
                         <outlet property="passwordTextField" destination="4Go-LW-4LS" id="Aw0-Qy-0ew"/>
+                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="accountCreatedSegue" modalPresentationStyle="fullScreen" id="igD-V9-GtV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z5s-4e-oXJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
