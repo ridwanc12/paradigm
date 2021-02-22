@@ -1,5 +1,6 @@
 <?php
 require("./dbconfig.php");
+require("./keys/keys.php");
 
 // Initialize parameters to use in SQL insertion
 $param_userID = $param_entry = $param_sentiment = $param_rating = $param_topics = "";
@@ -25,9 +26,17 @@ $sql = "INSERT INTO journals (userID, entry, created, sentScore, rating, lastEdi
 // Prepare SQL statement
 if ($insert = $pdo->prepare($sql)) {
 
+    // Open mcrypt buffers to start encrypting journal entry
+    mcrypt_generic_init($mcrypt, $key, $iv);//Open buffers
+    $encrypted_entry = mcrypt_generic($mcrypt, $param_entry);//Encrypt user journal
+    $encrypted_entry = base64_encode($encrypted_entry);// base_64 encode the encrypted entry
+    // Remember to close mcrypt buffers and module
+    mcrypt_generic_deinit($mcrypt);//Close buffers
+    mcrypt_module_close($mcrypt);//Close MCrypt module
+
     // Bind variables to the prepared statement as parameters
     $insert->bindParam(":userID", $param_userID, PDO::PARAM_STR);
-    $insert->bindParam(":entry", $param_entry, PDO::PARAM_STR);
+    $insert->bindParam(":entry", $encrypted_entry, PDO::PARAM_STR);
     $insert->bindParam(":sentiment", $param_sentiment, PDO::PARAM_INT);
     $insert->bindParam(":rating", $param_rating, PDO::PARAM_INT);
     $insert->bindParam(":created", $param_created, PDO::PARAM_STR);
