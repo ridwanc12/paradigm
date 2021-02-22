@@ -26,9 +26,16 @@ class ProfileTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Display an Edit button in the navigation bar for this view controller.
-         self.navigationItem.rightBarButtonItem = self.editButtonItem
+//        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        let editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItem.Style.plain, target: self, action: Selector(("editProfile:")))
+        self.navigationItem.rightBarButtonItem = editButton
         
     }
+    
+    func editProfile(sender: UIBarButtonItem) {
+            // Perform your custom actions
+            print("Function called")
+        }
 
     // MARK: - Table view data source
     
