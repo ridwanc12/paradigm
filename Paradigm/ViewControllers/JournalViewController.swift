@@ -8,12 +8,31 @@
 
 import UIKit
 
-class JournalViewController: UIViewController {
+class JournalViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var timeLabel: UILabel!
+    
+    @IBOutlet weak var journalTextField: UITextField!
+    
+    @IBAction func addButtonTapped(_ sender: UIButton) {
+        // When the add entry button is tapped
+        let entry: String = journalTextField.text ?? ""
+        
+        print(entry)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        journalTextField.delegate = self
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Hide the keyboard.
+        textField.resignFirstResponder()
+        return true
     }
     
 

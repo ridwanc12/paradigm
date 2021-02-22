@@ -115,6 +115,7 @@
                                 <state key="normal" image="plus" catalog="system" backgroundImage="Speech-Bubble"/>
                                 <connections>
                                     <action selector="addButton:" destination="Lu9-uA-bpW" eventType="touchUpInside" id="OoI-lg-2XL"/>
+                                    <segue destination="1Kx-yB-Fz4" kind="show" id="a6A-YE-NVT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -138,23 +139,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Monday, Feb 22, 2021 at 13:39 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRh-BJ-5zg">
-                                <rect key="frame" x="32" y="158" width="280" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Untitled" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bqP-xF-ZRA">
-                                <rect key="frame" x="32" y="232" width="280" height="120"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" spellCheckingType="yes"/>
-                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="pF8-tF-0oH">
+                                <rect key="frame" x="34" y="277" width="322" height="290"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday, Feb 22, 2021 at 13:39 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRh-BJ-5zg">
+                                        <rect key="frame" x="0.0" y="0.0" width="322" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="BMM-kO-001"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="nXR-S1-J4r"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" red="0.25098039220000001" green="0.28627450980000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Today's Journal" textAlignment="center" minimumFontSize="17" background="Journal-Border" translatesAutoresizingMaskIntoConstraints="NO" id="bqP-xF-ZRA">
+                                        <rect key="frame" x="0.0" y="65" width="322" height="120"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" red="0.93333333330000001" green="0.58431372550000005" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="Fw5-IX-50z"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="daO-5C-UGn"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.25098039220000001" green="0.28627450980000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" spellCheckingType="yes"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqY-yO-Yh9" userLabel="Signup Button">
+                                        <rect key="frame" x="0.0" y="225" width="322" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="cfM-My-tk0"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="rgh-FL-Dr6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="Add Entry" backgroundImage="Button"/>
+                                        <connections>
+                                            <action selector="addButtonTapped:" destination="1Kx-yB-Fz4" eventType="touchUpInside" id="uN0-1e-r3T"/>
+                                            <action selector="signupButtonTapped:" destination="TB6-Ib-vQM" eventType="touchUpInside" id="zVr-YL-cbA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ARh-af-CDR"/>
-                        <color key="backgroundColor" red="0.25098039220000001" green="0.28627450980000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.73333333329999995" green="0.79607843140000001" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="pF8-tF-0oH" firstAttribute="centerY" secondItem="0qw-mf-OVa" secondAttribute="centerY" id="CfD-ZX-odX"/>
+                            <constraint firstItem="pF8-tF-0oH" firstAttribute="centerX" secondItem="0qw-mf-OVa" secondAttribute="centerX" id="PIK-0F-iOk"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="rt3-WE-Xow"/>
+                    <connections>
+                        <outlet property="journalTextField" destination="bqP-xF-ZRA" id="sqV-eE-gIV"/>
+                        <outlet property="timeLabel" destination="TRh-BJ-5zg" id="Bsc-yK-I2P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MQS-69-tJq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -927,16 +964,16 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="78" translatesAutoresizingMaskIntoConstraints="NO" id="LFe-7Y-ePz">
                                         <rect key="frame" x="1" y="544.66666666666663" width="325" height="193"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqY-yO-Yh9" userLabel="Signup Button">
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2MA-J8-IAp" userLabel="Signup Button">
                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="65"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="65" id="3jr-nW-RVd"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="325" id="cfM-My-tk0"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="325" id="BeT-Qa-qth"/>
+                                                    <constraint firstAttribute="height" constant="65" id="Jre-CO-DS4"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <state key="normal" title="Sign Up" backgroundImage="Button"/>
                                                 <connections>
-                                                    <action selector="signupButtonTapped:" destination="TB6-Ib-vQM" eventType="touchUpInside" id="zVr-YL-cbA"/>
+                                                    <action selector="signupButtonTapped:" destination="TB6-Ib-vQM" eventType="touchUpInside" id="VaK-m2-42r"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2rj-VP-AgW">
@@ -978,6 +1015,7 @@
     </scenes>
     <resources>
         <image name="Button" width="322" height="63"/>
+        <image name="Journal-Border" width="280" height="120"/>
         <image name="Logo" width="260" height="88"/>
         <image name="LogoBG" width="295" height="295"/>
         <image name="Settings-Icon" width="25" height="25"/>
