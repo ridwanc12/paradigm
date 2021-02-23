@@ -891,6 +891,7 @@
                         <outlet property="passwordTextField" destination="AHC-tB-DMc" id="zsH-0y-OlY"/>
                         <outlet property="restoreButton" destination="aqx-g9-NJ5" id="dqA-b2-pAB"/>
                         <outlet property="signupButton" destination="UzY-Ah-fKt" id="025-Je-tM6"/>
+                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="loggedInSegue" modalPresentationStyle="fullScreen" id="E1y-lB-H9A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lCB-ip-rkG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1033,13 +1034,16 @@
             <point key="canvasLocation" x="-4046" y="682"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="E1y-lB-H9A"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Button" width="322" height="63"/>
         <image name="Journal-Border" width="280" height="120"/>
         <image name="Logo" width="260" height="88"/>
         <image name="LogoBG" width="295" height="295"/>
         <image name="Settings-Icon" width="25" height="25"/>
-        <image name="Speech-Bubble" width="64" height="64"/>
+        <image name="Speech-Bubble" width="128" height="128"/>
         <image name="Text-Border" width="315" height="46"/>
         <image name="arrowshape.turn.up.right" catalog="system" width="128" height="106"/>
         <image name="bell" catalog="system" width="128" height="124"/>
