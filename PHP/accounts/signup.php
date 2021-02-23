@@ -59,8 +59,8 @@ if ($stmt = $pdo->prepare($sql)) {
     // Set parameters
     $param_email = $email;
     $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
-    $firstName = trim($_POST["first"]);
-    $lastName = trim($_POST["last"]);
+    $firstName = trim($_POST["firstName"]);
+    $lastName = trim($_POST["lastName"]);
 
     // Attempt to execute the prepared statement
     if ($stmt->execute()) {

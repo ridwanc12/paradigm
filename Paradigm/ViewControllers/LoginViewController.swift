@@ -24,31 +24,47 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         // When the Log In button is tapped
-        let username: String = emailTextField.text ?? ""
+        let email: String = emailTextField.text ?? ""
         let password: String = passwordTextField.text ?? ""
         
         //show alert if textfields are empty
-        if (username == "" ||
+        if (email == "" ||
             password == "") {
             
             let alert = UIAlertController(title: "Empty Field", message: "Please enter all the fields", preferredStyle: .alert)
             alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
             self.present(alert, animated: true)
             
+        } else {
+            print(email)
+            print(password)
+            let ret = databaseRequestLogIn(email: email, password: password)
+            print("RET VALUE: " + ret)
+            
+            if (ret == "Login successful") {
+                // Using User Defaults to keep a user logged in
+                UserDefaults.standard.set(true, forKey: "status")
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let homeView = storyboard.instantiateViewController(identifier: "HomeViewController")
+                
+                // Getting the SceneDelegate object from the view controller
+                // Changing the root view controller
+                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(homeView)
+            } else if (ret == "Incorrect password. Please try again.") {
+                let alert = UIAlertController(title: "Incorrect Password.", message: "The password you entered is incorrect. Please try again.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+            } else if (ret == "Email not registered.") {
+                let alert = UIAlertController(title: "Account Not Found", message: "An account has not been created with the email you entered.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+            } else if (ret == "Oops! Something went wrong. Please try again later." || ret == "ERROR") {
+                let alert = UIAlertController(title: "Oops!", message: "Something went wrong on our end. Please try again.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+            }
+            
         }
-        
-        print(username)
-        print(password)
-        
-        // Using User Defaults to keep a user logged in
-        UserDefaults.standard.set(true, forKey: "status")
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let homeView = storyboard.instantiateViewController(identifier: "HomeViewController")
-        
-        // Getting the SceneDelegate object from the view controller
-        // Changing the root view controller
-
-        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(homeView)
         
     }
     
@@ -66,5 +82,36 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Hide the keyboard.
         textField.resignFirstResponder()
         return true
+    }
+    
+    func databaseRequestLogIn(email: String, password: String) -> String {
+        let semaphore = DispatchSemaphore (value: 0)
+        var ret = "";
+        
+        let link = "https://boilerbite.000webhostapp.com/paradigm/login.php"
+        let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
+        request.httpMethod = "POST"
+        
+        let postString = "email=\(email)&password=\(password)"
+        request.httpBody = postString.data(using: String.Encoding.utf8)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+            
+            if error != nil {
+                print("ERROR")
+                print(String(describing: error!))
+                ret = "ERROR"
+                semaphore.signal()
+                return
+            }
+            
+            print("PRINTING DATA")
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            ret = String(describing: responseString!)
+            semaphore.signal()
+        }
+        task.resume()
+        semaphore.wait()
+        return ret
     }
 }

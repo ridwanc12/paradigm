@@ -58,8 +58,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             //confirmPasswordTextField.text = ""
         } else {
             //all account creation criteria met
-            let ret = databaseRequest(first: firstname, last: lastname, email: email, password: password, confirmPassword: confirmPassword)
-            if (ret != "ERROR") {
+            let ret = databaseRequestCreateAccount(first: firstname, last: lastname, email: email, password: password, confirmPassword: confirmPassword)
+            print("RET VALUE: " + ret)
+            if (ret == "account created") {
                 // performSegue(withIdentifier: "accountCreatedSegue", sender: nil)
                 // Using User Defaults to keep a user logged in
                 UserDefaults.standard.set(true, forKey: "status")
@@ -70,6 +71,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 // Changing the root view controller
 
                 (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(homeView)
+            } else if (ret == "This email is already registered.") {
+                let alert = UIAlertController(title: "Account already exists.", message: "An account has already been created with this email. Please use a different email.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+            } else if (ret == "ERROR" || ret == "Something went wrong.") {
+                let alert = UIAlertController(title: "Oops!", message: "Something went wrong on our end. Please try again.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
             }
         }
         
@@ -114,9 +123,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         return emailPred.evaluate(with: email)
     }
     
-    func databaseRequest(first: String, last: String, email: String, password: String, confirmPassword: String) -> String {
+    func databaseRequestCreateAccount(first: String, last: String, email: String, password: String, confirmPassword: String) -> String {
         let semaphore = DispatchSemaphore (value: 0)
-        var ret = "ERROR";
+        var ret = "";
         
         let link = "https://boilerbite.000webhostapp.com/paradigm/signup.php"
         let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
@@ -130,6 +139,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             if error != nil {
                 print("ERROR")
                 print(String(describing: error!))
+                ret = "ERROR"
+                semaphore.signal()
                 return
             }
             
