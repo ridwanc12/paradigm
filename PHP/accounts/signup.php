@@ -26,7 +26,9 @@ if (empty(trim($_POST["email"]))) {
             if ($stmt->rowCount() == 1) {
                 $email_err = "This email is already registered.";
                 echo $email_err;
-                return;
+                unset($stmt);
+                unset($pdo);
+                exit();
             } else {
                 $email = trim($_POST["email"]);
             }
@@ -79,6 +81,34 @@ https://boilerbite.000webhostapp.com/paradigm/verify.php?email=' . $email . '&ha
 
         $headers = 'From:noreply@yourwebsite.com' . "\r\n"; // Set from headers
         mail($to, $subject, $message, $headers); // Send our email
+
+        $sql = "SELECT userID FROM accounts WHERE email = :email";
+
+        if ($stmt = $pdo->prepare($sql)) {
+            // Bind variables to the prepared statement as parameters
+            $stmt->bindParam(":email", $param_email, PDO::PARAM_STR);
+    
+            // Set parameters
+            $param_email = trim($_POST["email"]);
+    
+            // Attempt to execute the prepared statement
+            if ($stmt->execute()) {
+                // If rowcount == 1, email is already registered
+                if ($stmt->rowCount() == 1) {
+                   $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                   $row = $stmt->fetch();
+                   $userID = $row["userID"];
+                   echo "\n" . $userID;
+                } else {
+                    echo "Something went wrong trying to retreive userID.";
+                }
+            } else {
+                echo "Something went wrong.";
+            }
+    
+            // Close statement
+            unset($stmt);
+        }
     } else {
         echo "Something went wrong.";
     }
