@@ -58,7 +58,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             //confirmPasswordTextField.text = ""
         } else {
             //all account creation criteria met
-            let ret = databaseRequest(first: firstname, last: lastname, email: email, password: password, confirmPassword: confirmPassword)
+            let ret = databaseRequestCreateAccount(first: firstname, last: lastname, email: email, password: password, confirmPassword: confirmPassword)
             print("RET VALUE: " + ret)
             if (ret == "account created") {
                 // performSegue(withIdentifier: "accountCreatedSegue", sender: nil)
@@ -123,7 +123,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         return emailPred.evaluate(with: email)
     }
     
-    func databaseRequest(first: String, last: String, email: String, password: String, confirmPassword: String) -> String {
+    func databaseRequestCreateAccount(first: String, last: String, email: String, password: String, confirmPassword: String) -> String {
         let semaphore = DispatchSemaphore (value: 0)
         var ret = "";
         

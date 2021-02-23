@@ -1,6 +1,6 @@
 <?php
 require("./dbconfig.php");
-$param_email = $param_password = "";
+$email = $password = "";
 
 // Write SQL query to retrieve hashPass from table
 $sql = "SELECT hashPass FROM accounts WHERE email = :email";
