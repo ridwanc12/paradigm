@@ -53,6 +53,24 @@ if ($insert = $pdo->prepare($sql)) {
     unset($insert);
 }
 
+$sql = "UPDATE accounts 
+        SET lastEntry = :lastEntry 
+        WHERE userID = :userID";
+if ($update = $pdo->prepare($sql)) {
+    // Bind variables to the prepared statement as parameters
+    $update->bindParam(":userID", $param_userID, PDO::PARAM_STR);
+    $update->bindParam(":lastEntry", $param_created, PDO::PARAM_STR);
+
+    // Execute statement
+    if ($update->execute()) {
+        echo "Last entry time updated";
+    } else {
+        echo "Something is wrong";
+    }
+    // Clear $insert
+    unset($update);
+}
+
 // Disconnect from database
 unset($pdo);
 ?>
