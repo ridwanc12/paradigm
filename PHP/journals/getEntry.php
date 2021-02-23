@@ -36,6 +36,7 @@ if ($stmt = $pdo->prepare($sql)) {
             $topics = $row['topics'];
             $all_entries[$created] = array("jourID" => $jourID,
                                            "userID" => $userID,
+                                           "entry" => $decrypted_entry,
                                            "created" => $created,
                                            "hidden" => $hidden,
                                            "sentScore" => $sentScore,
