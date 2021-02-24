@@ -87,6 +87,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 let alert = UIAlertController(title: "Oops!", message: "Something went wrong on our end. Please try again.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
                 self.present(alert, animated: true)
+            } else {
+                let alert = UIAlertController(title: "Oops!", message: "Something went wrong on our end. Please try again.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
             }
             
         }
