@@ -30,6 +30,13 @@ class ProfileTableViewController: UITableViewController {
         let editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItem.Style.plain, target: self, action: Selector(("editProfile:")))
         self.navigationItem.rightBarButtonItem = editButton
         
+        //filling in user's data
+        firstNameTextField.text = Utils.global_firstName
+        lastNametextField.text = Utils.global_lastName
+        emailTextField.text = Utils.global_email
+        
+        print(Utils.global_userID)
+        
     }
     
     func editProfile(sender: UIBarButtonItem) {

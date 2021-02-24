@@ -28,8 +28,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let password: String = passwordTextField.text ?? ""
         
         //show alert if textfields are empty
-        if (email == "" ||
-            password == "") {
+        if (email == "" || password == "") {
             
             let alert = UIAlertController(title: "Empty Field", message: "Please enter all the fields", preferredStyle: .alert)
             alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
@@ -75,7 +74,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Handling the text fields user input through delegate callbacks
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
