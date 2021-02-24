@@ -28,8 +28,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let password: String = passwordTextField.text ?? ""
         
         //show alert if textfields are empty
-        if (email == "" ||
-            password == "") {
+        if (email == "" || password == "") {
             
             let alert = UIAlertController(title: "Empty Field", message: "Please enter all the fields", preferredStyle: .alert)
             alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
@@ -41,7 +40,33 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             let ret = databaseRequestLogIn(email: email, password: password)
             print("RET VALUE: " + ret)
             
-            if (ret == "Login successful") {
+            if (ret.contains("Login successful")) {
+                
+                //Storing user data into Utils
+                Utils.global_email = email
+                UserDefaults.standard.set(email, forKey: "email")
+                struct UserData: Decodable {
+                    let userID: String
+                    let firstName: String
+                    let lastName: String
+                }
+                let successMessage = "Login successful"
+                let json_index = ret.index(ret.startIndex, offsetBy: successMessage.count)
+                let parsed_json = String(ret[json_index...])
+                let data = parsed_json.data(using: .utf8)!
+                do {
+                    let userdata: UserData = try JSONDecoder().decode(UserData.self, from: data)
+                    Utils.global_userID = userdata.userID
+                    UserDefaults.standard.set(userdata.userID, forKey: "userID")
+                    Utils.global_firstName = userdata.firstName
+                    UserDefaults.standard.set(userdata.firstName, forKey: "firstName")
+                    Utils.global_lastName = userdata.lastName
+                    UserDefaults.standard.set(userdata.lastName, forKey: "lastName")
+                } catch {
+                    print(error)
+                }
+                
+                
                 // Using User Defaults to keep a user logged in
                 UserDefaults.standard.set(true, forKey: "status")
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -62,6 +87,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 let alert = UIAlertController(title: "Oops!", message: "Something went wrong on our end. Please try again.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
                 self.present(alert, animated: true)
+            } else {
+                let alert = UIAlertController(title: "Oops!", message: "Something went wrong on our end. Please try again.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
             }
             
         }
@@ -75,7 +104,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Handling the text fields user input through delegate callbacks
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

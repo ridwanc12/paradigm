@@ -58,10 +58,26 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             //confirmPasswordTextField.text = ""
         } else {
             //all account creation criteria met
+            
+            //storing user data in Utils
+            Utils.global_email = email
+            UserDefaults.standard.set(email, forKey: "email")
+            Utils.global_firstName = firstname
+            UserDefaults.standard.set(firstname, forKey: "firstname")
+            Utils.global_lastName = lastname
+            UserDefaults.standard.set(lastname, forKey: "lastname")
+            
             let ret = databaseRequestCreateAccount(first: firstname, last: lastname, email: email, password: password, confirmPassword: confirmPassword)
             print("RET VALUE: " + ret)
-            if (ret == "account created") {
-                // performSegue(withIdentifier: "accountCreatedSegue", sender: nil)
+            if (ret.contains("account created")) {
+                
+                //Storing user ID in Utils
+                let successMessage = "account created"
+                let id_index = ret.index(ret.startIndex, offsetBy: successMessage.count + 1)
+                let parsed_id = ret[id_index...]
+                Utils.global_userID = String(parsed_id)
+                UserDefaults.standard.set(String(parsed_id), forKey: "userID")
+                
                 // Using User Defaults to keep a user logged in
                 UserDefaults.standard.set(true, forKey: "status")
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
