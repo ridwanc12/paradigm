@@ -44,7 +44,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 //Storing user data into Utils
                 Utils.global_email = email
-                
+                UserDefaults.standard.set(email, forKey: "email")
                 struct UserData: Decodable {
                     let userID: String
                     let firstName: String
@@ -57,8 +57,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 do {
                     let userdata: UserData = try JSONDecoder().decode(UserData.self, from: data)
                     Utils.global_userID = userdata.userID
+                    UserDefaults.standard.set(userdata.userID, forKey: "userID")
                     Utils.global_firstName = userdata.firstName
+                    UserDefaults.standard.set(userdata.firstName, forKey: "firstName")
                     Utils.global_lastName = userdata.lastName
+                    UserDefaults.standard.set(userdata.lastName, forKey: "lastName")
                 } catch {
                     print(error)
                 }
