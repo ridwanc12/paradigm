@@ -9,6 +9,7 @@ $param_userID = $param_entry = $param_sentiment = $param_rating = $param_topics 
 $param_userID = trim($_POST["userID"]);
 $param_entry = trim($_POST["entry"]);
 $param_sentiment = trim($_POST["sentiment"]);
+$param_sentScore = trim($_POST["sentScore"]);
 $param_rating = trim($_POST["rating"]);
 $param_topics = trim($_POST["topics"]);
 
@@ -20,8 +21,8 @@ $date = $today->format('Y-m-d H:i:s');
 $param_created = $lastEdited = $date;
 
 // Write out SQL query to be prepared
-$sql = "INSERT INTO journals (userID, entry, created, sentScore, rating, lastEdited, topics) 
-        VALUES (:userID, :entry, :created, :sentiment, :rating, :lastEdited, :topics)";
+$sql = "INSERT INTO journals (userID, entry, created, sentiment, sentScore, rating, lastEdited, topics) 
+        VALUES (:userID, :entry, :created, :sentiment, :sentScore, :rating, :lastEdited, :topics)";
 
 // Prepare SQL statement
 if ($insert = $pdo->prepare($sql)) {
@@ -37,7 +38,8 @@ if ($insert = $pdo->prepare($sql)) {
     // Bind variables to the prepared statement as parameters
     $insert->bindParam(":userID", $param_userID, PDO::PARAM_STR);
     $insert->bindParam(":entry", $encrypted_entry, PDO::PARAM_STR);
-    $insert->bindParam(":sentiment", $param_sentiment, PDO::PARAM_INT);
+    $insert->bindParam(":sentiment", $param_sentiment, PDO::PARAM_STR);
+    $insert->bindParam(":sentScore", $param_sentScore, PDO::PARAM_STR);
     $insert->bindParam(":rating", $param_rating, PDO::PARAM_INT);
     $insert->bindParam(":created", $param_created, PDO::PARAM_STR);
     $insert->bindParam(":lastEdited", $lastEdited, PDO::PARAM_STR);
