@@ -40,7 +40,30 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             let ret = databaseRequestLogIn(email: email, password: password)
             print("RET VALUE: " + ret)
             
-            if (ret == "Login successful") {
+            if (ret.contains("Login successful")) {
+                
+                //Storing user data into Utils
+                Utils.global_email = email
+                
+                struct UserData: Decodable {
+                    let userID: String
+                    let firstName: String
+                    let lastName: String
+                }
+                let successMessage = "Login successful"
+                let json_index = ret.index(ret.startIndex, offsetBy: successMessage.count)
+                let parsed_json = String(ret[json_index...])
+                let data = parsed_json.data(using: .utf8)!
+                do {
+                    let userdata: UserData = try JSONDecoder().decode(UserData.self, from: data)
+                    Utils.global_userID = userdata.userID
+                    Utils.global_firstName = userdata.firstName
+                    Utils.global_lastName = userdata.lastName
+                } catch {
+                    print(error)
+                }
+                
+                
                 // Using User Defaults to keep a user logged in
                 UserDefaults.standard.set(true, forKey: "status")
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
