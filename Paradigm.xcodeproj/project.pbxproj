@@ -14,6 +14,7 @@
 		56A2004825E433C00098E623 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A2004725E433C00098E623 /* JournalViewController.swift */; };
 		56B0170A25D73462008C3143 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B0170925D73462008C3143 /* SignUpViewController.swift */; };
 		56B78C4E25DCD63B006BF8CD /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B78C4D25DCD63B006BF8CD /* ProfileTableViewController.swift */; };
+		6C796FAE25E5EB90009F389D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C796FAD25E5EB90009F389D /* Utils.swift */; };
 		93050B8125D89CB200DA8BAB /* LambdaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93050B8025D89CB200DA8BAB /* LambdaRequest.swift */; };
 		93050BA025D8A47400DA8BAB /* ParadigmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93050B9F25D8A47400DA8BAB /* ParadigmTests.swift */; };
 		93050BB825D8AD1200DA8BAB /* DataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93050BB725D8AD1200DA8BAB /* DataStructures.swift */; };
@@ -42,6 +43,7 @@
 		56A2004725E433C00098E623 /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 		56B0170925D73462008C3143 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		56B78C4D25DCD63B006BF8CD /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		6C796FAD25E5EB90009F389D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		93050B8025D89CB200DA8BAB /* LambdaRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LambdaRequest.swift; sourceTree = "<group>"; };
 		93050B9D25D8A47400DA8BAB /* ParadigmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParadigmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93050B9F25D8A47400DA8BAB /* ParadigmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParadigmTests.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 		56B0170825D73421008C3143 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6C796FAD25E5EB90009F389D /* Utils.swift */,
 				56585E0E25D3C00600581351 /* LoginViewController.swift */,
 				56B0170925D73462008C3143 /* SignUpViewController.swift */,
 				560D867825DC3BE60009CBF2 /* HomeViewController.swift */,
@@ -254,6 +257,7 @@
 				93050B8125D89CB200DA8BAB /* LambdaRequest.swift in Sources */,
 				56585E0F25D3C00600581351 /* LoginViewController.swift in Sources */,
 				9351741125D1CBFC00BCFCB7 /* AppDelegate.swift in Sources */,
+				6C796FAE25E5EB90009F389D /* Utils.swift in Sources */,
 				93050BB825D8AD1200DA8BAB /* DataStructures.swift in Sources */,
 				56B0170A25D73462008C3143 /* SignUpViewController.swift in Sources */,
 				560D867925DC3BE60009CBF2 /* HomeViewController.swift in Sources */,

@@ -723,7 +723,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="ccn-U7-kQc" id="0nq-FA-SjP"/>
                         <outlet property="firstNameTextField" destination="lvh-dC-aIW" id="Na9-Ho-2wn"/>
-                        <outlet property="lastNametextField" destination="skr-2i-gPC" id="r4N-YG-OJP"/>
+                        <outlet property="lastNameTextField" destination="skr-2i-gPC" id="2qq-6z-pwC"/>
                         <outlet property="titleLabel" destination="1F7-Zd-4CY" id="PHf-Ya-ZM7"/>
                     </connections>
                 </tableViewController>

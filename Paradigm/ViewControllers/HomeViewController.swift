@@ -17,6 +17,14 @@ class HomeViewController: UITabBarController, UITextFieldDelegate {
         // Customizing the Tab Bar
         UITabBar.appearance().tintColor = .black
 //        UITabBar.appearance().barTintColor
+        
+        
+        //obtain user data from userdefaults -- MAY NEED TO COMMENT OUT FOR FIRST TIME RUNNING IF DEFAULT IS SET TO LOGGED IN
+        Utils.global_userID = UserDefaults.standard.object(forKey: "userID") as! String
+        Utils.global_email = UserDefaults.standard.object(forKey: "email") as! String
+        Utils.global_firstName = UserDefaults.standard.object(forKey: "firstName") as! String
+        Utils.global_lastName = UserDefaults.standard.object(forKey: "lastName") as! String
+        
     }
     
 
