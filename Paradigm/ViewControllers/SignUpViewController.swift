@@ -22,7 +22,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         let lastname: String = lastNameTextField.text ?? ""
         let email: String = emailTextField.text ?? ""
         let password: String = passwordTextField.text ?? ""
-        let confirmPassword: String = password //confirmPasswordTextField.text ?? ""
+        let confirmPassword: String = confirmPasswordTextField.text ?? "" //confirmPasswordTextField.text ?? ""
         
         print(firstname)
         print(lastname)
@@ -110,6 +110,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         lastNameTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
