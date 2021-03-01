@@ -1039,7 +1039,7 @@
         <!--Password View Controller-->
         <scene sceneID="ErT-u0-Orh">
             <objects>
-                <viewController id="mOq-XG-vct" userLabel="Password View Controller" customClass="SignUpViewController" customModule="Paradigm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mOq-XG-vct" userLabel="Password View Controller" customClass="PasswordViewController" customModule="Paradigm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9zi-5b-DoC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1075,7 +1075,7 @@
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="ZJ6-pK-Fss"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="given-name"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="200" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="new password" textAlignment="center" minimumFontSize="17" background="Text-Border" translatesAutoresizingMaskIntoConstraints="NO" id="glQ-SD-B4P" userLabel="New Password">
                                                 <rect key="frame" x="0.0" y="64" width="325" height="40"/>
@@ -1086,7 +1086,7 @@
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="uoD-CM-nIR"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="family-name"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="new-password"/>
                                             </textField>
                                             <textField contentMode="scaleToFill" verticalHuggingPriority="200" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="confirm new password" textAlignment="center" minimumFontSize="17" background="Text-Border" translatesAutoresizingMaskIntoConstraints="NO" id="H4K-TV-x0L" userLabel="Confirm Password">
                                                 <rect key="frame" x="0.0" y="128" width="325" height="40"/>
@@ -1097,7 +1097,7 @@
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="mzD-mf-agc"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="new-password"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -1113,7 +1113,7 @@
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <state key="normal" title="Update" backgroundImage="Button"/>
                                                 <connections>
-                                                    <action selector="signupButtonTapped:" destination="mOq-XG-vct" eventType="touchUpInside" id="3mU-Gl-Rl0"/>
+                                                    <action selector="updateTapped:" destination="mOq-XG-vct" eventType="touchUpInside" id="OKn-eZ-M8x"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t4n-qR-nkV">
@@ -1142,9 +1142,9 @@
                         <barButtonItem key="backBarButtonItem" title="Log In" id="mae-xu-iX9"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="emailTextField" destination="H4K-TV-x0L" id="xAN-xS-Fpa"/>
-                        <outlet property="firstNameTextField" destination="Ivy-j0-seo" id="DYL-6C-SFt"/>
-                        <outlet property="lastNameTextField" destination="glQ-SD-B4P" id="yeY-OT-ex0"/>
+                        <outlet property="confirmPassTextField" destination="H4K-TV-x0L" id="b58-wO-lLd"/>
+                        <outlet property="currPassTextField" destination="Ivy-j0-seo" id="Qgx-as-wvo"/>
+                        <outlet property="newPassTextField" destination="glQ-SD-B4P" id="FXN-Bf-GmB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1eH-bN-bur" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
