@@ -71,8 +71,8 @@ class ProfileTableViewController: UITableViewController {
 
         // Display an Edit button in the navigation bar for this view controller.
 //        self.navigationItem.rightBarButtonItem = self.editButtonItem
-        let editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItem.Style.plain, target: self, action: Selector(("editProfile:")))
-        self.navigationItem.rightBarButtonItem = editButton
+//        let editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItem.Style.plain, target: self, action: Selector(("editProfile:")))
+//        self.navigationItem.rightBarButtonItem = editButton
         
         //filling in user's data
         firstNameTextField.text = Utils.global_firstName
