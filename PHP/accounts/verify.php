@@ -17,7 +17,7 @@ if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !
 
         // Attempt to execute the prepared statement
         if ($stmt->execute()) {
-            // If rowcount == 1, verfiy account by changing verfied to 1
+            // If rowcount == 1, verify account by changing verified to 1
             if ($stmt->rowCount() == 1) {
                 $verified = 1;
                 $sql = "UPDATE accounts SET verified = :verified
@@ -26,7 +26,7 @@ if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !
                     $update->bindParam(":email", $param_email, PDO::PARAM_STR);
                     $update->bindParam(":verified", $verified, PDO::PARAM_INT);
                     if ($update->execute()) {
-                        echo "Account verified.";
+                        echo "Account verified. You can login from our application now.";
                     }
                 }
             } else {
