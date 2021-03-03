@@ -837,7 +837,6 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="restoreButtonAction:" destination="dw3-xP-jYR" eventType="touchUpInside" id="Nbo-EP-Psi"/>
                                                             <action selector="restoreButtonTapped:" destination="dw3-xP-jYR" eventType="touchUpInside" id="vha-G2-A0w"/>
                                                         </connections>
                                                     </button>
