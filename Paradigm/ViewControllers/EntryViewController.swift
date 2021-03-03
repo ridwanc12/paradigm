@@ -21,6 +21,7 @@ class EntryViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        greetingLabel.text = "Hello, " + Utils.global_firstName
     }
     
 
