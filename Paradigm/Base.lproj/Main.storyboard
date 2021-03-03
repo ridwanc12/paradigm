@@ -1165,7 +1165,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="igD-V9-GtV"/>
+        <segue reference="E1y-lB-H9A"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Button" width="322" height="63"/>
@@ -1173,7 +1173,7 @@
         <image name="Logo" width="260" height="88"/>
         <image name="LogoBG" width="295" height="295"/>
         <image name="Settings-Icon" width="25" height="25"/>
-        <image name="Speech-Bubble" width="64" height="64"/>
+        <image name="Speech-Bubble" width="128" height="128"/>
         <image name="Text-Border" width="315" height="46"/>
         <image name="arrowshape.turn.up.right" catalog="system" width="128" height="106"/>
         <image name="bell" catalog="system" width="128" height="124"/>
