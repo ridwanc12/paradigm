@@ -104,6 +104,9 @@ class ProfileTableViewController: UITableViewController {
             }
         }
         
+        // Updating the title label
+        titleLabel.text = Utils.global_firstName + " " + Utils.global_lastName
+        
     }
     
     override func viewDidLoad() {
@@ -121,6 +124,9 @@ class ProfileTableViewController: UITableViewController {
         firstNameTextField.text = Utils.global_firstName
         lastNameTextField.text = Utils.global_lastName
         emailTextField.text = Utils.global_email
+        
+        // Updating the title label
+        titleLabel.text = Utils.global_firstName + Utils.global_lastName
         
     }
     
