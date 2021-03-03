@@ -22,7 +22,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         let lastname: String = lastNameTextField.text ?? ""
         let email: String = emailTextField.text ?? ""
         let password: String = passwordTextField.text ?? ""
-        let confirmPassword: String = password //confirmPasswordTextField.text ?? ""
+        let confirmPassword: String = confirmPasswordTextField.text ?? "" //confirmPasswordTextField.text ?? ""
         
         print(firstname)
         print(lastname)
@@ -95,6 +95,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 let alert = UIAlertController(title: "Oops!", message: "Something went wrong on our end. Please try again.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
                 self.present(alert, animated: true)
+            } else {
+                let alert = UIAlertController(title: "Oops!", message: "Something went wrong on our end. Please try again.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
             }
         }
         
@@ -110,6 +114,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         lastNameTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

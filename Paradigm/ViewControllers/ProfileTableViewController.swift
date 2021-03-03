@@ -21,6 +21,7 @@ class ProfileTableViewController: UITableViewController {
         let lastname: String = lastNameTextField.text ?? ""
         let email: String = emailTextField.text ?? ""
         let userID = Utils.global_userID
+        let semaphore = DispatchSemaphore (value: 0)
         
         if (firstname == "" ||
             lastname == "" ||
@@ -34,30 +35,72 @@ class ProfileTableViewController: UITableViewController {
             self.present(alert, animated: true)
         } else {
             //all fields meet needed criteria
-            let ret = databaseRequestEditUser(userID: userID, first: firstname, last: lastname, email: email)
-            print("RET VALUE: " + ret)
-            
-            if (ret == "account edited.") {
-                //successfully edited info
-                Utils.global_firstName = firstname
-                UserDefaults.standard.set(firstname, forKey: "firstName")
-                Utils.global_lastName = lastname
-                UserDefaults.standard.set(lastname, forKey: "lastName")
-                Utils.global_email = email
-                UserDefaults.standard.set(email, forKey: "email")
-                let alert = UIAlertController(title: "Success!", message: "Your account information has been updated.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
-                self.present(alert, animated: true)
-            } else if (ret == "Email already registered.") {
-                //user tried to update email to one already in use
-                let alert = UIAlertController(title: "Email Already In Use", message: "This email is already associated with an account. Please use a different one.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
-                self.present(alert, animated: true)
+            if (email != Utils.global_email) {
+                let changeEmailAlert = UIAlertController(title: "Update Email", message: "Are you sure you want to update your email?", preferredStyle: .alert)
+
+                changeEmailAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+                    print("User confirms updating email.")
+                    //update email
+                    let ret = self.databaseRequestEditUser(userID: userID, first: firstname, last: lastname, email: email)
+                    print("RET VALUE: " + ret)
+                    
+                    if (ret == "account edited.") {
+                        //successfully edited info
+                        Utils.global_firstName = firstname
+                        UserDefaults.standard.set(firstname, forKey: "firstName")
+                        Utils.global_lastName = lastname
+                        UserDefaults.standard.set(lastname, forKey: "lastName")
+                        Utils.global_email = email
+                        UserDefaults.standard.set(email, forKey: "email")
+                        let alert = UIAlertController(title: "Success!", message: "Your account information has been updated.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                        self.present(alert, animated: true)
+                    } else if (ret == "Email already registered.") {
+                        //user tried to update email to one already in use
+                        let alert = UIAlertController(title: "Email Already In Use", message: "This email is already associated with an account. Please use a different one.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                        self.present(alert, animated: true)
+                    } else {
+                        //handle all other return values which equate to errors
+                        let alert = UIAlertController(title: "Oops!", message: "Something went wrong on our end. Please try again.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+                  }))
+
+                changeEmailAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                    print("User cancels updating email.")
+                    //do nothing
+                  }))
+
+                self.present(changeEmailAlert, animated: true, completion: nil)
             } else {
-                //handle all other return values which equate to errors
-                let alert = UIAlertController(title: "Oops!", message: "Something went wrong on our end. Please try again.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
-                self.present(alert, animated: true)
+                //email not being changed
+                let ret = databaseRequestEditUser(userID: userID, first: firstname, last: lastname, email: email)
+                print("RET VALUE: " + ret)
+                
+                if (ret == "account edited.") {
+                    //successfully edited info
+                    Utils.global_firstName = firstname
+                    UserDefaults.standard.set(firstname, forKey: "firstName")
+                    Utils.global_lastName = lastname
+                    UserDefaults.standard.set(lastname, forKey: "lastName")
+                    Utils.global_email = email
+                    UserDefaults.standard.set(email, forKey: "email")
+                    let alert = UIAlertController(title: "Success!", message: "Your account information has been updated.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                    self.present(alert, animated: true)
+                } else if (ret == "Email already registered.") {
+                    //user tried to update email to one already in use
+                    let alert = UIAlertController(title: "Email Already In Use", message: "This email is already associated with an account. Please use a different one.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                    self.present(alert, animated: true)
+                } else {
+                    //handle all other return values which equate to errors
+                    let alert = UIAlertController(title: "Oops!", message: "Something went wrong on our end. Please try again.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                    self.present(alert, animated: true)
+                }
             }
         }
         
@@ -71,8 +114,8 @@ class ProfileTableViewController: UITableViewController {
 
         // Display an Edit button in the navigation bar for this view controller.
 //        self.navigationItem.rightBarButtonItem = self.editButtonItem
-        let editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItem.Style.plain, target: self, action: Selector(("editProfile:")))
-        self.navigationItem.rightBarButtonItem = editButton
+//        let editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItem.Style.plain, target: self, action: Selector(("editProfile:")))
+//        self.navigationItem.rightBarButtonItem = editButton
         
         //filling in user's data
         firstNameTextField.text = Utils.global_firstName

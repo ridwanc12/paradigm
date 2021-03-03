@@ -20,6 +20,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func restoreButtonTapped (_ sender: UIButton) {
         // When the restore password button is tapped
         
+        let email: String = emailTextField.text ?? ""
+        
+        if (email == "") {
+            let alert = UIAlertController(title: "Empty Email Field", message: "Please enter your email in order to restore your password.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        } else {
+            let ret = databaseRequestRestorePassword(email: email)
+            print("RET VALUE: " + ret)
+            
+            if (ret == "Password resetted") {
+                let alert = UIAlertController(title: "Success", message: "Please check your email for instructions on how to access your account.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+            } else {
+                let alert = UIAlertController(title: "Oops!", message: "Something went wrong on our end. Please try again.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+            }
+        }
     }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
@@ -121,6 +141,37 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         request.httpMethod = "POST"
         
         let postString = "email=\(email)&password=\(password)"
+        request.httpBody = postString.data(using: String.Encoding.utf8)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+            
+            if error != nil {
+                print("ERROR")
+                print(String(describing: error!))
+                ret = "ERROR"
+                semaphore.signal()
+                return
+            }
+            
+            print("PRINTING DATA")
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            ret = String(describing: responseString!)
+            semaphore.signal()
+        }
+        task.resume()
+        semaphore.wait()
+        return ret
+    }
+    
+    func databaseRequestRestorePassword(email: String) -> String {
+        let semaphore = DispatchSemaphore (value: 0)
+        var ret = "";
+        
+        let link = "https://boilerbite.000webhostapp.com/paradigm/resetPass.php"
+        let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
+        request.httpMethod = "POST"
+        
+        let postString = "email=\(email)"
         request.httpBody = postString.data(using: String.Encoding.utf8)
         
         let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
