@@ -34,15 +34,25 @@ if ($stmt = $pdo->prepare($sql)) {
             $rating = $row['rating'];
             $lastEdited = $row['lastEdited'];
             $topics = $row['topics'];
+            $sentiment = $row['sentiment'];
+            $positive = $row['positive'];
+            $negative = $row['negative'];
+            $mixed = $row['mixed'];
+            $neutral = $row['neutral'];
             $all_entries[$created] = array("jourID" => $jourID,
                                            "userID" => $userID,
                                            "entry" => $decrypted_entry,
                                            "created" => $created,
                                            "hidden" => $hidden,
+                                           "sentiment" => $sentiment,
                                            "sentScore" => $sentScore,
                                            "rating" => $hidden,
                                            "lastEdited" => $lastEdited,
-                                           "topics" => $topics); 
+                                           "topics" => $topics,
+                                           "positive" => $positive,
+                                           "negative" => $negative,
+                                           "mixed" => $mixed,
+                                           "neutral" => $neutral); 
         }
         $json = json_encode($all_entries);
         echo $json;

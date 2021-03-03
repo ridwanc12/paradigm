@@ -12,6 +12,10 @@ $param_sentiment = trim($_POST["sentiment"]);
 $param_sentScore = trim($_POST["sentScore"]);
 $param_rating = trim($_POST["rating"]);
 $param_topics = trim($_POST["topics"]);
+$param_positive = trim($_POST["positive"]);
+$param_negative = trim($_POST["negative"]);
+$param_mixed = trim($_POST["mixed"]);
+$param_neutral = trim($_POST["neutral"]);
 
 // Get current time in EST time zone.
 $tz = 'America/New_York';
@@ -21,8 +25,8 @@ $date = $today->format('Y-m-d H:i:s');
 $param_created = $lastEdited = $date;
 
 // Write out SQL query to be prepared
-$sql = "INSERT INTO journals (userID, entry, created, sentiment, sentScore, rating, lastEdited, topics) 
-        VALUES (:userID, :entry, :created, :sentiment, :sentScore, :rating, :lastEdited, :topics)";
+$sql = "INSERT INTO journals (userID, entry, created, sentiment, sentScore, rating, lastEdited, topics, positive, negative, mixed, neutral) 
+        VALUES (:userID, :entry, :created, :sentiment, :sentScore, :rating, :lastEdited, :topics, :positive, :negative, :mixed, :neutral)";
 
 // Prepare SQL statement
 if ($insert = $pdo->prepare($sql)) {
@@ -44,6 +48,11 @@ if ($insert = $pdo->prepare($sql)) {
     $insert->bindParam(":created", $param_created, PDO::PARAM_STR);
     $insert->bindParam(":lastEdited", $lastEdited, PDO::PARAM_STR);
     $insert->bindParam(":topics", $param_topics, PDO::PARAM_STR);
+    $insert->bindParam(":positive", $param_positive, PDO::PARAM_STR);
+    $insert->bindParam(":negative", $param_negative, PDO::PARAM_STR);
+    $insert->bindParam(":mixed", $param_mixed, PDO::PARAM_STR);
+    $insert->bindParam(":neutral", $param_neutral, PDO::PARAM_STR);
+
 
     // Execute statement
     if ($insert->execute()) {
