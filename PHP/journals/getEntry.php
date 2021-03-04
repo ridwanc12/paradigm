@@ -54,7 +54,7 @@ if ($stmt = $pdo->prepare($sql)) {
                                            "mixed" => $mixed,
                                            "neutral" => $neutral); 
         }
-        $json = json_encode($all_entries);
+        $json = json_encode($all_entries, JSON_PRETTY_PRINT);
         echo $json;
     } else {
         echo "Oops! Something went wrong. Please try again later.";

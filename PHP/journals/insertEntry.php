@@ -56,7 +56,7 @@ if ($insert = $pdo->prepare($sql)) {
 
     // Execute statement
     if ($insert->execute()) {
-        echo "Entry inserted";
+        echo "Entry inserted.";
     } else {
         echo "Something is wrong";
     }
@@ -73,9 +73,7 @@ if ($update = $pdo->prepare($sql)) {
     $update->bindParam(":lastEntry", $param_created, PDO::PARAM_STR);
 
     // Execute statement
-    if ($update->execute()) {
-        echo "Last entry time updated";
-    } else {
+    if (!($update->execute())) {
         echo "Something is wrong";
     }
     // Clear $insert
