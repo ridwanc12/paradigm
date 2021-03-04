@@ -93,7 +93,7 @@ class ParadigmTests: XCTestCase {
     
     func testDBConnection() {
 
-        var semaphore = DispatchSemaphore (value: 0)
+        let semaphore = DispatchSemaphore (value: 0)
 
         var request = URLRequest(url: URL(string: "https://boilerbite.000webhostapp.com/paradigm/unit_tests/connectToDB.php")!,timeoutInterval: Double.infinity)
         request.httpMethod = "POST"
@@ -117,7 +117,7 @@ class ParadigmTests: XCTestCase {
     
     func testAccountsTable() {
 
-        var semaphore = DispatchSemaphore (value: 0)
+        let semaphore = DispatchSemaphore (value: 0)
 
         var request = URLRequest(url: URL(string: "https://boilerbite.000webhostapp.com/paradigm/unit_tests/checkAccounts.php")!,timeoutInterval: Double.infinity)
         request.httpMethod = "POST"
@@ -141,7 +141,7 @@ class ParadigmTests: XCTestCase {
     
     func testJournalsTable() {
 
-        var semaphore = DispatchSemaphore (value: 0)
+        let semaphore = DispatchSemaphore (value: 0)
 
         var request = URLRequest(url: URL(string: "https://boilerbite.000webhostapp.com/paradigm/unit_tests/checkJournals.php")!,timeoutInterval: Double.infinity)
         request.httpMethod = "POST"
