@@ -90,6 +90,10 @@ class ProfileTableViewController: UITableViewController {
                     let alert = UIAlertController(title: "Success!", message: "Your account information has been updated.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
                     self.present(alert, animated: true)
+                    
+                    // Updating the title label
+                    titleLabel.text = Utils.global_firstName + " " + Utils.global_lastName
+                    
                 } else if (ret == "Email already registered.") {
                     //user tried to update email to one already in use
                     let alert = UIAlertController(title: "Email Already In Use", message: "This email is already associated with an account. Please use a different one.", preferredStyle: .alert)
@@ -121,6 +125,9 @@ class ProfileTableViewController: UITableViewController {
         firstNameTextField.text = Utils.global_firstName
         lastNameTextField.text = Utils.global_lastName
         emailTextField.text = Utils.global_email
+        
+        // Updating the title label
+        titleLabel.text = Utils.global_firstName + " " + Utils.global_lastName
         
     }
     

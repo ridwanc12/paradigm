@@ -670,7 +670,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Mahadalkar" placeholder="Isha" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="skr-2i-gPC">
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Mahadalkar" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="skr-2i-gPC">
                                                             <rect key="frame" x="106.66666666666667" y="0.0" width="203.33333333333331" height="22"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <textInputTraits key="textInputTraits"/>
