@@ -90,5 +90,29 @@ class ParadigmTests: XCTestCase {
         
         XCTAssert(contains)
     }
+    
+    func testDBConnection() {
+
+        var semaphore = DispatchSemaphore (value: 0)
+
+        var request = URLRequest(url: URL(string: "https://boilerbite.000webhostapp.com/paradigm/unit_tests/connectToDB.php")!,timeoutInterval: Double.infinity)
+        request.httpMethod = "POST"
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+          guard let data = data else {
+            print(String(describing: error))
+            semaphore.signal()
+            return
+          }
+          let expected = "Connected."
+          let response = String(data: data, encoding: .utf8)!
+          XCTAssertTrue(response == expected)
+          semaphore.signal()
+        }
+
+        task.resume()
+        semaphore.wait()
+
+    }
 
 }
