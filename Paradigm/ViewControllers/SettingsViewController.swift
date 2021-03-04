@@ -12,18 +12,29 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func logoutTapped(_ sender: Any) {
         // When the logout button is tapped
-        // Setting the User Defaults to false
-        UserDefaults.standard.set(false, forKey: "status")
         
+        // Ask for an alert
+        let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout of your account?", preferredStyle: .alert)
         
-        // After user has successfully logged out
-  
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let loginView = storyboard.instantiateViewController(identifier: "LoginViewController")
+        alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action: UIAlertAction!) in
+            // Log out the user
+            // Setting the User Defaults to false
+            UserDefaults.standard.set(false, forKey: "status")
+            
+            // After user has successfully logged out
+      
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginView = storyboard.instantiateViewController(identifier: "LoginViewController")
 
-        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginView)
+            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginView)
+        }))
+        
+        alert.addAction(UIAlertAction( title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
         
     }
+
     
     @IBAction func deleteAccountTapped(_ sender: UIButton) {
         // When the delete account button is tapped

@@ -24,6 +24,11 @@ class EntryViewController: UIViewController {
         greetingLabel.text = "Hello, " + Utils.global_firstName
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("Updating Label")
+        greetingLabel.text = "Hello, " + Utils.global_firstName
+    }
+    
 
     /*
     // MARK: - Navigation
