@@ -19,7 +19,7 @@ if ($stmt = $pdo->prepare($sql)) {
     // Attempt to execute the prepared statement
     if ($stmt->execute()) {
         // Send new password to user
-        echo "Password resetted";
+        echo "Password resetted, your temporary password is: " . $newPass;
         $to      = $param_email; // Send email to our user
         $subject = 'Your New Password'; // Give the email a subject 
         $message = '
