@@ -9,9 +9,14 @@ $param_userID = $param_entry = $param_sentiment = $param_rating = $param_topics 
 $param_jourID = trim($_POST["jourID"]);
 $param_entry = trim($_POST["entry"]);
 $param_sentiment = trim($_POST["sentiment"]);
+$param_sentScore = trim($_POST["sentScore"]);
 $param_hidden = trim($_POST["hidden"]);
 $param_rating = trim($_POST["rating"]);
 $param_topics = trim($_POST["topics"]);
+$param_positive = trim($_POST["positive"]);
+$param_negative = trim($_POST["negative"]);
+$param_mixed = trim($_POST["mixed"]);
+$param_neutral = trim($_POST["neutral"]);
 
 // Get current time in EST time zone.
 $timezone = 'America/New_York';
@@ -22,8 +27,9 @@ $lastEdited = $date;
 
 // Write out SQL query to be prepared
 $sql = "UPDATE journals
-        SET entry = :entry, sentScore = :sentiment, rating = :rating, 
-        lastEdited = :lastEdited, topics = :topics, hidden = :hidden
+        SET entry = :entry, sentiment = :sentiment, sentScore = :sentScore,  rating = :rating, 
+        lastEdited = :lastEdited, topics = :topics, hidden = :hidden, positive = :positive,
+        negative = :negative, mixed = :mixed, neutral = :neutral
         WHERE jourID = :jourID";
 
 // Prepare SQL statement
@@ -40,11 +46,17 @@ if ($insert = $pdo->prepare($sql)) {
     // Bind variables to the prepared statement as parameters
     $insert->bindParam(":jourID", $param_jourID, PDO::PARAM_INT);
     $insert->bindParam(":entry", $encrypted_entry, PDO::PARAM_STR);
-    $insert->bindParam(":sentiment", $param_sentiment, PDO::PARAM_INT);
+    $insert->bindParam(":sentiment", $param_sentiment, PDO::PARAM_STR);
+    $insert->bindParam(":sentScore", $param_sentScore, PDO::PARAM_STR);
     $insert->bindParam(":hidden", $param_hidden, PDO::PARAM_INT);
     $insert->bindParam(":rating", $param_rating, PDO::PARAM_INT);
     $insert->bindParam(":lastEdited", $lastEdited, PDO::PARAM_STR);
     $insert->bindParam(":topics", $param_topics, PDO::PARAM_STR);
+    $insert->bindParam(":positive", $param_positive, PDO::PARAM_STR);
+    $insert->bindParam(":negative", $param_negative, PDO::PARAM_STR);
+    $insert->bindParam(":mixed", $param_mixed, PDO::PARAM_STR);
+    $insert->bindParam(":neutral", $param_neutral, PDO::PARAM_STR);
+
 
     // Execute statement
     if ($insert->execute()) {

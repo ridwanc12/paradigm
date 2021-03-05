@@ -70,20 +70,7 @@ if ($stmt = $pdo->prepare($sql)) {
     if ($stmt->execute()) {
         // Redirect to login page
         echo "account created";
-        $to      = $email; // Send email to our user
-        $subject = 'Signup | Verification'; // Give the email a subject 
-        $message = '
-        Thanks for signing up!
-        Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
-  
-        Please click this link to activate your account:
-        https<z>://boilerbite.000webhostapp</z>.com/paradigm/verify.php?email=' . $email . '&hash=' . $hash . '
-  
-        '; // Our message above including the link
-
-        $headers = 'From:noreply@yourwebsite.com' . "\r\n"; // Set from headers
-        mail($to, $subject, $message, $headers); // Send our email
-
+        sendVerification($email, $hash);
         $sql = "SELECT userID FROM accounts WHERE email = :email";
 
         if ($stmt = $pdo->prepare($sql)) {
@@ -122,3 +109,22 @@ if ($stmt = $pdo->prepare($sql)) {
 
 // Close connection
 unset($pdo);
+
+function sendVerification($email, $hash) {
+    $to      = $email; // Send email to our user
+    $subject = 'Signup | Verification'; // Give the email a subject 
+    $message = '
+    Thanks for signing up!
+    Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
+
+    Please click this link to activate your account:
+    https://boilerbite.000webhostapp.com/paradigm/verify.php?email=' . $email . '&hash=' . $hash . '
+
+    '; // Our message above including the link
+
+    $headers = 'From:noreply@yourwebsite.com' . "\r\n"; // Set from headers
+    mail($to, $subject, $message, $headers); // Send our email
+
+}
+
+?>
