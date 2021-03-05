@@ -30,6 +30,9 @@ if (empty(trim($_POST["userID"]))) {
                 $userID = $result['userID'];
             } else {
                 echo "No such user in database.";
+                unset($stmt);
+                unset($pdo);
+                exit();
             }
         } else {
             echo "Something went wrong.";

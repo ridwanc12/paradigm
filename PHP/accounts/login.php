@@ -3,7 +3,7 @@ require("./dbconfig.php");
 $param_email = $param_password = "";
 
 // Write SQL query to retrieve hashPass from table
-$sql = "SELECT hashPass, userID, firstName, lastName FROM accounts WHERE email = :email";
+$sql = "SELECT hashPass, userID, firstName, lastName, verified FROM accounts WHERE email = :email";
 if ($stmt = $pdo->prepare($sql)) {
     // Bind variables to the prepared statement as parameters
     $stmt->bindParam(":email", $param_email, PDO::PARAM_STR);
@@ -13,12 +13,18 @@ if ($stmt = $pdo->prepare($sql)) {
 
     // Attempt to execute the prepared statement
     if ($stmt->execute()) {
-        // If rowcount == 1, email is already registered
+        // If rowcount == 1, email is registered
         if ($stmt->rowCount() == 1) {
             // Set result to be associated with column name
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             // Fetch one row from query result
             $row = $stmt->fetch();
+            if ((int)$row['verified'] == 0) {
+                echo "Please verify your account first.";
+                unset($stmt);
+                unset($pdo);
+                exit();
+            }
             $hashed_password = $row['hashPass'];
             $userInfo = array("userID" => $row["userID"],
                                "firstName" => $row["firstName"],
