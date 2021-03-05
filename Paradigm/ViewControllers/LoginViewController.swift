@@ -30,7 +30,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             let ret = databaseRequestRestorePassword(email: email)
             print("RET VALUE: " + ret)
             
-            if (ret == "Password resetted") {
+            if (ret.contains("Password resetted")) {
                 let alert = UIAlertController(title: "Success", message: "Please check your email for instructions on how to access your account.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
                 self.present(alert, animated: true)
