@@ -1,6 +1,7 @@
 <?php
 // Include config file
 require_once "./dbconfig.php";
+require "./mail.php";
 
 // Define variables and initialize with empty values
 $email = $password = $confirm_password = $firstName = $lastName = "";
@@ -70,7 +71,7 @@ if ($stmt = $pdo->prepare($sql)) {
     if ($stmt->execute()) {
         // Redirect to login page
         echo "account created";
-        sendVerification($email, $hash);
+        sendVerification($mail, $email, $hash, $lastName);
         $sql = "SELECT userID FROM accounts WHERE email = :email";
 
         if ($stmt = $pdo->prepare($sql)) {
@@ -110,21 +111,21 @@ if ($stmt = $pdo->prepare($sql)) {
 // Close connection
 unset($pdo);
 
-function sendVerification($email, $hash) {
-    $to      = $email; // Send email to our user
-    $subject = 'Signup | Verification'; // Give the email a subject 
-    $message = '
-    Thanks for signing up!
+function sendVerification($mail, $email, $hash, $lastName) {
+    $mail->addAddress($email, 'Mr. ' . $lastName); // to email and name
+    $mail->Subject = 'Paradigm Account Signup Verification';
+    $mail->msgHTML('Thanks for signing up!
     Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
 
     Please click this link to activate your account:
     https://boilerbite.000webhostapp.com/paradigm/verify.php?email=' . $email . '&hash=' . $hash . '
-
-    '; // Our message above including the link
-
-    $headers = 'From:noreply@yourwebsite.com' . "\r\n"; // Set from headers
-    mail($to, $subject, $message, $headers); // Send our email
-
+    
+    ');
+    if ($mail->send()) {
+        echo "Message sent.";
+    } else {
+        echo "Mailer error: " . $mail->ErrorInfo;
+    }
 }
 
 ?>
