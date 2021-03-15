@@ -46,11 +46,13 @@
             </objects>
             <point key="canvasLocation" x="-202" y="683"/>
         </scene>
-        <!--Item-->
+        <!--Journals-->
         <scene sceneID="V7y-Pq-bJS">
             <objects>
                 <navigationController id="jCs-7a-ur3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="nGY-0b-wwx"/>
+                    <tabBarItem key="tabBarItem" title="Journals" image="text.book.closed" catalog="system" id="nGY-0b-wwx">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oxd-79-A8z">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -221,21 +223,47 @@
             </objects>
             <point key="canvasLocation" x="-2355" y="2106"/>
         </scene>
-        <!--View Controller-->
+        <!--Journals Table View Controller-->
         <scene sceneID="lpg-qI-YLD">
             <objects>
-                <viewController id="RCE-9C-eol" sceneMemberID="viewController">
+                <viewController id="RCE-9C-eol" customClass="JournalsTableViewController" customModule="Paradigm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ht7-aZ-Q0Q">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="38e-tk-FgR">
+                                <rect key="frame" x="0.0" y="229" width="390" height="532"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.28627450980000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="67" id="Zd6-YR-ZEC">
+                                        <rect key="frame" x="20" y="55.333332061767578" width="350" height="67"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zd6-YR-ZEC" id="YRI-5E-z0i">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="67"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.73333333329999995" green="0.79607843140000001" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="Cell"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="RCE-9C-eol" id="cw4-kC-6Nh"/>
+                                    <outlet property="delegate" destination="RCE-9C-eol" id="j8W-mM-3pA"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="h7W-3C-1wz"/>
-                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                        <color key="backgroundColor" red="0.25098039220000001" green="0.28627450980000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <navigationItem key="navigationItem" id="9ew-jd-oXu"/>
+                    <connections>
+                        <outlet property="tableView" destination="38e-tk-FgR" id="8sc-MF-N1T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3kW-iJ-obM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1358" y="1375"/>
+            <point key="canvasLocation" x="-1358.4615384615383" y="1374.8815165876777"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="YX0-s0-Cna">
@@ -1188,12 +1216,10 @@
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="sun.max" catalog="system" width="128" height="124"/>
+        <image name="text.book.closed" catalog="system" width="115" height="128"/>
         <image name="xmark.seal" catalog="system" width="128" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
