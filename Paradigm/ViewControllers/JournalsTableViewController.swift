@@ -51,7 +51,7 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
         Journal(id: 1, date: parseDate("2021-03-15"), title: "After classes, I took my ...", tags: "girlfriend, Thai, park, great time", sentiment: 0.5, text: "After classes, I took my girlfriend out to dinner at a new Thai restaurant. We had a great time walking around the park afterwards and enjoying nature."),
         Journal(id: 2, date: parseDate("2021-03-12"), title: "I am so excited for ...", tags: "valentine, day, a lot, dessert, a puppy", sentiment: 0.7, text: "I am so excited for valentine's day tomorrow so I can eat a lot of dessert. I want a puppy."),
         Journal(id: 3, date: parseDate("2021-02-05"), title: "Today, I got some chores ...", tags: "some chores, work, some meal-prep, the gym", sentiment: 0.4, text: "Today, I got some chores done after work, and did some meal-prep for the next few days after going to the gym."),
-        Journal(id: 4, date: parseDate("2021-02-10"), title: "Wake up at 9 am ...", tags: "9 am, job, hate", sentiment: 0.1, text: "Wake up at 9 am to attend the job i hate 11 minutes late for my shift. End me."),
+        Journal(id: 4, date: parseDate("2021-02-10"), title: "Wake up at 9 am ...", tags: "9 am, job, hate", sentiment: 0.1, text: "Wake up at 9 am to attend the job I hate 11 minutes late for my shift. End me."),
     ]
     
     

@@ -235,48 +235,65 @@
                             <rect key="frame" x="0.0" y="0.0" width="390" height="77"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Monday, Feb 22, 2021 at 13:39 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVd-fa-6rp">
-                                    <rect key="frame" x="34" y="52" width="322" height="25"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday, Feb 22, 2021 at 13:39 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVd-fa-6rp">
+                                    <rect key="frame" x="34" y="40.666666666666664" width="263" height="20.333333333333336"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" red="0.25098039220000001" green="0.28627450980000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstItem="LVd-fa-6rp" firstAttribute="leading" secondItem="1Yb-03-9bu" secondAttribute="leading" constant="34" id="Gfh-UF-snS"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LVd-fa-6rp" secondAttribute="trailing" constant="34" id="hKa-F9-6Aa"/>
+                                <constraint firstAttribute="bottom" secondItem="LVd-fa-6rp" secondAttribute="bottom" constant="16" id="u1W-rM-bGH"/>
+                            </constraints>
                         </view>
                         <sections>
                             <tableViewSection id="puT-25-zKT">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="139" id="SKC-TV-l5H">
-                                        <rect key="frame" x="20" y="95" width="350" height="139"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="200" id="SKC-TV-l5H">
+                                        <rect key="frame" x="20" y="95" width="350" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SKC-TV-l5H" id="3Kk-Xb-GFt">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="139"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QTs-hL-Chc">
-                                                    <rect key="frame" x="20" y="22" width="300" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="njR-al-ksa">
-                                                    <rect key="frame" x="20" y="80" width="300" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Sentiment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CJL-Sf-c7Q">
-                                                    <rect key="frame" x="20" y="108" width="300" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="z6D-bT-VZL">
+                                                    <rect key="frame" x="16" y="16" width="318" height="168"/>
+                                                    <subviews>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QTs-hL-Chc">
+                                                            <rect key="frame" x="0.0" y="0.0" width="318" height="114"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="njR-al-ksa">
+                                                            <rect key="frame" x="0.0" y="124" width="318" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Sentiment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CJL-Sf-c7Q">
+                                                            <rect key="frame" x="0.0" y="151" width="318" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="z6D-bT-VZL" secondAttribute="trailing" constant="16" id="0hZ-1B-1Ru"/>
+                                                <constraint firstItem="z6D-bT-VZL" firstAttribute="top" secondItem="3Kk-Xb-GFt" secondAttribute="top" constant="16" id="LL2-xJ-isB"/>
+                                                <constraint firstItem="z6D-bT-VZL" firstAttribute="centerX" secondItem="3Kk-Xb-GFt" secondAttribute="centerX" id="PfW-Af-mKy"/>
+                                                <constraint firstItem="z6D-bT-VZL" firstAttribute="leading" secondItem="3Kk-Xb-GFt" secondAttribute="leading" constant="16" id="cqc-Ns-WB1"/>
+                                                <constraint firstItem="z6D-bT-VZL" firstAttribute="centerY" secondItem="3Kk-Xb-GFt" secondAttribute="centerY" id="hD5-Sr-Ljn"/>
+                                                <constraint firstAttribute="bottom" secondItem="z6D-bT-VZL" secondAttribute="bottom" constant="16" id="o8F-qF-dII"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.74205550799999997" green="0.79607843140000001" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </tableViewCell>

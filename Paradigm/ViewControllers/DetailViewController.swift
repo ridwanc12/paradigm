@@ -29,8 +29,18 @@ class DetailViewController: UITableViewController {
         titleLabel.text = journal.text
         subtitleLabel.text = journal.tags
         sentimentLabel.text = String(journal.sentiment)
+        
+        titleLabel.sizeToFit()
+        subtitleLabel.sizeToFit()
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 145
+    }
 
     /*
     // MARK: - Navigation
