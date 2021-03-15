@@ -1,31 +1,34 @@
 //
-//  EntryViewController.swift
+//  DetailViewController.swift
 //  Paradigm
 //
-//  Created by Isha Mahadalkar on 2/22/21.
+//  Created by Isha Mahadalkar on 3/15/21.
 //  Copyright © 2021 team5. All rights reserved.
 //
 
 import UIKit
 
-class EntryViewController: UIViewController {
+class DetailViewController: UITableViewController {
 
-    @IBOutlet weak var greetingLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var sentimentLabel: UILabel!
     
-    @IBAction func addButton(_ sender: UIButton) {
-        // When the add button is pressed 
-    }
-    
+    var journal = Journal(id: 0, date: Date(), title: "", tags: "", sentiment: 0, text: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        greetingLabel.text = "Hello, " + Utils.global_firstName
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        greetingLabel.text = "Hello, " + Utils.global_firstName
+        // Setting up the label data
+        titleLabel.text = journal.text
+        subtitleLabel.text = journal.tags
+        sentimentLabel.text = String(journal.sentiment)
     }
     
 
