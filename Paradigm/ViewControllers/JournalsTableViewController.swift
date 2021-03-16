@@ -95,7 +95,6 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Section", section)
         if isFiltering {
             return filteredJournals.count
         }
@@ -117,7 +116,6 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
             journal = section.journals[indexPath.row]
         }
         
-//        journal = section.journals[indexPath.row]
         cell.textLabel?.text = journal.title
         cell.detailTextLabel?.text = journal.tags
         
@@ -138,8 +136,6 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var tableView: UITableView!
     
     var sections = [MonthSection]()
-    var filteredSections = [MonthSection]()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -168,12 +164,9 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
     }
 
     func filterContentForSearchText(_ searchText: String) {
-      print("Function is called")
       filteredJournals = journals.filter { (journal: Journal) -> Bool in
         return journal.text.lowercased().contains(searchText.lowercased())
       }
-        
-      self.filteredSections = MonthSection.group(journals: self.filteredJournals)
       
       tableView.reloadData()
     }
@@ -189,7 +182,14 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
         
         let vc = segue.destination as? DetailViewController
         let section = sections[tableView.indexPathForSelectedRow!.section].journals
-        let journal = section[tableView.indexPathForSelectedRow!.row]
+        
+        let journal: Journal
+        if isFiltering {
+            journal = filteredJournals[tableView.indexPathForSelectedRow!.row]
+        }
+        else {
+            journal = section[tableView.indexPathForSelectedRow!.row]
+        }
         
         // Send the current selected journal data to the Detail View Controller
         vc?.journal = journal
