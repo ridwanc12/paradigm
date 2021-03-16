@@ -76,10 +76,16 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        if isFiltering {
+            return 1
+        }
         return self.sections.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if isFiltering {
+            return "Results"
+        }
         let section = self.sections[section]
         let date = section.month
         let dateFormatter = DateFormatter()
@@ -89,12 +95,12 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let section = self.sections[section]
-        
+        print("Section", section)
         if isFiltering {
             return filteredJournals.count
         }
-        return section.journals.count
+        let sect = self.sections[section]
+        return sect.journals.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,6 +117,7 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
             journal = section.journals[indexPath.row]
         }
         
+//        journal = section.journals[indexPath.row]
         cell.textLabel?.text = journal.title
         cell.detailTextLabel?.text = journal.tags
         
@@ -138,15 +145,10 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        
         self.sections = MonthSection.group(journals: self.journals)
-        self.filteredSections = MonthSection.group(journals: self.filteredJournals)
         
         // Sorting the sections
         self.sections.sort { (lhs, rhs) in lhs.month < rhs.month }
-        self.filteredSections.sort { (lhs, rhs) in lhs.month < rhs.month }
-        
         
         // Implementing Search Bar
         // Inform the class of any text changes in the search bar
@@ -166,9 +168,12 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
     }
 
     func filterContentForSearchText(_ searchText: String) {
+      print("Function is called")
       filteredJournals = journals.filter { (journal: Journal) -> Bool in
         return journal.text.lowercased().contains(searchText.lowercased())
       }
+        
+      self.filteredSections = MonthSection.group(journals: self.filteredJournals)
       
       tableView.reloadData()
     }
