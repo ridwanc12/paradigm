@@ -1,9 +1,10 @@
 <?php
 require("./dbconfig.php");
-$param_email = $param_newPass = $param_oldPass = "";
+require "./mail.php";
+$param_email = $param_newPass = $param_oldPass = $lastName = "";
 
 // Write SQL query to retrieve hashPass from table
-$sql = "SELECT hashPass FROM accounts WHERE email = :email";
+$sql = "SELECT hashPass, firstName FROM accounts WHERE email = :email";
 if ($stmt = $pdo->prepare($sql)) {
     // Bind variables to the prepared statement as parameters
     $stmt->bindParam(":email", $param_email, PDO::PARAM_STR);
@@ -19,6 +20,7 @@ if ($stmt = $pdo->prepare($sql)) {
             // Fetch one row from query result
             $row = $stmt->fetch();
             $hashed_password = $row['hashPass'];
+            $firstName = $row['firstName'];
             // Get user inputted password from application
             $param_oldPass = trim($_POST["oldPass"]);
             // Verify password give by the user against hashed password
@@ -33,6 +35,10 @@ if ($stmt = $pdo->prepare($sql)) {
                 $update->bindParam(":email", $param_email, PDO::PARAM_STR);
                 if ($update->execute()) {
                     echo "Password changed.";
+                    $msg = 'Your password has been changed, you can now log in with your new password. 
+                    If this was not performed by you, please reset your password from the login screen.';
+                    $to = $param_email;
+                    phpmail($to, $firstName, 'Password Changed', $msg);
                 } else {
                     unset($update);
                     echo "Something was wrong.";
