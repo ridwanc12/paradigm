@@ -122,10 +122,10 @@ func insertJournal(userID: Int, journal: String, sentiment: String, rating: Int,
 
     task.resume()
     semaphore.wait()
-}
+    }
 }
 
-func getJournal(userID: Int) {
+func getJournals(userID: Int) {
     let semaphore = DispatchSemaphore (value: 0)
 
     let parameters = [
@@ -148,7 +148,7 @@ func getJournal(userID: Int) {
             }
             let paramType = param["type"] as! String
             if paramType == "text" {
-                let paramValue = param["value"] as! String
+                let paramValue = param["value"] as! Int
                 body += "\r\n\r\n\(paramValue)\r\n"
             } else {
                 do {
