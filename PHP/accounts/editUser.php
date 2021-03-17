@@ -96,7 +96,6 @@ Your email has been changed, you can login with your new email now.
   
 ';
 
-            $headers = 'From:noreply@yourwebsite.com' . "\r\n"; // Set from headers
             mail($to, $subject, $message, $headers); // Send our email
         }
     } else {
