@@ -20,7 +20,7 @@ class ParadigmTests: XCTestCase {
     }
     
     func testRequest() {
-        let journal = "Wake up at 9 am to attend the job i hate 11 minutes late for my shift. End me."
+        let journal = "Wake up at 9 am to attend the job I hate 11 minutes late for my shift. End me."
         let analysis = getJournalAnalysis(journal: journal)!
         print(analysis)
     }
@@ -89,6 +89,27 @@ class ParadigmTests: XCTestCase {
         }
         
         XCTAssert(contains)
+    }
+    
+    func testJournalInsert() {
+        let userID = 33
+        let journal = "This is a positive journal."
+        let sentiment = "POSITIVE"
+        let rating = 10
+        let topics = "positive, journal"
+        let positive = 0.95
+        let negative = 0.05
+        let mixed = 0.0
+        let neutral = 0.0
+        let sentScore = 0.9
+        
+        insertJournal(userID: userID, journal: journal, sentiment: sentiment, rating: rating, topics: topics, positive: positive, negative: negative, mixed: mixed, neutral: neutral, sentScore: sentScore)
+    }
+    
+    func testJournalRetrieval() {
+        let userID = 33
+        
+        getJournals(userID: userID)
     }
     
     func testDBConnection() {

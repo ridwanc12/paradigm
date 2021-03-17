@@ -21,7 +21,8 @@ class ProfileTableViewController: UITableViewController {
         let lastname: String = lastNameTextField.text ?? ""
         let email: String = emailTextField.text ?? ""
         let userID = Utils.global_userID
-        let semaphore = DispatchSemaphore (value: 0)
+//        let semaphore = DispatchSemaphore (value: 0)
+        let _ = DispatchSemaphore (value: 0)
         
         if (firstname == "" ||
             lastname == "" ||
