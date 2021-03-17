@@ -65,10 +65,13 @@ class JournalViewController: UIViewController, UITextFieldDelegate {
         
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en-US")
-        dateFormatter.setLocalizedDateFormatFromTemplate("EEE MMM d yyyy")
-        print(dateFormatter.string(from: Date()))
+        dateFormatter.setLocalizedDateFormatFromTemplate("EEEE MMM d yyyy")
         
         timeLabel!.text = ""
+        timeLabel!.text! += dateFormatter.string(from: Date())
+        
+        dateFormatter.setLocalizedDateFormatFromTemplate("h:mm a")
+        timeLabel!.text! += " at " + dateFormatter.string(from: Date())
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
