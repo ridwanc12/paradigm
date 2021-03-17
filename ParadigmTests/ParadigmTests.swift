@@ -104,7 +104,12 @@ class ParadigmTests: XCTestCase {
         let sentScore = 0.9
         
         insertJournal(userID: userID, journal: journal, sentiment: sentiment, rating: rating, topics: topics, positive: positive, negative: negative, mixed: mixed, neutral: neutral, sentScore: sentScore)
+    }
+    
+    func testJournalRetrieval() {
+        let userID = 33
         
+        getJournals(userID: userID)
     }
     
     func testDBConnection() {
