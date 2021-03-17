@@ -40,3 +40,16 @@ func getJournalAnalysis(journal: String) -> Analysis? {
     
     return(analysis)
 }
+
+func phrasesToString(phrases: [KeyPhrase]) -> String {
+    var output = ""
+    
+    for keyphrase in phrases {
+        output += keyphrase.Text + ", "
+    }
+    
+    output = String(output.dropLast())
+    output = String(output.dropLast())
+    
+    return output
+}
