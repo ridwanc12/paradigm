@@ -26,6 +26,7 @@
 		9351741A25D1CBFC00BCFCB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9351741825D1CBFC00BCFCB7 /* Main.storyboard */; };
 		9351741C25D1CBFE00BCFCB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9351741B25D1CBFE00BCFCB7 /* Assets.xcassets */; };
 		9351741F25D1CBFE00BCFCB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9351741D25D1CBFE00BCFCB7 /* LaunchScreen.storyboard */; };
+		93DFBDCF26020A5600A9DD61 /* SQLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DFBDCE26020A5600A9DD61 /* SQLRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		9351741B25D1CBFE00BCFCB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9351741E25D1CBFE00BCFCB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9351742025D1CBFE00BCFCB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93DFBDCE26020A5600A9DD61 /* SQLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		93050B8725D8A19E00DA8BAB /* aws_endpoint */ = {
 			isa = PBXGroup;
 			children = (
+				93DFBDCE26020A5600A9DD61 /* SQLRequest.swift */,
 				93050B8025D89CB200DA8BAB /* LambdaRequest.swift */,
 				93050BB725D8AD1200DA8BAB /* DataStructures.swift */,
 			);
@@ -264,6 +267,7 @@
 				56A2004825E433C00098E623 /* JournalViewController.swift in Sources */,
 				56A2004425E430E20098E623 /* EntryViewController.swift in Sources */,
 				93050B8125D89CB200DA8BAB /* LambdaRequest.swift in Sources */,
+				93DFBDCF26020A5600A9DD61 /* SQLRequest.swift in Sources */,
 				56585E0F25D3C00600581351 /* LoginViewController.swift in Sources */,
 				9351741125D1CBFC00BCFCB7 /* AppDelegate.swift in Sources */,
 				56A2004E25ED99D60098E623 /* PasswordViewController.swift in Sources */,
