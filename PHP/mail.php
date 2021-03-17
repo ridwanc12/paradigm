@@ -9,7 +9,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/mail/SMTP.php';
 function phpmail($to, $firstName, $subject, $body) {
     $mail = new PHPMailer;
     $mail->isSMTP(); 
-    $mail->SMTPDebug = 2; // 0 = off (for production use) - 1 = client messages - 2 = client and server messages
+    $mail->SMTPDebug = 0; // 0 = off (for production use) - 1 = client messages - 2 = client and server messages
     $mail->Host = "smtp.gmail.com"; // use $mail->Host = gethostbyname('smtp.gmail.com'); // if your network does not support SMTP over IPv6
     $mail->Port = 587; // TLS only
     $mail->SMTPSecure = PHPMAILER::ENCRYPTION_STARTTLS; // ssl is deprecated
