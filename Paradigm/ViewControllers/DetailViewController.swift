@@ -15,7 +15,7 @@ class DetailViewController: UITableViewController {
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var sentimentLabel: UILabel!
     
-    var journal = Journal(id: 0, date: Date(), title: "", tags: "", sentiment: 0, text: "")
+    var journal = Journal(id: 0, created: Date(), lastedited: Date(), hidden: 0, sentiment: "POSITIVE", sentScore: 0.98, rating: 9, entry: "I went shopping.", topics: "shopping")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +26,8 @@ class DetailViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         // Setting up the label data
-        titleLabel.text = journal.text
-        subtitleLabel.text = journal.tags
+        titleLabel.text = journal.entry
+        subtitleLabel.text = journal.topics
         sentimentLabel.text = String(journal.sentiment)
         
         titleLabel.sizeToFit()

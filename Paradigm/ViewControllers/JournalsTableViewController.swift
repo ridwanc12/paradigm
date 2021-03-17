@@ -10,11 +10,14 @@ import UIKit
 
 struct Journal {
     var id : Int
-    var date : Date
-    var title : String
-    var tags : String
-    var sentiment : Double
-    var text : String
+    var created : Date
+    var lastedited : Date
+    var hidden : Int
+    var sentiment : String
+    var sentScore : Double
+    var rating : Int
+    var entry : String
+    var topics : String
 }
 
 func parseDate(_ str : String) -> Date {
@@ -37,7 +40,7 @@ struct MonthSection {
     
     static func group(journals : [Journal]) -> [MonthSection] {
         let groups = Dictionary(grouping: journals) { journal in
-            firstDayOfMonth(date: journal.date)
+            firstDayOfMonth(date: journal.created)
         }
         return groups.map(MonthSection.init(month:journals:))
     }
@@ -49,10 +52,7 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
     // Temp Static Data for Table view testing
     
     var journals: [Journal] = [
-        Journal(id: 1, date: parseDate("2021-03-15"), title: "After classes, I took my ...", tags: "girlfriend, Thai, park, great time", sentiment: 0.5, text: "After classes, I took my girlfriend out to dinner at a new Thai restaurant. We had a great time walking around the park afterwards and enjoying nature."),
-        Journal(id: 2, date: parseDate("2021-03-12"), title: "I am so excited for ...", tags: "valentine, day, a lot, dessert, a puppy", sentiment: 0.7, text: "I am so excited for valentine's day tomorrow so I can eat a lot of dessert. I want a puppy."),
-        Journal(id: 3, date: parseDate("2021-02-05"), title: "Today, I got some chores ...", tags: "some chores, work, some meal-prep, the gym", sentiment: 0.4, text: "Today, I got some chores done after work, and did some meal-prep for the next few days after going to the gym."),
-        Journal(id: 4, date: parseDate("2021-02-10"), title: "Wake up at 9 am ...", tags: "9 am, job, hate", sentiment: 0.1, text: "Wake up at 9 am to attend the job I hate 11 minutes late for my shift. End me."),
+        Journal(id: 1, created: parseDate("2021-03-15"), lastedited: parseDate("2021-03-15"), hidden: 0, sentiment: "POSITIVE", sentScore: 0.98, rating: 8, entry: "After classes, I took my girlfriend out to dinner at a new Thai restaurant. We had a great time walking around the park afterwards and enjoying nature.", topics: "girlfriend, Thai, park, great time")
     ]
     
     // Implementing the Search Bar
@@ -116,8 +116,8 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
             journal = section.journals[indexPath.row]
         }
         
-        cell.textLabel?.text = journal.title
-        cell.detailTextLabel?.text = journal.tags
+        //cell.textLabel?.text = journal.title
+        cell.detailTextLabel?.text = journal.topics
         
         return cell
     }
@@ -165,7 +165,7 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
 
     func filterContentForSearchText(_ searchText: String) {
       filteredJournals = journals.filter { (journal: Journal) -> Bool in
-        return journal.text.lowercased().contains(searchText.lowercased())
+        return journal.entry.lowercased().contains(searchText.lowercased())
       }
       
       tableView.reloadData()
