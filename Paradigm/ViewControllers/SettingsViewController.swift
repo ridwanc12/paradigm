@@ -38,6 +38,7 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func deleteAccountTapped(_ sender: UIButton) {
         // When the delete account button is tapped
+        // Add a comment
     }
     
 
