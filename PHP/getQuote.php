@@ -7,7 +7,7 @@ $qID = rand(1,12);
 $sql = "SELECT * FROM quotes WHERE qID = :qID";
 if ($stmt = $pdo->prepare($sql)) {
     // Bind variables to the prepared statement as parameters
-    $stmt->bindParam(":qD", $qID, PDO::PARAM_INT);
+    $stmt->bindParam(":qID", $qID, PDO::PARAM_INT);
 
     // Attempt to execute the prepared statement
     if ($stmt->execute()) {
