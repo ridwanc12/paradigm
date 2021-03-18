@@ -34,6 +34,7 @@ class JournalViewController: UIViewController, UITextFieldDelegate {
             let topics = phrasesToString(phrases: analysis.phrases.KeyPhrases)
             
             // TODO: Currently there are issues with the global user id
+            
 //            let userID = Int(Utils.global_userID)!
             let userID = 33
             let journal = entry
@@ -47,13 +48,17 @@ class JournalViewController: UIViewController, UITextFieldDelegate {
             
             insertJournal(userID: userID, journal: journal, sentiment: sentiment, rating: rating, topics: topics, positive: positive, negative: negative, mixed: mixed, neutral: neutral, sentScore: sentScore)
             
+            journalTextField.text! = ""
+            
             let alert = UIAlertController(title: "Journal Entered", message: "Your journal has been successfully entered!", preferredStyle: .alert)
             
-            alert.addAction(UIAlertAction( title: "OK", style: .default, handler: nil))
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeView = storyboard.instantiateViewController(identifier: "HomeViewController")
+            
+            alert.addAction(UIAlertAction( title: "OK", style: .default, handler: {(alert: UIAlertAction!) in (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(homeView)}))
             
             self.present(alert, animated: true, completion: nil)
             
-            // TODO: Segue back to entryviewcontroller
         }
     }
     

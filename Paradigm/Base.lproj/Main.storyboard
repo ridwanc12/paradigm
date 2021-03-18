@@ -87,7 +87,7 @@
         <!--Entry View Controller-->
         <scene sceneID="a1O-fL-Nh7">
             <objects>
-                <viewController id="Lu9-uA-bpW" customClass="EntryViewController" customModule="Paradigm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EntryViewController" id="Lu9-uA-bpW" customClass="EntryViewController" customModule="Paradigm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MgP-el-SSx">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
