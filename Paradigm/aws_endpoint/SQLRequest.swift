@@ -110,3 +110,33 @@ func getJournals(userID: Int) {
     task.resume()
     semaphore.wait()
 }
+
+func getQuote() -> String{
+
+    let semaphore = DispatchSemaphore (value: 0)
+    var ret = "";
+    
+    let link = "https://boilerbite.000webhostapp.com/paradigm/getQuote.php"
+    let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
+    request.httpMethod = "POST"
+    
+    let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+        
+        if error != nil {
+            print("ERROR")
+            print(String(describing: error!))
+            ret = "ERROR"
+            semaphore.signal()
+            return
+        }
+        
+        print("PRINTING DATA")
+        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+        ret = String(describing: responseString!)
+        print(ret)
+        semaphore.signal()
+    }
+    task.resume()
+    semaphore.wait()
+    return ret
+}

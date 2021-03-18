@@ -183,5 +183,9 @@ class ParadigmTests: XCTestCase {
         semaphore.wait()
 
     }
+    
+    func testQuote(){
+        getQuote()
+    }
 
 }
