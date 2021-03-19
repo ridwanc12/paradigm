@@ -26,13 +26,13 @@ if ($stmt = $pdo->prepare($sql)) {
                 exit();
             }
             $hashed_password = $row['hashPass'];
-            $userInfo = array("userID" => $row["userID"],
-                               "firstName" => $row["firstName"],
-                               "lastName" => $row["lastName"]);
             // Get user inputted password from application
             $param_password = trim($_POST["password"]);
             // Verify password give by the user against hashed password
             if(password_verify($param_password, $hashed_password)) {
+                $userInfo = array("userID" => $row["userID"],
+                               "firstName" => $row["firstName"],
+                               "lastName" => $row["lastName"]);
                 echo "Login successful";
                 echo json_encode($userInfo);
             } else {

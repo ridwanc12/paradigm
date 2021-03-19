@@ -92,12 +92,9 @@ if ($stmt = $pdo->prepare($sql)) {
             $to      = $email; // Send email to our user
             $subject = 'New email'; // Give the email a subject 
             $message = '
-Your email has been changed, you can login with your new email now.
-  
-';
-
-            $headers = 'From:noreply@yourwebsite.com' . "\r\n"; // Set from headers
-            mail($to, $subject, $message, $headers); // Send our email
+            Your email has been changed, you can login with your new email, ' . $email . ', now.';
+            phpmail($original_email, $firstName, $subject, $message); // Send our email
+            phpmail($to, $firstName, $subject, $message); // Send our email
         }
     } else {
         echo "Something went wrong.";
