@@ -36,7 +36,8 @@ class JournalViewController: UIViewController, UITextFieldDelegate {
             // TODO: Currently there are issues with the global user id
             
 //            let userID = Int(Utils.global_userID)!
-            let userID = Int(Utils.global_userID)!
+            print(Utils.global_userID)
+            let userID = 33
             let journal = entry
             let sentiment = analysis.sentiment.Sentiment
             let rating = 0

@@ -106,10 +106,23 @@ class ParadigmTests: XCTestCase {
         insertJournal(userID: userID, journal: journal, sentiment: sentiment, rating: rating, topics: topics, positive: positive, negative: negative, mixed: mixed, neutral: neutral, sentScore: sentScore)
     }
     
-    func testJournalRetrieval() {
+    func testJournalRetrieval1() {
         let userID = 33
         
-        getJournals(userID: userID)
+        let journals = getJournals(userID: userID)
+        print(journals)
+        
+        XCTAssertEqual(String(describing: type(of: journals)), "Array<RetJournal>")
+    }
+    
+    func testJournalRetrieval2() {
+        let userID = 33
+        
+        let journals = getJournalsRecent(userID: userID, num: 7)
+        print(journals)
+        
+        XCTAssertEqual(String(describing: type(of: journals)), "Array<RetJournal>")
+        XCTAssertTrue(journals.count == 7)
     }
     
     func testDBConnection() {
