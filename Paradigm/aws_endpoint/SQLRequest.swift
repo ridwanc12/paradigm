@@ -50,7 +50,7 @@ func insertJournal(userID: Int, journal: String, sentiment: String, rating: Int,
     
 }
 
-func getJournals(userID: Int) {
+func getJournals(userID: Int) -> [RetJournal] {
     let semaphore = DispatchSemaphore (value: 0)
 
     let parameters = [
@@ -106,18 +106,27 @@ func getJournals(userID: Int) {
             return
         }
         do {
+//            print(String(data: data, encoding: .utf8)!)
             retJournals = try JSONDecoder().decode([RetJournal].self, from: data)
         }
         catch {
             print("There was an error in the JSON conversion")
             print(error)
         }
-        print(String(data: data, encoding: .utf8)!)
         semaphore.signal()
     }
 
     task.resume()
     semaphore.wait()
+    
+    return(retJournals)
+}
+
+func getJournalsRecent(userID: Int, num: Int) -> [RetJournal] {
+    var journals = getJournals(userID: userID)
+    journals = journals.suffix(num)
+    
+    return journals
 }
 
 func getQuote() -> String{
@@ -139,7 +148,7 @@ func getQuote() -> String{
             return
         }
         
-        print("PRINTING DATA")
+//        print("PRINTING DATA")
         let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
         ret = String(describing: responseString!)
         print(ret)
