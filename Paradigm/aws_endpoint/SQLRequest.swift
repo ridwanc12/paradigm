@@ -96,12 +96,21 @@ func getJournals(userID: Int) {
 
     request.httpMethod = "POST"
     request.httpBody = postData
+    
+    var retJournals: [RetJournal] = []
 
     let task = URLSession.shared.dataTask(with: request) { data, response, error in
         guard let data = data else {
             print(String(describing: error))
             semaphore.signal()
             return
+        }
+        do {
+            retJournals = try JSONDecoder().decode([RetJournal].self, from: data)
+        }
+        catch {
+            print("There was an error in the JSON conversion")
+            print(error)
         }
         print(String(data: data, encoding: .utf8)!)
         semaphore.signal()
