@@ -63,9 +63,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             Utils.global_email = email
             UserDefaults.standard.set(email, forKey: "email")
             Utils.global_firstName = firstname
-            UserDefaults.standard.set(firstname, forKey: "firstname")
+            UserDefaults.standard.set(firstname, forKey: "firstName")
             Utils.global_lastName = lastname
-            UserDefaults.standard.set(lastname, forKey: "lastname")
+            UserDefaults.standard.set(lastname, forKey: "lastName")
             
             let ret = databaseRequestCreateAccount(first: firstname, last: lastname, email: email, password: password, confirmPassword: confirmPassword)
             print("RET VALUE: " + ret)

@@ -103,6 +103,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 let alert = UIAlertController(title: "Account Not Found", message: "An account has not been created with the email you entered.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
                 self.present(alert, animated: true)
+            } else if (ret == "Please verify your account first.") {
+                let alert = UIAlertController(title: "Verify Account", message: "Please verify your account using the email that was sent to you.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
             } else if (ret == "Oops! Something went wrong. Please try again later." || ret == "ERROR") {
                 let alert = UIAlertController(title: "Oops!", message: "Something went wrong on our end. Please try again.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
