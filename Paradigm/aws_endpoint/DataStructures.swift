@@ -74,11 +74,24 @@ struct HTTPHeaders: Decodable {
     
 }
 
-let RetJournal: Decodable {
-    let journal: JProperties
+struct RetJournal: Decodable {
+    let jourID: String
+    let userID: String
+    let entry: String
+    let created: String
+    let hidden: String
+    let sentiment: String
+    let sentScore: String
+    let rating: String
+    let lastEdited: String
+    let topics: String
+    let positive: String
+    let negative: String
+    let mixed: String
+    let neutral: String
 }
 
-struct JProperties: Decodable {
+struct ConJournal: Decodable {
     let jourID: Int
     let userID: Int
     let entry: String
