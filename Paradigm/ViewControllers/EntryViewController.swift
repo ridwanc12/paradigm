@@ -11,6 +11,7 @@ import Charts
 
 class EntryViewController: UIViewController {
     @IBOutlet weak var chart: LineChartView!
+    @IBOutlet weak var chartBackground: UIView!
     @IBOutlet weak var greetingLabel: UILabel!
     
     @IBAction func addButton(_ sender: UIButton) {
@@ -23,6 +24,9 @@ class EntryViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         greetingLabel.text = "Hello, " + Utils.global_firstName
+        
+        // Setup gradient background for chart
+        setGradientBackground()
         
         let journals:[Double]! = [1, 2, 3, 4, 5, 6, 7]
 //        let sentiments:[Double]! = [0.9, 0.3, -0.1, -0.6, 0.4, -0.7, 0.85]
@@ -84,6 +88,7 @@ class EntryViewController: UIViewController {
         chart.xAxis.drawGridLinesEnabled = false
         chart.xAxis.drawLabelsEnabled = false
         
+        // Background color and border setup
         chart.backgroundColor = UIColor.white
         chart.layer.borderWidth = 3
         
@@ -92,6 +97,17 @@ class EntryViewController: UIViewController {
 //        chart.chartDescription?.text = "Mood over time" // Set the description for the graph
     }
     
+    func setGradientBackground() {
+        let colorTop = UIColor(red: 116.0 / 255.0, green: 255.0 / 255.0, blue: 8.0 / 255.0, alpha: 0.325).cgColor
+        let colorBottom = UIColor(red: 255.0 / 255.0, green: 84.0 / 255.0, blue: 64.0 / 255.0, alpha: 0.325).cgColor
+                    
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = chartBackground.bounds
+                
+        chartBackground.layer.insertSublayer(gradientLayer, at:0)
+    }
 
     /*
     // MARK: - Navigation
