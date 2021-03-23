@@ -91,6 +91,12 @@ class ParadigmTests: XCTestCase {
         XCTAssert(contains)
     }
     
+    func testGlobalUserID() {
+        let userID = userIDParse(str: Utils.global_userID)
+        
+        print(userID)
+    }
+    
     func testJournalInsert() {
         let userID = 33
         let journal = "This is a positive journal."
