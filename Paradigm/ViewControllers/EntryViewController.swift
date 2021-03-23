@@ -31,21 +31,23 @@ class EntryViewController: UIViewController {
         let journals:[Double]! = [1, 2, 3, 4, 5, 6, 7]
 //        let sentiments:[Double]! = [0.9, 0.3, -0.1, -0.6, 0.4, -0.7, 0.85]
         
-        let sentiments = sevenDaySentiments()
+        let entries = getJournalsRecent(userID: 33, num: 7)
+//        let entries = getJournals(userID: 33)
+        
+        let sentiments = journalSentiments(entries: entries)
         
         chartInitializer(journals: journals, sentiments: sentiments)
+        
+        journalTopics(entries: entries)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         greetingLabel.text = "Hello, " + Utils.global_firstName
     }
     
-    func sevenDaySentiments() -> [Double] {
-//        let fullentries = getJournalsRecent(userID: 33, num: 7)
-        let fullentries = getJournals(userID: 33)
-        
+    func journalSentiments(entries: [RetJournal]) -> [Double] {
         var sents:[Double] = []
-        for entry in fullentries {
+        for entry in entries {
             let score = Double(entry.sentScore)!
             sents.append(score)
         }
@@ -107,6 +109,52 @@ class EntryViewController: UIViewController {
         gradientLayer.frame = chartBackground.bounds
                 
         chartBackground.layer.insertSublayer(gradientLayer, at:0)
+    }
+    
+    func journalTopics(entries: [RetJournal]) {
+        var posTopicFrequency:[String: Int] = [:]
+        var posTopicSentiment:[String: Double] = [:]
+        
+        var negTopicFrequency:[String: Int] = [:]
+        var negTopicSentiment:[String: Double] = [:]
+        
+        // Calculate total sentiment and frequency
+        for entry in entries {
+            let entryTopics = entry.topics.split(separator: ",")
+            for entryTopic in entryTopics {
+                posTopicFrequency[String(entryTopic), default: 0] += 1
+                posTopicSentiment[String(entryTopic), default: 0.0] += Double(entry.sentScore)!
+            }
+        }
+        
+        // Divide into positive and negative topics
+        for (topic, sentiment) in posTopicSentiment {
+            if (sentiment <= 0) {
+                negTopicFrequency[topic] = posTopicFrequency[topic]
+                posTopicFrequency.removeValue(forKey: topic)
+                negTopicSentiment[topic] = posTopicSentiment[topic]
+                posTopicSentiment.removeValue(forKey: topic)
+            }
+        }
+        
+        // Sort and get top 5 topics for each with avg sentiment
+        let sortedPos = posTopicSentiment.sorted {
+            return $0.value > $1.value
+        }
+        
+        for item in sortedPos.prefix(5) {
+            print(item.key)
+            print(item.value / Double(posTopicFrequency[item.key]!))
+        }
+        
+        let sortedNeg = negTopicSentiment.sorted {
+            return $0.value < $1.value
+        }
+        
+        for item in sortedNeg.prefix(5) {
+            print(item.key)
+            print(item.value / Double(negTopicFrequency[item.key]!))
+        }
     }
 
     /*
