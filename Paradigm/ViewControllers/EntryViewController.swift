@@ -61,7 +61,7 @@ class EntryViewController: UIViewController {
         
         var lineChartEntry = [ChartDataEntry]()
         
-        for i in 0..<journals.count {
+        for i in 0..<sentiments.count {
             let value = ChartDataEntry(x: journals[i], y: sentiments[i]) // set data entry X and Y
             lineChartEntry.append(value) // add to data set
         }
