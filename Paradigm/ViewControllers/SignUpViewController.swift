@@ -72,7 +72,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             if (ret.contains("account created")) {
                 
                 //Storing user ID in Utils
-                let successMessage = "account created"
+                let successMessage = "account createdMessage sent!"
                 let id_index = ret.index(ret.startIndex, offsetBy: successMessage.count + 1)
                 let parsed_id = ret[id_index...]
                 Utils.global_userID = String(parsed_id)
