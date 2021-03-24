@@ -136,11 +136,11 @@
                                     <constraint firstItem="wLo-ga-OEe" firstAttribute="top" secondItem="YLc-BV-tJY" secondAttribute="top" id="Zcz-wb-8tl"/>
                                 </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9vI-aj-vzO" customClass="LineChartView" customModule="Charts">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9vI-aj-vzO" customClass="LineChartView" customModule="Charts">
                                 <rect key="frame" x="20" y="339.33333333333326" width="350" height="350"/>
                                 <subviews>
-                                    <view opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yd4-yt-haq">
-                                        <rect key="frame" x="1" y="0.66666666666674246" width="348" height="348"/>
+                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yd4-yt-haq">
+                                        <rect key="frame" x="1" y="0.66666666666668561" width="348" height="348"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="348" id="HtC-qJ-mFc"/>
                                             <constraint firstAttribute="height" constant="348" id="ZLi-Ag-UuS"/>
@@ -151,8 +151,11 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="350" id="2lB-3P-hBS"/>
+                                    <constraint firstItem="Yd4-yt-haq" firstAttribute="top" secondItem="9vI-aj-vzO" secondAttribute="top" constant="0.67000000000000004" id="47X-OX-jkM"/>
+                                    <constraint firstItem="Yd4-yt-haq" firstAttribute="leading" secondItem="9vI-aj-vzO" secondAttribute="leading" constant="1" id="OGb-ah-tcM"/>
                                     <constraint firstAttribute="height" constant="350" id="Q3A-kS-aO9"/>
                                     <constraint firstAttribute="width" secondItem="9vI-aj-vzO" secondAttribute="height" multiplier="1:1" id="SIW-bv-p7j"/>
+                                    <constraint firstAttribute="trailing" secondItem="Yd4-yt-haq" secondAttribute="trailing" constant="1" id="hMz-qe-eQY"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -162,9 +165,11 @@
                             <constraint firstItem="VWF-p0-oSf" firstAttribute="top" secondItem="YLc-BV-tJY" secondAttribute="bottom" constant="16" id="AOG-XC-get"/>
                             <constraint firstItem="5Md-92-hfz" firstAttribute="trailing" secondItem="YLc-BV-tJY" secondAttribute="trailing" constant="29" id="Dc9-W4-X6e"/>
                             <constraint firstItem="5Md-92-hfz" firstAttribute="trailing" secondItem="9vI-aj-vzO" secondAttribute="trailing" constant="20" id="NWs-bU-DPF"/>
+                            <constraint firstItem="9vI-aj-vzO" firstAttribute="leading" secondItem="5Md-92-hfz" secondAttribute="leading" constant="20" id="Pn5-qA-pmP"/>
                             <constraint firstItem="5Md-92-hfz" firstAttribute="trailing" secondItem="VWF-p0-oSf" secondAttribute="trailing" constant="16" id="Rsr-Il-yPe"/>
                             <constraint firstItem="YLc-BV-tJY" firstAttribute="top" secondItem="5Md-92-hfz" secondAttribute="top" constant="35" id="cdX-e5-Hjw"/>
                             <constraint firstItem="5Md-92-hfz" firstAttribute="bottom" secondItem="VWF-p0-oSf" secondAttribute="bottom" constant="485.67000000000002" id="dm2-uD-Egx"/>
+                            <constraint firstItem="9vI-aj-vzO" firstAttribute="top" secondItem="VWF-p0-oSf" secondAttribute="bottom" constant="64" id="emH-6h-5W7"/>
                             <constraint firstItem="VWF-p0-oSf" firstAttribute="leading" secondItem="5Md-92-hfz" secondAttribute="leading" constant="16" id="vdd-bt-vEZ"/>
                         </constraints>
                     </view>
