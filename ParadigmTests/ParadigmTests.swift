@@ -91,8 +91,15 @@ class ParadigmTests: XCTestCase {
         XCTAssert(contains)
     }
     
+    func testGlobalUserID() {
+        let userID = Utils.global_userID
+        
+        print(userID)
+        print(type(of: userID))
+    }
+    
     func testJournalInsert() {
-        let userID = 33
+        let userID = Int(Utils.global_userID)!
         let journal = "This is a positive journal."
         let sentiment = "POSITIVE"
         let rating = 10
@@ -107,7 +114,7 @@ class ParadigmTests: XCTestCase {
     }
     
     func testJournalRetrieval1() {
-        let userID = 33
+        let userID = Int(Utils.global_userID)!
         
         let journals = getJournals(userID: userID)
         print(journals)
@@ -116,7 +123,7 @@ class ParadigmTests: XCTestCase {
     }
     
     func testJournalRetrieval2() {
-        let userID = 33
+        let userID = Int(Utils.global_userID)!
         
         let journals = getJournalsRecent(userID: userID, num: 7)
         print(journals)

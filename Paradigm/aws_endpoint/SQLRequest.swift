@@ -129,6 +129,13 @@ func getJournalsRecent(userID: Int, num: Int) -> [RetJournal] {
     return journals
 }
 
+func userIDParse(str: String) -> Int {
+    let strArr = str.split(separator: "\n")
+    let userID = Int(strArr.last!)
+    
+    return(userID)!
+}
+
 func getQuote() -> String{
 
     let semaphore = DispatchSemaphore (value: 0)
