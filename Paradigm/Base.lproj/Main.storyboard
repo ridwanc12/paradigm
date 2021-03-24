@@ -136,12 +136,32 @@
                                     <constraint firstItem="wLo-ga-OEe" firstAttribute="top" secondItem="YLc-BV-tJY" secondAttribute="top" id="Zcz-wb-8tl"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9vI-aj-vzO" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="20" y="339.33333333333326" width="350" height="350"/>
+                                <subviews>
+                                    <view opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yd4-yt-haq">
+                                        <rect key="frame" x="1" y="0.66666666666674246" width="348" height="348"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="348" id="HtC-qJ-mFc"/>
+                                            <constraint firstAttribute="height" constant="348" id="ZLi-Ag-UuS"/>
+                                            <constraint firstAttribute="width" secondItem="Yd4-yt-haq" secondAttribute="height" multiplier="1:1" id="drO-mf-9fK"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="2lB-3P-hBS"/>
+                                    <constraint firstAttribute="height" constant="350" id="Q3A-kS-aO9"/>
+                                    <constraint firstAttribute="width" secondItem="9vI-aj-vzO" secondAttribute="height" multiplier="1:1" id="SIW-bv-p7j"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5Md-92-hfz"/>
                         <color key="backgroundColor" red="0.25098039220000001" green="0.28627450980000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="VWF-p0-oSf" firstAttribute="top" secondItem="YLc-BV-tJY" secondAttribute="bottom" constant="16" id="AOG-XC-get"/>
                             <constraint firstItem="5Md-92-hfz" firstAttribute="trailing" secondItem="YLc-BV-tJY" secondAttribute="trailing" constant="29" id="Dc9-W4-X6e"/>
+                            <constraint firstItem="5Md-92-hfz" firstAttribute="trailing" secondItem="9vI-aj-vzO" secondAttribute="trailing" constant="20" id="NWs-bU-DPF"/>
                             <constraint firstItem="5Md-92-hfz" firstAttribute="trailing" secondItem="VWF-p0-oSf" secondAttribute="trailing" constant="16" id="Rsr-Il-yPe"/>
                             <constraint firstItem="YLc-BV-tJY" firstAttribute="top" secondItem="5Md-92-hfz" secondAttribute="top" constant="35" id="cdX-e5-Hjw"/>
                             <constraint firstItem="5Md-92-hfz" firstAttribute="bottom" secondItem="VWF-p0-oSf" secondAttribute="bottom" constant="485.67000000000002" id="dm2-uD-Egx"/>
@@ -150,6 +170,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="XM0-0t-bq8"/>
                     <connections>
+                        <outlet property="chart" destination="9vI-aj-vzO" id="hFs-MY-yt1"/>
+                        <outlet property="chartBackground" destination="Yd4-yt-haq" id="8nW-dw-UYL"/>
                         <outlet property="greetingLabel" destination="jXB-3L-6ds" id="7hf-9K-PAT"/>
                     </connections>
                 </viewController>
@@ -1335,6 +1357,9 @@
         <image name="xmark.seal" catalog="system" width="128" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
