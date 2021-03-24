@@ -31,8 +31,8 @@ class EntryViewController: UIViewController {
         let journals:[Double]! = [1, 2, 3, 4, 5, 6, 7]
 //        let sentiments:[Double]! = [0.9, 0.3, -0.1, -0.6, 0.4, -0.7, 0.85]
         
-        let entries = getJournalsRecent(userID: 33, num: 7)
-//        let entries = getJournals(userID: 33)
+        let entries = getJournalsRecent(userID: Int(Utils.global_userID)!, num: 7)
+//        let entries = getJournals(userID: Int(Utils.global_userID)!)
         
         let sentiments = journalSentiments(entries: entries)
         
