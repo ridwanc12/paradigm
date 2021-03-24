@@ -73,3 +73,37 @@ struct HTTPHeaders: Decodable {
     }
     
 }
+
+struct RetJournal: Decodable {
+    let jourID: String
+    let userID: String
+    let entry: String
+    let created: String
+    let hidden: String
+    let sentiment: String
+    let sentScore: String
+    let rating: String
+    let lastEdited: String
+    let topics: String
+    let positive: String
+    let negative: String
+    let mixed: String
+    let neutral: String
+}
+
+struct ConJournal: Decodable {
+    let jourID: Int
+    let userID: Int
+    let entry: String
+    let created: String
+    let hidden: Int
+    let sentiment: String
+    let sentScore: Double
+    let rating: Int
+    let lastEdited: String
+    let topics: String
+    let positive: Double
+    let negative: Double
+    let mixed: Double
+    let neutral: Double
+}
