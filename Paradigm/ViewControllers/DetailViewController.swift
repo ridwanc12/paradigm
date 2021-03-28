@@ -21,8 +21,12 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
     
     @IBOutlet weak var deleteButton: UIButton!
     
-//    var journal = Journal(id: 0, date: Date(), title: "", tags: "", sentiment: 0, text: "")
-    var journal = Journal(id: 0, created: Date(), lastedited: Date(), hidden: 0, sentiment: "POSITIVE", sentScore: 0.98, rating: 9, entry: "I went shopping.", topics: "shopping")
+    @IBAction func deleteTapped(_ sender: Any) {
+        // When the delete button is tapped
+    }
+    
+    
+    var journal = Journal(id: 0, created: Date(), lastedited: Date(), hidden: 0, sentiment: "", sentScore: 0.00, rating: 0, entry: "", topics: "")
 
     
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -35,9 +39,25 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
         if isEditing {
             deleteButton.isHidden = false;
             
+            // Making text fields editable
+            subtitleTextField.isEditable = true
+            sentScoreTextField.isEnabled = true
+            
         }
         else {
             deleteButton.isHidden = true;
+            
+            // Making text fields not editable
+            subtitleTextField.isEditable = false
+            sentScoreTextField.isEnabled = false
+            
+            // Edited components
+            // TODO: Add the updated field data to the database
+            print(subtitleTextField.text ?? "Null")
+            print(sentimentTextField.text ?? "Null")
+            
+            // TODO: Update the label of the Sentiment based on the sentScore
+            
         }
     }
     
@@ -53,6 +73,7 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
                 
                 performSegue(withIdentifier: "updateJournalSegue", sender: self)
             }
+            
         }
        
     }
@@ -87,10 +108,13 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
         return UITableViewCell.EditingStyle.none
     }
     
-//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        // Return false if you do not want the specified item to be editable.
-//        return true
-//    }
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        if indexPath.section == 3 && indexPath.row == 0 {
+            return false
+        }
+        return true
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         // Setting up the label data

@@ -1296,6 +1296,9 @@
                                     <state key="normal" title="Delete Entry">
                                         <color key="titleColor" red="1" green="0.27769368620000001" blue="0.35678610179999998" alpha="0.75459307009999999" colorSpace="custom" customColorSpace="displayP3"/>
                                     </state>
+                                    <connections>
+                                        <action selector="deleteTapped:" destination="W3F-54-5Uk" eventType="touchUpInside" id="UoY-5c-Tn1"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.25098039220000001" green="0.28627450980000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1381,44 +1384,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Sentiment " id="o8e-Yb-jbA" userLabel="Sentiment ">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="84" id="Pgh-4b-hIh">
-                                        <rect key="frame" x="20" y="560.33333206176758" width="350" height="84"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pgh-4b-hIh" id="IOQ-bV-Uwr">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="84"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ygc-pU-987">
-                                                    <rect key="frame" x="16" y="16" width="318" height="52"/>
-                                                    <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Sentiment " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4r4-8Z-5XK" userLabel="Sentiment">
-                                                            <rect key="frame" x="0.0" y="0.0" width="318" height="52"/>
-                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <textInputTraits key="textInputTraits"/>
-                                                        </textField>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="ygc-pU-987" firstAttribute="leading" secondItem="IOQ-bV-Uwr" secondAttribute="leading" constant="16" id="FbO-Tp-uKJ"/>
-                                                <constraint firstItem="ygc-pU-987" firstAttribute="centerX" secondItem="IOQ-bV-Uwr" secondAttribute="centerX" id="Nb0-Uy-xmm"/>
-                                                <constraint firstAttribute="trailing" secondItem="ygc-pU-987" secondAttribute="trailing" constant="16" id="geB-Dh-OZF"/>
-                                                <constraint firstAttribute="bottom" secondItem="ygc-pU-987" secondAttribute="bottom" constant="16" id="idk-EZ-GSW"/>
-                                                <constraint firstItem="ygc-pU-987" firstAttribute="top" secondItem="IOQ-bV-Uwr" secondAttribute="top" constant="16" id="oHb-fl-qoT"/>
-                                                <constraint firstItem="ygc-pU-987" firstAttribute="centerY" secondItem="IOQ-bV-Uwr" secondAttribute="centerY" id="sgJ-Fy-UlC"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.74205550799999997" green="0.79607843140000001" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                             <tableViewSection headerTitle="Sentiment Score" id="aIF-kU-2Zh">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="84" id="ZmO-a6-laX">
-                                        <rect key="frame" x="20" y="700.33333206176758" width="350" height="84"/>
+                                        <rect key="frame" x="20" y="560.33333206176758" width="350" height="84"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZmO-a6-laX" id="KuL-RV-vAb">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="84"/>
@@ -1449,6 +1418,40 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Sentiment " id="o8e-Yb-jbA" userLabel="Sentiment ">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="84" id="Pgh-4b-hIh">
+                                        <rect key="frame" x="20" y="700.33333206176758" width="350" height="84"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pgh-4b-hIh" id="IOQ-bV-Uwr">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="84"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ygc-pU-987">
+                                                    <rect key="frame" x="16" y="16" width="318" height="52"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Sentiment " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4r4-8Z-5XK" userLabel="Sentiment">
+                                                            <rect key="frame" x="0.0" y="0.0" width="318" height="52"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ygc-pU-987" firstAttribute="leading" secondItem="IOQ-bV-Uwr" secondAttribute="leading" constant="16" id="FbO-Tp-uKJ"/>
+                                                <constraint firstItem="ygc-pU-987" firstAttribute="centerX" secondItem="IOQ-bV-Uwr" secondAttribute="centerX" id="Nb0-Uy-xmm"/>
+                                                <constraint firstAttribute="trailing" secondItem="ygc-pU-987" secondAttribute="trailing" constant="16" id="geB-Dh-OZF"/>
+                                                <constraint firstAttribute="bottom" secondItem="ygc-pU-987" secondAttribute="bottom" constant="16" id="idk-EZ-GSW"/>
+                                                <constraint firstItem="ygc-pU-987" firstAttribute="top" secondItem="IOQ-bV-Uwr" secondAttribute="top" constant="16" id="oHb-fl-qoT"/>
+                                                <constraint firstItem="ygc-pU-987" firstAttribute="centerY" secondItem="IOQ-bV-Uwr" secondAttribute="centerY" id="sgJ-Fy-UlC"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.74205550799999997" green="0.79607843140000001" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="W3F-54-5Uk" id="QPF-Qc-za7"/>
@@ -1456,9 +1459,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="oji-gO-QLg"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="deleteButton" destination="Bam-iC-ecB" id="s6G-oA-h1q"/>
                         <outlet property="sentScoreTextField" destination="UqH-Mp-L7X" id="uYa-Hb-jAq"/>
