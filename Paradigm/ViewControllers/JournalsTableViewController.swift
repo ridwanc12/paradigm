@@ -52,7 +52,10 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
     // Temp Static Data for Table view testing
     
     var journals: [Journal] = [
-        Journal(id: 1, created: parseDate("2021-03-15"), lastedited: parseDate("2021-03-15"), hidden: 0, sentiment: "POSITIVE", sentScore: 0.98, rating: 8, entry: "After classes, I took my girlfriend out to dinner at a new Thai restaurant. We had a great time walking around the park afterwards and enjoying nature.", topics: "girlfriend, Thai, park, great time")
+        Journal(id: 1, created: parseDate("2021-03-15"), lastedited: parseDate("2021-03-15"), hidden: 0, sentiment: "POSITIVE", sentScore: 0.98, rating: 8, entry: "After classes, I took my girlfriend out to dinner at a new Thai restaurant. We had a great time walking around the park afterwards and enjoying nature.", topics: "girlfriend, Thai, park, great time"),
+        Journal(id: 2, created: parseDate("2021-03-12"), lastedited: parseDate("2021-03-12"), hidden: 0, sentiment: "NEUTRAl", sentScore: 0.7, rating: 8, entry: "I am so excited for valentine's day tomorrow so I can eat a lot of dessert. I want a puppy.", topics: "valentine, day, a lot, dessert, a puppy"),
+        Journal(id: 3, created: parseDate("2021-02-10"), lastedited: parseDate("2021-02-10"), hidden: 0, sentiment: "NEGATIVE", sentScore: 0.1, rating: 8, entry: "Wake up at 9 am to attend the job I hate 11 minutes late for my shift. End me.", topics: "9 am, job, hate"),
+        Journal(id: 4, created: parseDate("2021-02-05"), lastedited: parseDate("2021-02-05"), hidden: 0, sentiment: "MIXED", sentScore: 0.1, rating: 8, entry: "Today, I got some chores done after work, and did some meal-prep for the next few days after going to the gym.", topics: "some chores, work, some meal-prep, the gym")
     ]
     
     // Implementing the Search Bar
