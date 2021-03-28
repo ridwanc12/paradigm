@@ -6,15 +6,22 @@
 //  Copyright © 2021 team5. All rights reserved.
 //
 
-// TODO: Check if journal entry is already written today
-
 import UIKit
 
-class JournalViewController: UIViewController, UITextFieldDelegate {
+class JournalViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var addButton: UIButton!
     
-    @IBOutlet weak var journalTextField: UITextField!
+    
+    @IBOutlet weak var journalTextField: UITextView!
+    
+//    var updatedJournal = Journal(id: 0, date: Date(), title: "", tags: "", sentiment: 0, text: "")
+    var updatedJournal = Journal(id: 0, created: Date(), lastedited: Date(), hidden: 0, sentiment: "", sentScore: 0, rating: 0, entry: "", topics: "")
+    
+    var isUpdate:Bool = false;
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
         // When the add entry button is tapped
@@ -59,6 +66,12 @@ class JournalViewController: UIViewController, UITextFieldDelegate {
             self.present(alert, animated: true, completion: nil)
             
         }
+        
+        // If the user is updating the journal
+        if isUpdate {
+            updatedJournal.entry = entry
+            print(updatedJournal)
+        }
     }
     
     override func viewDidLoad() {
@@ -66,6 +79,15 @@ class JournalViewController: UIViewController, UITextFieldDelegate {
 
         // Do any additional setup after loading the view.
         journalTextField.delegate = self
+        journalTextField.isScrollEnabled = false
+        journalTextField.text = "Today's Journal"
+        journalTextField.textColor = .lightGray
+        
+        errorLabel.isHidden = true
+        titleLabel.isHidden = true
+        
+        titleLabel.sizeToFit()
+        timeLabel.sizeToFit()
         
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en-US")
@@ -76,12 +98,68 @@ class JournalViewController: UIViewController, UITextFieldDelegate {
         
         dateFormatter.setLocalizedDateFormatFromTemplate("h:mm a")
         timeLabel!.text! += " at " + dateFormatter.string(from: Date())
+        
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // Hide the keyboard.
-        textField.resignFirstResponder()
-        return true
+    override func viewWillAppear(_ animated: Bool) {
+        if (isUpdate) {
+            journalTextField.text = updatedJournal.entry
+            journalTextField.textColor = .black
+            titleLabel.isHidden = false
+            titleLabel.text = "Edit Journal"
+            addButton.setTitle("Update", for: .normal)
+            
+            // Create the Navigation Bar
+            self.setNavigationBar()
+          
+          }
+    }
+    
+    func setNavigationBar() {
+        let screenSize: CGRect = UIScreen.main.bounds
+        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 44))
+        let navItem = UINavigationItem(title: "")
+        let cancelItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(cancelTapped))
+        
+        navItem.rightBarButtonItem = cancelItem
+        navBar.setItems([navItem], animated: false)
+        self.view.addSubview(navBar)
+    }
+    
+    @objc
+    func cancelTapped(Sender: UIBarButtonItem) -> Void {
+        print("Cancel Tapped")
+        
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let numberOfChars = newText.count
+        if (numberOfChars >= 280) {
+            errorLabel.isHidden = false
+        }
+        else {
+            errorLabel.isHidden = true
+        }
+        
+        return numberOfChars <= 280
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if (textView.text == "Today's Journal" && textView.textColor == .lightGray) {
+            textView.text = ""
+            textView.textColor = .black
+        }
+        //Optional
+        textView.becomeFirstResponder()
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if (textView.text == "") {
+                textView.text = "Today's Journal"
+                textView.textColor = .lightGray
+        }
+        textView.resignFirstResponder()
     }
     
 
