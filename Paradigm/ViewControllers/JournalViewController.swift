@@ -129,6 +129,8 @@ class JournalViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     @objc
     func cancelTapped(Sender: UIBarButtonItem) -> Void {
         print("Cancel Tapped")
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
         
     }
     

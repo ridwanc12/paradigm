@@ -16,6 +16,8 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
     @IBOutlet weak var subtitleTextField: UITextView!
 
     @IBOutlet weak var sentimentTextField: UITextField!
+    @IBOutlet weak var sentScoreTextField: UITextField!
+    
     
     @IBOutlet weak var deleteButton: UIButton!
     
@@ -75,6 +77,9 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
         sentimentTextField.delegate = self
         sentimentTextField.isEnabled = false
         
+        sentScoreTextField.delegate = self
+        sentScoreTextField.isEnabled = false
+        
     }
     
     
@@ -92,10 +97,12 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
         titleLabel.text = journal.entry
         subtitleTextField.text = journal.topics
         sentimentTextField.text = String(journal.sentiment)
+        sentScoreTextField.text = String(journal.sentScore)
         
         titleLabel.sizeToFit()
         subtitleTextField.sizeToFit()
         sentimentTextField.sizeToFit()
+        sentScoreTextField.sizeToFit()
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
