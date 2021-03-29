@@ -9,7 +9,9 @@
 import UIKit
 import Charts
 
-class EntryViewController: UIViewController {
+class EntryViewController: UITableViewController {
+    
+    
     @IBOutlet weak var chart: LineChartView!
     @IBOutlet weak var chartBackground: UIView!
     @IBOutlet weak var greetingLabel: UILabel!
@@ -18,12 +20,12 @@ class EntryViewController: UIViewController {
         // When the add button is pressed 
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         greetingLabel.text = "Hello, " + Utils.global_firstName
+
         
         // Setup gradient background for chart
         setGradientBackground()
@@ -39,6 +41,7 @@ class EntryViewController: UIViewController {
         chartInitializer(journals: journals, sentiments: sentiments)
         
         journalTopics(entries: entries)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -155,6 +158,29 @@ class EntryViewController: UIViewController {
             print(item.key)
             print(item.value / Double(negTopicFrequency[item.key]!))
         }
+        
+    }
+    
+    // Table View Functions
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Chart Cell", for: indexPath)
+        cell.detailTextLabel?.text = "Row: \(indexPath.row+1)"
+        cell.textLabel?.text = "Text \(indexPath.row+1)"
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.white
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Table Title"
     }
 
     /*
