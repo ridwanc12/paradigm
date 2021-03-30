@@ -23,6 +23,35 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
     
     @IBAction func deleteTapped(_ sender: Any) {
         // When the delete button is tapped
+        //TODO: Need jourID
+        /*let jourID = "0"
+        
+        let deleteEntryAlert = UIAlertController(title: "Delete Entry", message: "Are you sure you want to delete this entry? This action cannot be undone.", preferredStyle: .alert)
+        
+        deleteEntryAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            
+            //try to delete account from database
+            let ret = self.databaseRequestDeleteEntry(jourID: jourID)
+            print("RET VALUE: " + ret)
+            
+            if (ret == "Entry deleted.") {
+                // Entry successfully deleted, return to welcome screen
+                //TODO: @Isha, our we able to segue back to the journal table view controller here?
+                
+            } else {
+                let incorrectPassAlert = UIAlertController(title: "Oops!", message: "Something went wrong on our end. Please try again.", preferredStyle: .alert)
+                incorrectPassAlert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                self.present(incorrectPassAlert, animated: true)
+            }
+            
+        }))
+        
+        deleteEntryAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            print("User cancels deleting account.")
+            //do nothing
+          }))
+        self.present(deleteEntryAlert, animated: true, completion: nil)*/
+        
     }
     
     
@@ -140,6 +169,38 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.white
+    }
+    
+    func databaseRequestDeleteEntry(jourID: String) -> String {
+        let semaphore = DispatchSemaphore (value: 0)
+        var ret = "";
+        
+        let link = "https://boilerbite.000webhostapp.com/paradigm/deleteEntry.php"
+        let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
+        request.httpMethod = "POST"
+        
+        let postString = "jourID=\(jourID)"
+        request.httpBody = postString.data(using: String.Encoding.utf8)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+            
+            if error != nil {
+                print("ERROR")
+                print(String(describing: error!))
+                ret = "ERROR"
+                semaphore.signal()
+                return
+            }
+            
+            print("PRINTING DATA")
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            ret = String(describing: responseString!)
+            semaphore.signal()
+            print(ret)
+        }
+        task.resume()
+        semaphore.wait()
+        return ret
     }
 
 
