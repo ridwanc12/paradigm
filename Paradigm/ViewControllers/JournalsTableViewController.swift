@@ -48,6 +48,7 @@ struct MonthSection {
 
 class JournalsTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
     
+    var numJournals = ""
     
     // Temp Static Data for Table view testing
     
@@ -163,7 +164,42 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
         // Exit Search Bar if user navigates to different page
         definesPresentationContext = true
         
+        //get number of journals written by user
+        numJournals = getJournalNum(userID: Utils.global_userID)
         
+        
+    }
+    
+    func getJournalNum(userID: String) -> String {
+        let semaphore = DispatchSemaphore (value: 0)
+        var ret = "";
+        
+        let link = "https://boilerbite.000webhostapp.com/paradigm/getJournalNum.php"
+        let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
+        request.httpMethod = "POST"
+        
+        let postString = "userID=\(userID)"
+        request.httpBody = postString.data(using: String.Encoding.utf8)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+            
+            if error != nil {
+                print("ERROR")
+                print(String(describing: error!))
+                ret = "ERROR"
+                semaphore.signal()
+                return
+            }
+            
+            print("PRINTING DATA")
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            ret = String(describing: responseString!)
+            semaphore.signal()
+            print(ret)
+        }
+        task.resume()
+        semaphore.wait()
+        return ret
     }
 
     func filterContentForSearchText(_ searchText: String) {
