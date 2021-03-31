@@ -15,6 +15,8 @@ class EntryViewController: UITableViewController {
     @IBOutlet weak var chart: LineChartView!
     @IBOutlet weak var chartBackground: UIView!
     @IBOutlet weak var greetingLabel: UILabel!
+    @IBOutlet weak var quoteTextField: UITextView!
+    
     var formattedQuote: String!
     
     var tenTopics:[String] = []
