@@ -65,7 +65,9 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
         // Toggle table view editing.
         tableView.setEditing(editing, animated: true)
         
+        
         if isEditing {
+            print("yes editing")
             deleteButton.isHidden = false;
             
             // Making text fields editable
@@ -74,6 +76,7 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
             
         }
         else {
+            print("not editing")
             deleteButton.isHidden = true;
             
             // Making text fields not editable
@@ -82,11 +85,37 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
             
             // Edited components
             // TODO: Add the updated field data to the database
-            // call databserequest
             print(subtitleTextField.text ?? "Null")
+            print(sentScoreTextField.text ?? "Null")
             print(sentimentTextField.text ?? "Null")
             
+            let updatedSentScore = Double(sentScoreTextField.text ?? "") ?? 0.0
+            print(updatedSentScore)
+            let updatedTopics = subtitleTextField.text ?? ""
+            print(updatedTopics)
+            var allowEdit = true
+            
+            if (updatedSentScore < 0.0 || updatedSentScore > 1.0) {
+                //custom sent score out of range
+                allowEdit = false
+                let alert = UIAlertController(title: "Invalid Score", message: "Please enter a decimal value between 0.0 and 1.0.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+            }
+            if (updatedTopics == "") {
+                //empty custom topics
+                allowEdit = false
+                let alert = UIAlertController(title: "Empty Topics", message: "Please enter comma separated topics you'd like to highlight in this entry.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+            }
+            if (allowEdit) {
+                // call databaserequest
+                print("calling edit entry request")
+            }
+            
             // TODO: Update the label of the Sentiment based on the sentScore
+            // what are the parameters?
             
         }
     }
