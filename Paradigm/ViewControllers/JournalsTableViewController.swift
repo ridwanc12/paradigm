@@ -49,6 +49,8 @@ struct MonthSection {
 class JournalsTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
     
     var numJournals = ""
+    @IBOutlet weak var labelText: UILabel!
+    @IBOutlet weak var labelNum: UILabel!
     
     // Temp Static Data for Table view testing
     
@@ -76,6 +78,7 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         filterContentForSearchText(searchBar.text!)
+        
     }
     
     
@@ -115,9 +118,11 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
         
         if isFiltering {
             journal = filteredJournals[indexPath.row]
+            labelNum.text = String(filteredJournals.count)
         }
         else {
             journal = section.journals[indexPath.row]
+            labelNum.text = String(journals.count)
         }
         
         //cell.textLabel?.text = journal.title
@@ -167,8 +172,8 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
         //get number of journals written by user
         numJournals = getJournalNum(userID: Utils.global_userID)
         
-        
     }
+    
     
     func getJournalNum(userID: String) -> String {
         let semaphore = DispatchSemaphore (value: 0)

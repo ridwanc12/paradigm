@@ -1568,7 +1568,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="led-j6-zgD">
-                                <rect key="frame" x="0.0" y="142" width="390" height="619"/>
+                                <rect key="frame" x="0.0" y="234" width="390" height="527"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25098039220000001" green="0.28627450980000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
@@ -1607,18 +1607,52 @@
                                     <outlet property="delegate" destination="QWC-KH-zeD" id="MTX-Cy-Ug0"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OeT-OB-cLp">
+                                <rect key="frame" x="20" y="104" width="350" height="125"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="8J3-ma-7lU">
+                                        <rect key="frame" x="59.000000000000014" y="51.666666666666657" width="232.33333333333337" height="21.666666666666671"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Number of Journals:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U5r-Lr-z3T">
+                                                <rect key="frame" x="0.0" y="0.0" width="205.33333333333334" height="21.666666666666668"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="0.87384952910000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLI-pq-kRk">
+                                                <rect key="frame" x="212.33333333333331" y="0.0" width="20" height="21.666666666666668"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <color key="textColor" red="0.82671843720000004" green="0.88885491049999998" blue="0.92431859329999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="1bg-1h-56u"/>
+                                    <constraint firstAttribute="height" constant="125" id="6es-aU-x4s"/>
+                                    <constraint firstItem="8J3-ma-7lU" firstAttribute="centerY" secondItem="OeT-OB-cLp" secondAttribute="centerY" id="Tu7-EG-ZZQ"/>
+                                    <constraint firstItem="8J3-ma-7lU" firstAttribute="centerX" secondItem="OeT-OB-cLp" secondAttribute="centerX" id="eXv-kt-gsC"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ONx-94-dVa"/>
                         <color key="backgroundColor" red="0.25098039220000001" green="0.28627450980000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="OeT-OB-cLp" firstAttribute="centerX" secondItem="1gV-z2-aNq" secondAttribute="centerX" id="CGZ-FT-ALn"/>
+                            <constraint firstItem="OeT-OB-cLp" firstAttribute="top" secondItem="ONx-94-dVa" secondAttribute="top" constant="16" id="x7a-H6-wvm"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ae3-gO-qOO"/>
                     <connections>
+                        <outlet property="labelNum" destination="gLI-pq-kRk" id="Sbf-9k-YVB"/>
+                        <outlet property="labelText" destination="U5r-Lr-z3T" id="cIz-T1-u4n"/>
                         <outlet property="tableView" destination="led-j6-zgD" id="mnK-PA-IXI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S03-ti-3Mh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1358" y="1375"/>
+            <point key="canvasLocation" x="-1358.4615384615383" y="1374.8815165876777"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
