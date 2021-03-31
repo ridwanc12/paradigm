@@ -15,6 +15,7 @@ class EntryViewController: UITableViewController {
     @IBOutlet weak var chart: LineChartView!
     @IBOutlet weak var chartBackground: UIView!
     @IBOutlet weak var greetingLabel: UILabel!
+    var formattedQuote: String!
     
     @IBAction func addButton(_ sender: UIButton) {
         // When the add button is pressed 
@@ -22,9 +23,15 @@ class EntryViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         greetingLabel.text = "Hello, " + Utils.global_firstName
+        
+        //retrieve and format quote
+        let quote = databaseRequestGetQuote()
+        let index = quote.firstIndex(of: ".")
+        let authorIndex = quote.index(quote.firstIndex(of: ".")!, offsetBy: 2)
+        formattedQuote = "\"" + quote[..<index!] + "\" -" + quote[authorIndex...]
 
         
         // Setup gradient background for chart
@@ -181,6 +188,38 @@ class EntryViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Table Title"
+    }
+    
+    func databaseRequestGetQuote() -> String {
+        let semaphore = DispatchSemaphore (value: 0)
+        var ret = "";
+        
+        let link = "https://boilerbite.000webhostapp.com/paradigm/getQuote.php"
+        let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
+        request.httpMethod = "POST"
+        
+        let postString = ""
+        request.httpBody = postString.data(using: String.Encoding.utf8)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+            
+            if error != nil {
+                print("ERROR")
+                print(String(describing: error!))
+                ret = "ERROR"
+                semaphore.signal()
+                return
+            }
+            
+            print("PRINTING DATA")
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            ret = String(describing: responseString!)
+            semaphore.signal()
+            print(ret)
+        }
+        task.resume()
+        semaphore.wait()
+        return ret
     }
 
     /*
