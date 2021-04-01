@@ -207,5 +207,37 @@ class ParadigmTests: XCTestCase {
     func testQuote(){
         print(getQuote())
     }
+    
+    func testJournalCount() {
+        let userID = 61
+        let expectedNum = 2
+        
+        let semaphore = DispatchSemaphore (value: 0)
+        var ret = "";
+        
+        let link = "https://boilerbite.000webhostapp.com/paradigm/getJournalNum.php"
+        let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
+        request.httpMethod = "POST"
+        
+        let postString = "userID=\(userID)"
+        request.httpBody = postString.data(using: String.Encoding.utf8)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+            
+            if error != nil {
+                semaphore.signal()
+                return
+            }
+            
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            ret = String(describing: responseString!)
+            semaphore.signal()
+        }
+        task.resume()
+        semaphore.wait()
+        
+        print(ret)
+        XCTAssertTrue(expectedNum == Int(ret))
+    }
 
 }
