@@ -1340,9 +1340,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.74205550799999997" green="0.79607843140000001" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
-                                            <segue destination="KH1-Cj-wXU" kind="popoverPresentation" identifier="updateJournalSegue" popoverAnchorView="cVv-yS-C68" id="ylT-Yv-D1r">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
+                                            <segue destination="KH1-Cj-wXU" kind="presentation" identifier="updateJournalSegue" modalPresentationStyle="fullScreen" id="ylT-Yv-D1r"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1656,7 +1654,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="BjI-MV-BZj"/>
+        <segue reference="ylT-Yv-D1r"/>
         <segue reference="igD-V9-GtV"/>
     </inferredMetricsTieBreakers>
     <resources>

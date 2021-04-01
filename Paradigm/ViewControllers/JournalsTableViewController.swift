@@ -135,7 +135,7 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
         dateFormatter.locale = Locale(identifier: "en-US")
         dateFormatter.setLocalizedDateFormatFromTemplate("EEE, `MMM d")
         
-        cell.textLabel?.text = dateFormatter.string(from: journal.lastedited)
+        cell.textLabel?.text = dateFormatter.string(from: journal.created)
         cell.detailTextLabel?.text = journal.topics
         
         return cell

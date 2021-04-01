@@ -33,8 +33,44 @@ class JournalViewController: UIViewController, UITextFieldDelegate, UITextViewDe
             alert.addAction(UIAlertAction( title: "OK", style: .default, handler: nil))
             
             self.present(alert, animated: true)
+            return
         }
-        else {
+        // If the user is updating the journal
+        if isUpdate {
+            updatedJournal.entry = entry
+            print(updatedJournal)
+            
+            let analysis = getJournalAnalysis(journal: updatedJournal.entry)!
+            print(analysis)
+            
+            let topics = phrasesToString(phrases: analysis.phrases.KeyPhrases)
+            
+            // TODO: Currently there are issues with the global user id
+            
+            let journal = entry
+            let sentiment = analysis.sentiment.Sentiment
+            let positive = analysis.sentiment.SentimentScore.Positive
+            let negative = analysis.sentiment.SentimentScore.Negative
+            let mixed = analysis.sentiment.SentimentScore.Mixed
+            let neutral = analysis.sentiment.SentimentScore.Neutral
+            let sentScore = positive - negative
+            
+            let ret = databaseRequestEditEntry(jourID: String(updatedJournal.id), entry: journal, sentiment: String(sentiment), sentScore: String(sentScore), hidden: String(updatedJournal.hidden), rating: String(updatedJournal.rating), topics: topics, positive: String(positive), negative: String(negative), mixed: String(mixed), neutral: String(neutral))
+            
+            journalTextField.text! = ""
+            
+            let alert = UIAlertController(title: "Journal Edited", message: "Your journal has been successfully edited!", preferredStyle: .alert)
+            
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeView = storyboard.instantiateViewController(identifier: "HomeViewController")
+            
+            alert.addAction(UIAlertAction( title: "OK", style: .default, handler: {(alert: UIAlertAction!) in (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(homeView)}))
+            
+            self.present(alert, animated: true, completion: nil)
+            
+        } else {
+            
             let analysis = getJournalAnalysis(journal: entry)!
             print(analysis)
             
@@ -65,12 +101,6 @@ class JournalViewController: UIViewController, UITextFieldDelegate, UITextViewDe
             
             self.present(alert, animated: true, completion: nil)
             
-        }
-        
-        // If the user is updating the journal
-        if isUpdate {
-            updatedJournal.entry = entry
-            print(updatedJournal)
         }
     }
     
@@ -157,14 +187,21 @@ class JournalViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        /*if isEditing {
+            let vc = segue.destination as? DetailViewController
+            
+            // Send the current selected journal data to the Detail View Controller
+            vc?.journal = updatedJournal
+            isEditing = false
+        }*/
     }
-    */
+    
 
 }

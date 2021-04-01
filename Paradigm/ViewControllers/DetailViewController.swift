@@ -197,8 +197,12 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
         return true
     }
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         // Setting up the label data
+        print("appeared")
+        viewDidLoad()
         titleLabel.text = journal.entry
         subtitleTextField.text = journal.topics
         sentimentTextField.text = String(journal.sentiment)
@@ -257,38 +261,6 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
         semaphore.wait()
         return ret
     }
-    
-    func databaseRequestEditEntry(jourID: String, entry: String, sentiment: String, sentScore: String, hidden: String, rating: String, topics: String, positive: String, negative: String, mixed: String, neutral: String) -> String {
-        let semaphore = DispatchSemaphore (value: 0)
-        var ret = "";
-        
-        let link = "https://boilerbite.000webhostapp.com/paradigm/editEntry.php"
-        let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
-        request.httpMethod = "POST"
-        
-        let postString = "jourID=\(jourID)&entry=\(entry)&sentiment=\(sentiment)&sentScore=\(sentScore)&hidden=\(hidden)&rating=\(rating)&topics=\(topics)&positive=\(positive)&negative=\(negative)&mixed=\(mixed)&neutral=\(neutral)"
-        request.httpBody = postString.data(using: String.Encoding.utf8)
-        
-        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
-            
-            if error != nil {
-                print("ERROR")
-                print(String(describing: error!))
-                ret = "ERROR"
-                semaphore.signal()
-                return
-            }
-            
-            print("PRINTING DATA")
-            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-            ret = String(describing: responseString!)
-            semaphore.signal()
-            print(ret)
-        }
-        task.resume()
-        semaphore.wait()
-        return ret
-    }
 
 
     
@@ -307,3 +279,4 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
     }
 
 }
+
