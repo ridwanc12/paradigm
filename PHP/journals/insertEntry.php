@@ -94,7 +94,7 @@ function getUser($userID, $pdo) {
     $sql = "SELECT hashPass, userID, firstName, lastName, verified FROM accounts WHERE userID = :userID";
     if ($stmt = $pdo->prepare($sql)) {
         // Bind variables to the prepared statement as parameters
-        $stmt->bindParam(":useID", $param_userID, PDO::PARAM_STR);
+        $stmt->bindParam(":userID", $param_userID, PDO::PARAM_STR);
 
         // Attempt to execute the prepared statement
         if ($stmt->execute()) {
