@@ -10,6 +10,7 @@ import UIKit
 
 class DetailViewController: UITableViewController, UITextViewDelegate, UITextFieldDelegate {
 
+    var journID = 0
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -24,19 +25,24 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
     @IBAction func deleteTapped(_ sender: Any) {
         // When the delete button is tapped
         //TODO: Need jourID
-        /*let jourID = "0"
         
         let deleteEntryAlert = UIAlertController(title: "Delete Entry", message: "Are you sure you want to delete this entry? This action cannot be undone.", preferredStyle: .alert)
         
         deleteEntryAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             
             //try to delete account from database
-            let ret = self.databaseRequestDeleteEntry(jourID: jourID)
+            let ret = self.databaseRequestDeleteEntry(jourID: String(self.journID))
             print("RET VALUE: " + ret)
             
             if (ret == "Entry deleted.") {
                 // Entry successfully deleted, return to welcome screen
                 //TODO: @Isha, our we able to segue back to the journal table view controller here?
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let homeView = storyboard.instantiateViewController(identifier: "HomeViewController")
+                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(homeView)
+                
+                /*self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)*/
                 
             } else {
                 let incorrectPassAlert = UIAlertController(title: "Oops!", message: "Something went wrong on our end. Please try again.", preferredStyle: .alert)
@@ -50,7 +56,7 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
             print("User cancels deleting account.")
             //do nothing
           }))
-        self.present(deleteEntryAlert, animated: true, completion: nil)*/
+        self.present(deleteEntryAlert, animated: true, completion: nil)
         
     }
     
@@ -95,7 +101,7 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
             print(updatedTopics)
             var allowEdit = true
             
-            if (updatedSentScore < 0.0 || updatedSentScore > 1.0) {
+            if (updatedSentScore < -1.0 || updatedSentScore > 1.0) {
                 //custom sent score out of range
                 allowEdit = false
                 let alert = UIAlertController(title: "Invalid Score", message: "Please enter a decimal value between 0.0 and 1.0.", preferredStyle: .alert)

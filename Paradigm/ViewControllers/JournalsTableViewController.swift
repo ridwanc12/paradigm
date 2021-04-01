@@ -255,6 +255,7 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
         
         // Send the current selected journal data to the Detail View Controller
         vc?.journal = journal
+        vc?.journID = journal.id
     }
     
 
