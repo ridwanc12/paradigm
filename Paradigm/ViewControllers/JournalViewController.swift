@@ -52,11 +52,17 @@ class JournalViewController: UIViewController, UITextFieldDelegate, UITextViewDe
             let neutral = analysis.sentiment.SentimentScore.Neutral
             let sentScore = positive - negative
             
-            insertJournal(userID: userID, journal: journal, sentiment: sentiment, rating: rating, topics: topics, positive: positive, negative: negative, mixed: mixed, neutral: neutral, sentScore: sentScore)
+            let ret = insertJournal(userID: userID, journal: journal, sentiment: sentiment, rating: rating, topics: topics, positive: positive, negative: negative, mixed: mixed, neutral: neutral, sentScore: sentScore)
+            
+            var alert = UIAlertController()
+            if (ret.contains("Not verified")) {
+                alert = UIAlertController(title: "Account Not Verified", message: "Please verify your account before inserting a journal.", preferredStyle: .alert)
+            } else {
+                alert = UIAlertController(title: "Journal Entered", message: "Your journal has been successfully entered!", preferredStyle: .alert)
+            }
             
             journalTextField.text! = ""
             
-            let alert = UIAlertController(title: "Journal Entered", message: "Your journal has been successfully entered!", preferredStyle: .alert)
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let homeView = storyboard.instantiateViewController(identifier: "HomeViewController")
