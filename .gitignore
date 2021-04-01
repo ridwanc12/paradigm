@@ -7,3 +7,7 @@ Pods.xcodeproj/
 PHP/keys/hack.php
 Paradigm.xcodeproj/project.xcworkspace/xcuserdata/jeremy.xcuserdatad/UserInterfaceState.xcuserstate
 .DS_Store
+Paradigm.xcworkspace/xcuserdata
+Paradigm.xcworkspace/xcshareddata
+Pods/Pods.xccodeproj/xcuserdata
+Pods/Pods.xcodeproj/xcshareddata

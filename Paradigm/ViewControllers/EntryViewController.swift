@@ -9,21 +9,29 @@
 import UIKit
 import Charts
 
-class EntryViewController: UIViewController {
+class EntryViewController: UITableViewController {
+    
+    
     @IBOutlet weak var chart: LineChartView!
     @IBOutlet weak var chartBackground: UIView!
     @IBOutlet weak var greetingLabel: UILabel!
     
+    var tenTopics:[String] = []
+    var tenSentiments:[Double] = []
+    
+    let colorTop = UIColor(red: 116.0 / 255.0, green: 255.0 / 255.0, blue: 8.0 / 255.0, alpha: 0.325).cgColor
+    let colorBottom = UIColor(red: 255.0 / 255.0, green: 84.0 / 255.0, blue: 64.0 / 255.0, alpha: 0.325).cgColor
+    
     @IBAction func addButton(_ sender: UIButton) {
         // When the add button is pressed 
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         greetingLabel.text = "Hello, " + Utils.global_firstName
+
         
         // Setup gradient background for chart
         setGradientBackground()
@@ -38,7 +46,8 @@ class EntryViewController: UIViewController {
         
         chartInitializer(journals: journals, sentiments: sentiments)
         
-        journalTopics(entries: entries)
+        (tenTopics, tenSentiments) = journalTopics(entries: entries)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,16 +61,18 @@ class EntryViewController: UIViewController {
             sents.append(score)
         }
         
-        print(sents)
         return sents
     }
     
     func chartInitializer(journals:[Double], sentiments:[Double]) {
-        chart.noDataText = "No journal data available for chart."
+        if (sentiments.isEmpty) {
+            chart.noDataText = "No journal data available for chart."
+            return
+        }
         
         var lineChartEntry = [ChartDataEntry]()
         
-        for i in 0..<journals.count {
+        for i in 0..<sentiments.count {
             let value = ChartDataEntry(x: journals[i], y: sentiments[i]) // set data entry X and Y
             lineChartEntry.append(value) // add to data set
         }
@@ -100,9 +111,6 @@ class EntryViewController: UIViewController {
     }
     
     func setGradientBackground() {
-        let colorTop = UIColor(red: 116.0 / 255.0, green: 255.0 / 255.0, blue: 8.0 / 255.0, alpha: 0.325).cgColor
-        let colorBottom = UIColor(red: 255.0 / 255.0, green: 84.0 / 255.0, blue: 64.0 / 255.0, alpha: 0.325).cgColor
-                    
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [colorTop, colorBottom]
         gradientLayer.locations = [0.0, 1.0]
@@ -111,7 +119,7 @@ class EntryViewController: UIViewController {
         chartBackground.layer.insertSublayer(gradientLayer, at:0)
     }
     
-    func journalTopics(entries: [RetJournal]) {
+    func journalTopics(entries: [RetJournal]) -> ([String], [Double]) {
         var posTopicFrequency:[String: Int] = [:]
         var posTopicSentiment:[String: Double] = [:]
         
@@ -137,14 +145,18 @@ class EntryViewController: UIViewController {
             }
         }
         
+        var tenTopics:[String] = []
+        var tenSentiments:[Double] = []
+        
         // Sort and get top 5 topics for each with avg sentiment
         let sortedPos = posTopicSentiment.sorted {
             return $0.value > $1.value
         }
         
         for item in sortedPos.prefix(5) {
-            print(item.key)
-            print(item.value / Double(posTopicFrequency[item.key]!))
+            let trimmedTopic = item.key.trimmingCharacters(in: .whitespacesAndNewlines)
+            tenTopics.append(trimmedTopic)
+            tenSentiments.append(item.value / Double(posTopicFrequency[item.key]!))
         }
         
         let sortedNeg = negTopicSentiment.sorted {
@@ -152,9 +164,46 @@ class EntryViewController: UIViewController {
         }
         
         for item in sortedNeg.prefix(5) {
-            print(item.key)
-            print(item.value / Double(negTopicFrequency[item.key]!))
+            let trimmedTopic = item.key.trimmingCharacters(in: .whitespacesAndNewlines)
+            tenTopics.append(trimmedTopic)
+            tenSentiments.append(item.value / Double(negTopicFrequency[item.key]!))
         }
+        
+        return (tenTopics, tenSentiments)
+        
+    }
+    
+    // Table View Functions
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tenTopics.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Chart Cell", for: indexPath)
+        
+        cell.textLabel?.text = tenTopics[indexPath.row]
+        
+        let roundedSentiment = (tenSentiments[indexPath.row] * 100).rounded() / 100
+        cell.detailTextLabel?.text = String(roundedSentiment)
+        
+        if (roundedSentiment >= 0) {
+            cell.contentView.backgroundColor = UIColor(cgColor: colorTop)
+        }
+        else {
+            cell.contentView.backgroundColor = UIColor(cgColor: colorBottom)
+        }
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.white
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Weekly Topics                             Avg Sentiment"
     }
 
     /*
