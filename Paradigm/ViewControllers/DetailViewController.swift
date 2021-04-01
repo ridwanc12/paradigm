@@ -121,8 +121,7 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
         titleLabel.text = journal.entry
         subtitleTextField.text = journal.topics
         sentimentTextField.text = String(journal.sentiment)
-        let roundedSentiment = (journal.sentScore * 100).rounded() / 100
-        sentScoreTextField.text = String(roundedSentiment)
+        sentScoreTextField.text = String(journal.sentScore)
         
         titleLabel.sizeToFit()
         subtitleTextField.sizeToFit()

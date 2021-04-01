@@ -83,7 +83,7 @@ class EntryViewController: UITableViewController {
         line1.circleRadius = 4
         line1.circleHoleRadius = 0
         line1.circleColors = [NSUIColor.black]
-        line1.mode = .cubicBezier
+//        line1.mode = .cubicBezier
         
         let data = LineChartData() // Object for chart
         data.addDataSet(line1) //Add line to dataSet
@@ -188,11 +188,9 @@ class EntryViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Chart Cell", for: indexPath)
         
         cell.textLabel?.text = tenTopics[indexPath.row]
+        cell.detailTextLabel?.text = String(tenSentiments[indexPath.row])
         
-        let roundedSentiment = (tenSentiments[indexPath.row] * 100).rounded() / 100
-        cell.detailTextLabel?.text = String(roundedSentiment)
-        
-        if (roundedSentiment >= 0) {
+        if (tenSentiments[indexPath.row] >= 0) {
             cell.contentView.backgroundColor = UIColor(cgColor: colorTop)
         }
         else {

@@ -10,14 +10,21 @@ import Foundation
 
 func insertJournal(userID: Int, journal: String, sentiment: String, rating: Int, topics: String, positive: Double, negative: Double, mixed: Double, neutral: Double, sentScore: Double) -> String{
     
-    // Convert from types to String
+    // Convert from types to String for database insertion
     let userID2 = String(userID)
     let rating2 = String(rating)
     let positive2 = String(positive)
     let negative2 = String(negative)
     let mixed2 = String(mixed)
     let neutral2 = String(neutral)
-    let sentScore2 = String(sentScore)
+    let sentScore2 = (sentScore * 100).rounded() / 100
+//    let sentScore2 = String(sentScore)
+    
+    // Classify journal
+    var sentiment2 = "POSITIVE"
+    if (sentScore2 < 0) {
+        sentiment2 = "NEGATIVE"
+    }
 
     let semaphore = DispatchSemaphore (value: 0)
     var ret = "";
@@ -26,7 +33,7 @@ func insertJournal(userID: Int, journal: String, sentiment: String, rating: Int,
     let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
     request.httpMethod = "POST"
     
-    let postString = "userID=\(userID2)&rating=\(rating2)&positive=\(positive2)&negative=\(negative2)&mixed=\(mixed2)&neutral=\(neutral2)&sentScore=\(sentScore2)&entry=\(journal)&sentiment=\(sentiment)&topics=\(topics)"
+    let postString = "userID=\(userID2)&rating=\(rating2)&positive=\(positive2)&negative=\(negative2)&mixed=\(mixed2)&neutral=\(neutral2)&sentScore=\(sentScore2)&entry=\(journal)&sentiment=\(sentiment2)&topics=\(topics)"
     request.httpBody = postString.data(using: String.Encoding.utf8)
     
     let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
