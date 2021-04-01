@@ -24,6 +24,12 @@ $today = new DateTime("now", $tz_obj);
 $date = $today->format('Y-m-d H:i:s');
 $param_created = $lastEdited = $date;
 
+$user = getUser($param_userID, $pdo);
+if (!$user["verified"]) {
+    unset($pdo);
+    exit("Not verified");
+}
+
 // Write out SQL query to be prepared
 $sql = "INSERT INTO journals (userID, entry, created, sentiment, sentScore, rating, lastEdited, topics, positive, negative, mixed, neutral) 
         VALUES (:userID, :entry, :created, :sentiment, :sentScore, :rating, :lastEdited, :topics, :positive, :negative, :mixed, :neutral)";
@@ -82,4 +88,33 @@ if ($update = $pdo->prepare($sql)) {
 
 // Disconnect from database
 unset($pdo);
+
+function getUser($userID, $pdo) {
+    $param_userID = $userID;
+    $sql = "SELECT hashPass, userID, firstName, lastName, verified FROM accounts WHERE userID = :userID";
+    if ($stmt = $pdo->prepare($sql)) {
+        // Bind variables to the prepared statement as parameters
+        $stmt->bindParam(":useID", $param_userID, PDO::PARAM_STR);
+
+        // Attempt to execute the prepared statement
+        if ($stmt->execute()) {
+        // If rowcount == 1, user is registered
+            if ($stmt->rowCount() == 1) {
+                // Set result to be associated with column name
+                $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                // Fetch one row from query result
+                $row = $stmt->fetch();
+            } else {
+                // Email not registered
+             echo "User not registered.";
+            }
+        } else {
+            echo "Oops! Something went wrong. Please try again later.";
+        }
+
+        // Close statement
+        unset($stmt);
+    }
+    return $row;
+}
 ?>

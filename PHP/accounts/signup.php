@@ -61,7 +61,7 @@ if ($stmt = $pdo->prepare($sql)) {
     $stmt->bindParam(":hash", $hash, PDO::PARAM_STR);
     $stmt->bindParam(":verified", $param_verified, PDO::PARAM_INT);
     // Set parameters
-    $param_verified = 1;
+    $param_verified = 0;
     $param_email = $email;
     $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
     $firstName = trim($_POST["firstName"]);
