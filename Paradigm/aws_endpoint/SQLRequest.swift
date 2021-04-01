@@ -8,7 +8,7 @@
 
 import Foundation
 
-func insertJournal(userID: Int, journal: String, sentiment: String, rating: Int, topics: String, positive: Double, negative: Double, mixed: Double, neutral: Double, sentScore: Double) {
+func insertJournal(userID: Int, journal: String, sentiment: String, rating: Int, topics: String, positive: Double, negative: Double, mixed: Double, neutral: Double, sentScore: Double) -> String{
     
     // Convert from types to String for database insertion
     let userID2 = String(userID)
@@ -54,7 +54,7 @@ func insertJournal(userID: Int, journal: String, sentiment: String, rating: Int,
     }
     task.resume()
     semaphore.wait()
-    
+    return ret
 }
 
 func getJournals(userID: Int) -> [RetJournal] {
