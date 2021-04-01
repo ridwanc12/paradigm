@@ -35,14 +35,14 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
             print("RET VALUE: " + ret)
             
             if (ret == "Entry deleted.") {
-                // Entry successfully deleted, return to welcome screen
-                //TODO: @Isha, our we able to segue back to the journal table view controller here?
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let homeView = storyboard.instantiateViewController(identifier: "HomeViewController")
-                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(homeView)
+                // Entry successfully deleted, return to journals screen
+                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
                 
-                /*self.navigationController?.popViewController(animated: true)
-                self.dismiss(animated: true, completion: nil)*/
+                //uncomment if want to return to welcome screen after delete
+                /*let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let homeView = storyboard.instantiateViewController(identifier: "HomeViewController")
+                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(homeView)*/
                 
             } else {
                 let incorrectPassAlert = UIAlertController(title: "Oops!", message: "Something went wrong on our end. Please try again.", preferredStyle: .alert)
