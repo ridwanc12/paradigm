@@ -117,7 +117,23 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
             }
             if (allowEdit) {
                 // call databaserequest
+                // pos, neg, mix, neutral not really being updated
                 print("calling edit entry request")
+                var sentiment = "POSITIVE"
+                if (updatedSentScore <= 0.0) {
+                    sentiment = "NEGATIVE"
+                }
+                let ret = databaseRequestEditEntry(jourID: String(journID), entry: journal.entry, sentiment: sentiment, sentScore: String(updatedSentScore), hidden: String(journal.hidden), rating: String(journal.rating), topics: updatedTopics, positive: "", negative: "", mixed: "", neutral: "")
+                if (ret == "Entry edited") {
+                    let alert = UIAlertController(title: "Success", message: "Entry successfully updated.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                    self.present(alert, animated: true)
+                } else {
+                    let alert = UIAlertController(title: "Oops!", message: "Something went wrong on our end, please try again.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+                    self.present(alert, animated: true)
+                }
+                
             }
             
             // TODO: Update the label of the Sentiment based on the sentScore
