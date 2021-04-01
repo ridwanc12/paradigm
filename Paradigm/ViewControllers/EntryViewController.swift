@@ -18,6 +18,7 @@ class EntryViewController: UITableViewController {
     @IBOutlet weak var quoteTextField: UITextView!
     
     var formattedQuote: String!
+    var firstTime = true
     
     var tenTopics:[String] = []
     var tenSentiments:[Double] = []
@@ -35,16 +36,20 @@ class EntryViewController: UITableViewController {
         // Do any additional setup after loading the view.
         greetingLabel.text = "Hello, " + Utils.global_firstName
         
-        //retrieve and format quote
-        let quote = databaseRequestGetQuote()
-        let index = quote.firstIndex(of: ".")
-        let authorIndex = quote.index(quote.lastIndex(of: ".")!, offsetBy: 2)
-        formattedQuote = "\"" + quote[..<index!] + "\" -" + quote[authorIndex...]
-        quoteTextField.text = formattedQuote
-
-        
-        // Setup gradient background for chart
-        setGradientBackground()
+        //set up that should only happen once
+        if (firstTime) {
+            // Setup gradient background for chart
+            setGradientBackground()
+            
+            //retrieve and format quote
+            let quote = databaseRequestGetQuote()
+            let index = quote.firstIndex(of: ".")
+            let authorIndex = quote.index(quote.lastIndex(of: ".")!, offsetBy: 2)
+            formattedQuote = "\"" + quote[..<index!] + "\" -" + quote[authorIndex...]
+            quoteTextField.text = formattedQuote
+            
+            firstTime = false
+        }
         
         let journals:[Double]! = [1, 2, 3, 4, 5, 6, 7]
 //        let sentiments:[Double]! = [0.9, 0.3, -0.1, -0.6, 0.4, -0.7, 0.85]
@@ -58,6 +63,9 @@ class EntryViewController: UITableViewController {
         
         (tenTopics, tenSentiments) = journalTopics(entries: entries)
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {

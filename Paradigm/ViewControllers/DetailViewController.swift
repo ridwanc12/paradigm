@@ -104,7 +104,7 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
             if (updatedSentScore < -1.0 || updatedSentScore > 1.0) {
                 //custom sent score out of range
                 allowEdit = false
-                let alert = UIAlertController(title: "Invalid Score", message: "Please enter a decimal value between 0.0 and 1.0.", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Invalid Score", message: "Please enter a decimal value between -1.0 and 1.0.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
                 self.present(alert, animated: true)
             }
@@ -123,7 +123,7 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
                 if (updatedSentScore <= 0.0) {
                     sentiment = "NEGATIVE"
                 }
-                let ret = databaseRequestEditEntry(jourID: String(journID), entry: journal.entry, sentiment: sentiment, sentScore: String(updatedSentScore), hidden: String(journal.hidden), rating: String(journal.rating), topics: updatedTopics, positive: "", negative: "", mixed: "", neutral: "")
+                let ret = databaseRequestEditEntry(jourID: String(journID), entry: journal.entry, sentiment: sentiment, sentScore: String(updatedSentScore), hidden: String(journal.hidden), rating: String(journal.rating), topics: updatedTopics, positive: "0.0", negative: "0.0", mixed: "0.0", neutral: "0.0")
                 if (ret == "Entry edited") {
                     let alert = UIAlertController(title: "Success", message: "Entry successfully updated.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))

@@ -187,6 +187,7 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        viewDidLoad()
         journals = retToJournal(retjournals: getJournals(userID: Int(Utils.global_userID)!))
         self.tableView.reloadData()
         print("table reloaded")
