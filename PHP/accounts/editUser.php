@@ -1,6 +1,7 @@
 <?php
 // Include config file
 require_once "./dbconfig.php";
+require "./mail.php";
 
 // Define variables and initialize with empty values
 $email = $firstName = $lastName = $userID = $param_userID = "";

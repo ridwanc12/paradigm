@@ -33,7 +33,7 @@ if ($stmt = $pdo->prepare($sql)) {
                 $userInfo = array("userID" => $row["userID"],
                                "firstName" => $row["firstName"],
                                "lastName" => $row["lastName"]);
-                echo "Login successful";
+                echo "Login successful ";
                 echo json_encode($userInfo);
             } else {
                 echo "Incorrect password. Please try again.";

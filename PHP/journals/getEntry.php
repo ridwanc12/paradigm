@@ -39,7 +39,7 @@ if ($stmt = $pdo->prepare($sql)) {
             $negative = $row['negative'];
             $mixed = $row['mixed'];
             $neutral = $row['neutral'];
-            $all_entries[$created] = array("jourID" => $jourID,
+            array_push($all_entries, array("jourID" => $jourID,
                                            "userID" => $userID,
                                            "entry" => $decrypted_entry,
                                            "created" => $created,
@@ -52,7 +52,7 @@ if ($stmt = $pdo->prepare($sql)) {
                                            "positive" => $positive,
                                            "negative" => $negative,
                                            "mixed" => $mixed,
-                                           "neutral" => $neutral); 
+                                           "neutral" => $neutral)); 
         }
         $json = json_encode($all_entries, JSON_PRETTY_PRINT);
         echo $json;
