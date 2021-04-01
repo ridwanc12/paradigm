@@ -205,7 +205,7 @@ class ParadigmTests: XCTestCase {
     }
     
     func testQuote(){
-        getQuote()
+        print(getQuote())
     }
 
 }
