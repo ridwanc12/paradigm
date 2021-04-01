@@ -38,8 +38,9 @@ class EntryViewController: UITableViewController {
         //retrieve and format quote
         let quote = databaseRequestGetQuote()
         let index = quote.firstIndex(of: ".")
-        let authorIndex = quote.index(quote.firstIndex(of: ".")!, offsetBy: 2)
+        let authorIndex = quote.index(quote.lastIndex(of: ".")!, offsetBy: 2)
         formattedQuote = "\"" + quote[..<index!] + "\" -" + quote[authorIndex...]
+        quoteTextField.text = formattedQuote
 
         
         // Setup gradient background for chart
