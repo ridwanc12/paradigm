@@ -89,15 +89,7 @@ class JournalViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         titleLabel.sizeToFit()
         timeLabel.sizeToFit()
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en-US")
-        dateFormatter.setLocalizedDateFormatFromTemplate("EEEE MMM d yyyy")
-        
-        timeLabel!.text = ""
-        timeLabel!.text! += dateFormatter.string(from: Date())
-        
-        dateFormatter.setLocalizedDateFormatFromTemplate("h:mm a")
-        timeLabel!.text! += " at " + dateFormatter.string(from: Date())
+        timeLabeler(label: &timeLabel!.text!, date: Date())
         
     }
     
