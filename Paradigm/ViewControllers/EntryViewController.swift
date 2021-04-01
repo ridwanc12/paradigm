@@ -83,7 +83,7 @@ class EntryViewController: UITableViewController {
         line1.circleRadius = 4
         line1.circleHoleRadius = 0
         line1.circleColors = [NSUIColor.black]
-        line1.mode = .cubicBezier
+//        line1.mode = .cubicBezier
         
         let data = LineChartData() // Object for chart
         data.addDataSet(line1) //Add line to dataSet
