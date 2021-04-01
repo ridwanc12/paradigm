@@ -121,12 +121,15 @@ class DetailViewController: UITableViewController, UITextViewDelegate, UITextFie
         titleLabel.text = journal.entry
         subtitleTextField.text = journal.topics
         sentimentTextField.text = String(journal.sentiment)
-        sentScoreTextField.text = String(journal.sentScore)
+        let roundedSentiment = (journal.sentScore * 100).rounded() / 100
+        sentScoreTextField.text = String(roundedSentiment)
         
         titleLabel.sizeToFit()
         subtitleTextField.sizeToFit()
         sentimentTextField.sizeToFit()
         sentScoreTextField.sizeToFit()
+        
+        timeLabeler(label: &timeLabel!.text!, date: journal.lastedited)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
