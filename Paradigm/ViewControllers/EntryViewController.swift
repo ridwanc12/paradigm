@@ -101,21 +101,26 @@ class EntryViewController: UITableViewController {
         // Axis and gridline configuration
         chart.leftAxis.axisMinimum = -1
         chart.leftAxis.axisMaximum = 1
-        chart.rightAxis.enabled = false
         chart.leftAxis.enabled = false
         chart.leftAxis.drawGridLinesEnabled = false
         chart.leftAxis.drawLabelsEnabled = false
-        chart.legend.enabled = false
+        chart.leftAxis.drawAxisLineEnabled = false
+        
         chart.xAxis.enabled = false
         chart.xAxis.drawGridLinesEnabled = false
         chart.xAxis.drawLabelsEnabled = false
+        chart.xAxis.drawAxisLineEnabled = false
+        
+        chart.rightAxis.enabled = false
+        
+        chart.legend.enabled = false
         
         // Background color and border setup
         chart.backgroundColor = UIColor.white
         chart.layer.borderWidth = 3
         
         chart.data = data //add chart data to the chart and update
-        chart.animate(yAxisDuration: 2, easingOption: ChartEasingOption.easeInOutSine)
+        chart.animate(yAxisDuration: 1.5, easingOption: ChartEasingOption.easeInOutSine)
 //        chart.chartDescription?.text = "Mood over time" // Set the description for the graph
     }
     

@@ -17,3 +17,15 @@ class Utils {
     static var global_lastName = "lastName"
     
 }
+
+func timeLabeler(label: inout String, date: Date) {
+    let dateFormatter = DateFormatter()
+    dateFormatter.locale = Locale(identifier: "en-US")
+    dateFormatter.setLocalizedDateFormatFromTemplate("EEEE MMM d yyyy")
+    
+    label = ""
+    label += dateFormatter.string(from: date)
+    
+    dateFormatter.setLocalizedDateFormatFromTemplate("h:mm a")
+    label += " at " + dateFormatter.string(from: date)
+}

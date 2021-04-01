@@ -1474,11 +1474,11 @@
             <objects>
                 <viewController id="KH1-Cj-wXU" customClass="JournalViewController" customModule="Paradigm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Zr-Ou-bdx">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="91" translatesAutoresizingMaskIntoConstraints="NO" id="1nJ-Bf-RRU">
-                                <rect key="frame" x="55" y="115.66666666666669" width="280" height="613"/>
+                                <rect key="frame" x="55" y="88.666666666666686" width="280" height="613"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Journal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3C-ix-vle">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="40.666666666666664"/>
@@ -1656,7 +1656,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="BjI-MV-BZj"/>
+        <segue reference="ylT-Yv-D1r"/>
         <segue reference="igD-V9-GtV"/>
     </inferredMetricsTieBreakers>
     <resources>
