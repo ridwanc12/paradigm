@@ -186,6 +186,12 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        journals = retToJournal(retjournals: getJournals(userID: Int(Utils.global_userID)!))
+        self.tableView.reloadData()
+        print("table reloaded")
+    }
+    
     
     func getJournalNum(userID: String) -> String {
         let semaphore = DispatchSemaphore (value: 0)
