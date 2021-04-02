@@ -59,7 +59,7 @@ struct MonthSection {
 
 class JournalsTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
     
-    var numJournals = ""
+    var numJournals = "0"
     @IBOutlet weak var labelText: UILabel!
     @IBOutlet weak var labelNum: UILabel!
     
@@ -128,7 +128,7 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
         }
         else {
             journal = section.journals[indexPath.row]
-            labelNum.text = String(journals.count)
+            labelNum.text = numJournals
         }
         
         let dateFormatter = DateFormatter()
@@ -183,6 +183,8 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
         
         //get number of journals written by user
         numJournals = getJournalNum(userID: Utils.global_userID)
+        labelNum.text = numJournals
+        
         
     }
     
