@@ -45,7 +45,7 @@ class ProfileTableViewController: UITableViewController {
                     let ret = self.databaseRequestEditUser(userID: userID, first: firstname, last: lastname, email: email)
                     print("RET VALUE: " + ret)
                     
-                    if (ret == "account edited.") {
+                    if (ret.contains("account edited")) {
                         //successfully edited info
                         Utils.global_firstName = firstname
                         UserDefaults.standard.set(firstname, forKey: "firstName")
