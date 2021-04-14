@@ -230,7 +230,13 @@
                             <outlet property="delegate" destination="yP3-d5-SCY" id="gXI-jr-tcq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="RJQ-1X-6sP"/>
+                    <navigationItem key="navigationItem" id="RJQ-1X-6sP">
+                        <barButtonItem key="leftBarButtonItem" title="Share" id="QXf-xa-E6H">
+                            <connections>
+                                <segue destination="bz7-4U-m4D" kind="presentation" id="Laa-yR-tO0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="chart" destination="Ltm-AT-jOh" id="0Q3-ue-zA3"/>
                         <outlet property="chartBackground" destination="sZ5-xY-oOO" id="mfv-a3-PCz"/>
@@ -1467,6 +1473,21 @@
             </objects>
             <point key="canvasLocation" x="-1358.4615384615383" y="2105.6872037914691"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="fcd-t6-4gB">
+            <objects>
+                <viewController id="bz7-4U-m4D" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9QA-0d-FsR">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="KWI-vZ-CJF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U7b-EF-4UL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3357" y="2106"/>
+        </scene>
         <!--Journal View Controller-->
         <scene sceneID="rqh-BH-X5G">
             <objects>
@@ -1654,7 +1675,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ylT-Yv-D1r"/>
+        <segue reference="BjI-MV-BZj"/>
         <segue reference="igD-V9-GtV"/>
     </inferredMetricsTieBreakers>
     <resources>
