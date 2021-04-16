@@ -61,11 +61,12 @@ if ($stmt = $pdo->prepare($sql)) {
     $stmt->bindParam(":hash", $hash, PDO::PARAM_STR);
     $stmt->bindParam(":verified", $param_verified, PDO::PARAM_INT);
     // Set parameters
-    $param_verified = 1;
+    $param_verified = 0;
     $param_email = $email;
     $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
     $firstName = trim($_POST["firstName"]);
     $lastName = trim($_POST["lastName"]);
+
 
     // Attempt to execute the prepared statement
     if ($stmt->execute()) {
@@ -92,10 +93,15 @@ if ($stmt = $pdo->prepare($sql)) {
             if ($stmt->execute()) {
                 // If rowcount == 1, email is already registered
                 if ($stmt->rowCount() == 1) {
-                   $stmt->setFetchMode(PDO::FETCH_ASSOC);
-                   $row = $stmt->fetch();
-                   $userID = $row["userID"];
-                   echo "\n" . $userID;
+                    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                    $row = $stmt->fetch();
+                    $userID = $row["userID"];
+                    echo "\n" . $userID;
+                    // Insert userID into streaks table to keep track of streaks
+                    $sql = "INSERT INTO streaks (userID) VALUES (:userID)";
+                    $streak = $pdo->prepare($sql);
+                    $streak->bindParam(":userID", $userID, PDO::PARAM_INT);
+                    $streak->execute();
                 } else {
                     echo "Something went wrong trying to retreive userID.";
                 }
