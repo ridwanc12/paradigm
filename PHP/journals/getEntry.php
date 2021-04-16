@@ -66,3 +66,4 @@ if ($stmt = $pdo->prepare($sql)) {
 
 // Close connection with database
 unset($pdo);
+?>

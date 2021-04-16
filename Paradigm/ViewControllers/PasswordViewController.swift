@@ -43,7 +43,7 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
             let ret = databaseRequestChangePassword(oldPass: currPass, newPass: newPass, email: Utils.global_email)
             print("RET VALUE: " + ret)
             
-            if (ret == "Password changed.") {
+            if (ret.contains("Password changed.")) {
                 //successfully changed password
                 let alert = UIAlertController(title: "Success", message: "Your account's password has been updated.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
