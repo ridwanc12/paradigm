@@ -209,8 +209,8 @@ class ParadigmTests: XCTestCase {
     }
     
     func testJournalCount() {
-        let userID = 61
-        let expectedNum = 2
+        let userID = 33
+        let expectedNum = 14
         
         let semaphore = DispatchSemaphore (value: 0)
         var ret = "";
