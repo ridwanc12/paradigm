@@ -24,8 +24,19 @@ class PDFCreator {
         self.tenSentiments = tenSentiments
         self.firstName = firstName
         self.title = firstName + "'s Paradigm Report"
-        self.body = "test body"
         self.chart = chart
+        
+        var body = "The following are your main topics with their corresponding sentiment scores:\n"
+        for i in 0...(tenTopics.count - 1) {
+            print("i" + String(i))
+            if (i == tenTopics.count - 1) {
+                body = body + tenTopics[i] + " (" + String(tenSentiments[i]) + ")"
+            } else {
+                body = body + tenTopics[i] + " (" + String(tenSentiments[i]) + "), "
+            }
+        }
+        self.body = body
+        
     }
 
     
