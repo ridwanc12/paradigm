@@ -1773,7 +1773,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Reminder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lV4-ub-ClN">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="35"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="350" id="4P1-71-UVs"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="4P1-71-UVs"/>
                                             <constraint firstAttribute="height" constant="35" id="JkL-bM-mNO"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
@@ -1783,7 +1783,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get daily reminders to journal everyday and keep track of your mental health." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBx-dF-ile">
                                         <rect key="frame" x="0.0" y="35.999999999999986" width="350" height="70"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="350" id="0SE-1u-OGC"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="0SE-1u-OGC"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="66" id="r0O-Qd-cB5"/>
                                             <constraint firstAttribute="height" constant="70" id="vqE-gW-PQk"/>
                                         </constraints>

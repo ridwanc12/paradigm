@@ -150,6 +150,14 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        <#code#>
+    }
+    
     
     // Outlets
     @IBOutlet weak var tableView: UITableView!
