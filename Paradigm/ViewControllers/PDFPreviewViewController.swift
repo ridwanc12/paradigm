@@ -17,7 +17,14 @@ class PDFPreviewViewController: UIViewController {
     var tenSentiments:[Double] = []
     var chart:UIImage = UIImage()
     
-
+    @IBAction func shareButton(_ sender: Any) {
+        let vc = UIActivityViewController(
+          activityItems: [documentData],
+          applicationActivities: []
+        )
+        present(vc, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
