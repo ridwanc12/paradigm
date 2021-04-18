@@ -235,9 +235,7 @@
                     <navigationItem key="navigationItem" id="RJQ-1X-6sP">
                         <barButtonItem key="leftBarButtonItem" title="Share" id="H5y-rw-lut">
                             <connections>
-                                <segue destination="mkz-Wb-wcQ" kind="popoverPresentation" popoverAnchorBarButtonItem="H5y-rw-lut" id="jCR-dP-vrw">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
+                                <segue destination="mkz-Wb-wcQ" kind="push" identifier="shareReportSegue" id="jCR-dP-vrw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1526,11 +1524,18 @@
             <objects>
                 <viewController id="mkz-Wb-wcQ" customClass="PDFPreviewViewController" customModule="Paradigm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8uG-yG-GEx">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="pMM-UX-qpx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Ty9-Fr-985">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.arrow.up" catalog="system" id="CsL-xy-USG">
+                            <connections>
+                                <action selector="shareButton:" destination="mkz-Wb-wcQ" id="iUH-A2-EZf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x2K-E7-xir" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1725,7 +1730,7 @@
         <scene sceneID="M6f-cp-Acz">
             <objects>
                 <viewController id="s1U-wu-HbK" userLabel="Reminders View Controller" customClass="RemindersViewController" customModule="Paradigm" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="WgF-Mw-ndL">
+                    <view key="view" contentMode="scaleToFill" id="WgF-Mw-ndL">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1837,6 +1842,7 @@
         <image name="key" catalog="system" width="86" height="128"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="sun.max" catalog="system" width="128" height="124"/>
         <image name="text.book.closed" catalog="system" width="115" height="128"/>
         <image name="xmark.seal" catalog="system" width="128" height="128"/>

@@ -12,13 +12,25 @@ import PDFKit
 class PDFPreviewViewController: UIViewController {
     
     public var documentData: Data?
-
+    
+    var tenTopics:[String] = []
+    var tenSentiments:[Double] = []
+    var chart:UIImage = UIImage()
+    
+    @IBAction func shareButton(_ sender: Any) {
+        let vc = UIActivityViewController(
+          activityItems: [documentData],
+          applicationActivities: []
+        )
+        present(vc, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        let pdfCreator = PDFCreator()
+        let pdfCreator = PDFCreator(firstName: Utils.global_firstName, tenTopics: tenTopics, tenSentiments: tenSentiments, chart: chart)
         self.documentData = pdfCreator.createFlyer()
         
         // Add PDFView to view controller.
