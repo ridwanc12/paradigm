@@ -9,8 +9,20 @@
 import UIKit
 import Charts
 
+// extension for converting UIView to an image
+extension UIView {
+
+    // Using a function since `var image` might conflict with an existing variable
+    // (like on `UIImageView`)
+    func asImage() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
+    }
+}
+
 class EntryViewController: UITableViewController {
-    
     
     @IBOutlet weak var chart: LineChartView!
     @IBOutlet weak var chartBackground: UIView!
@@ -262,14 +274,23 @@ class EntryViewController: UITableViewController {
         return ret
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        //shareReportSegue
+        if (segue.identifier == "shareReportSegue") {
+            let vc = segue.destination as? PDFPreviewViewController
+            vc?.tenTopics = tenTopics
+            vc?.tenSentiments = tenSentiments
+            vc?.chart = chart.asImage()
+        }
+        
     }
-    */
+    
 
 }

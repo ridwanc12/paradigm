@@ -235,7 +235,7 @@
                     <navigationItem key="navigationItem" id="RJQ-1X-6sP">
                         <barButtonItem key="leftBarButtonItem" title="Share" id="H5y-rw-lut">
                             <connections>
-                                <segue destination="mkz-Wb-wcQ" kind="popoverPresentation" popoverAnchorBarButtonItem="H5y-rw-lut" id="jCR-dP-vrw">
+                                <segue destination="mkz-Wb-wcQ" kind="popoverPresentation" identifier="shareReportSegue" popoverAnchorBarButtonItem="H5y-rw-lut" id="jCR-dP-vrw">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
@@ -1725,7 +1725,7 @@
         <scene sceneID="M6f-cp-Acz">
             <objects>
                 <viewController id="s1U-wu-HbK" userLabel="Reminders View Controller" customClass="RemindersViewController" customModule="Paradigm" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="WgF-Mw-ndL">
+                    <view key="view" contentMode="scaleToFill" id="WgF-Mw-ndL">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
