@@ -235,7 +235,7 @@
                     <navigationItem key="navigationItem" id="RJQ-1X-6sP">
                         <barButtonItem key="leftBarButtonItem" title="Share" id="H5y-rw-lut">
                             <connections>
-                                <segue destination="mkz-Wb-wcQ" kind="push" identifier="shareReportSegue" id="jCR-dP-vrw"/>
+                                <segue destination="mkz-Wb-wcQ" kind="show" identifier="shareReportSegue" id="jCR-dP-vrw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1669,9 +1669,6 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.73333333329999995" green="0.79607843140000001" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <accessibility key="accessibilityConfiguration" identifier="Journal Cell"/>
-                                        <connections>
-                                            <segue destination="W3F-54-5Uk" kind="show" id="hft-WG-DRf"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1720,6 +1717,7 @@
                         <outlet property="labelNum" destination="gLI-pq-kRk" id="Sbf-9k-YVB"/>
                         <outlet property="labelText" destination="U5r-Lr-z3T" id="cIz-T1-u4n"/>
                         <outlet property="tableView" destination="led-j6-zgD" id="mnK-PA-IXI"/>
+                        <segue destination="W3F-54-5Uk" kind="show" identifier="detailJournalSegue" id="vGi-Gt-p9u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S03-ti-3Mh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1734,80 +1732,84 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="rko-HN-4Uq">
-                                <rect key="frame" x="32.666666666666657" y="294.33333333333331" width="325" height="254.99999999999994"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="62" translatesAutoresizingMaskIntoConstraints="NO" id="0VY-Iz-9Uf">
+                                <rect key="frame" x="20" y="128" width="350" height="423"/>
                                 <subviews>
-                                    <textField contentMode="scaleToFill" verticalHuggingPriority="200" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="set time " textAlignment="center" minimumFontSize="17" background="Text-Border" translatesAutoresizingMaskIntoConstraints="NO" id="dNR-Gp-y5c" userLabel="Set Time">
-                                        <rect key="frame" x="0.0" y="0.0" width="325" height="40"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="emailTextField"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Aco-79-wVs"/>
-                                            <constraint firstAttribute="width" constant="325" id="cDs-Xg-MDM"/>
-                                        </constraints>
-                                        <color key="textColor" red="0.20021063089999999" green="0.21161636710000001" blue="0.2235293388" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="timeTapped:" destination="s1U-wu-HbK" eventType="valueChanged" id="cxC-QQ-61B"/>
-                                        </connections>
-                                    </textField>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEC-8X-zjK">
-                                        <rect key="frame" x="0.0" y="90" width="325" height="65"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="325" id="8iT-QK-nIJ"/>
-                                            <constraint firstAttribute="height" constant="65" id="TTQ-DX-O9r"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <state key="normal" title="Set Reminder" backgroundImage="Button"/>
-                                        <connections>
-                                            <action selector="setReminderTapped:" destination="s1U-wu-HbK" eventType="touchUpInside" id="cqS-wr-60Y"/>
-                                        </connections>
-                                    </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cxR-Mp-s7D">
-                                        <rect key="frame" x="0.0" y="205" width="325" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="325" id="82t-66-7mu"/>
-                                            <constraint firstAttribute="height" constant="50" id="XId-br-xTa"/>
-                                        </constraints>
-                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="rYA-kI-kd8">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="106"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Reminder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lV4-ub-ClN">
+                                                <rect key="frame" x="0.0" y="0.0" width="350" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="4P1-71-UVs"/>
+                                                    <constraint firstAttribute="height" constant="35" id="JkL-bM-mNO"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get daily reminders to journal everyday and keep track of your mental health." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBx-dF-ile">
+                                                <rect key="frame" x="0.0" y="36" width="350" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="0SE-1u-OGC"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="66" id="r0O-Qd-cB5"/>
+                                                    <constraint firstAttribute="height" constant="70" id="vqE-gW-PQk"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <color key="textColor" red="0.73333333329999995" green="0.79607843140000001" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="rko-HN-4Uq">
+                                        <rect key="frame" x="12.666666666666657" y="168" width="325" height="255"/>
+                                        <subviews>
+                                            <textField contentMode="scaleToFill" verticalHuggingPriority="200" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="set time " textAlignment="center" minimumFontSize="17" background="Text-Border" translatesAutoresizingMaskIntoConstraints="NO" id="dNR-Gp-y5c" userLabel="Set Time">
+                                                <rect key="frame" x="0.0" y="0.0" width="325" height="40"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="emailTextField"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="Aco-79-wVs"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="325" id="cDs-Xg-MDM"/>
+                                                </constraints>
+                                                <color key="textColor" red="0.20021063089999999" green="0.21161636710000001" blue="0.2235293388" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="timeTapped:" destination="s1U-wu-HbK" eventType="valueChanged" id="cxC-QQ-61B"/>
+                                                </connections>
+                                            </textField>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEC-8X-zjK">
+                                                <rect key="frame" x="0.0" y="90" width="325" height="65"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="325" id="8iT-QK-nIJ"/>
+                                                    <constraint firstAttribute="height" constant="65" id="TTQ-DX-O9r"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <state key="normal" title="Set Reminder" backgroundImage="Button"/>
+                                                <connections>
+                                                    <action selector="setReminderTapped:" destination="s1U-wu-HbK" eventType="touchUpInside" id="cqS-wr-60Y"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cxR-Mp-s7D">
+                                                <rect key="frame" x="0.0" y="205" width="325" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="325" id="82t-66-7mu"/>
+                                                    <constraint firstAttribute="height" constant="50" id="XId-br-xTa"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="rYA-kI-kd8">
-                                <rect key="frame" x="16" y="125.66666666666669" width="350" height="106"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Reminder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lV4-ub-ClN">
-                                        <rect key="frame" x="0.0" y="0.0" width="350" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="4P1-71-UVs"/>
-                                            <constraint firstAttribute="height" constant="35" id="JkL-bM-mNO"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get daily reminders to journal everyday and keep track of your mental health." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBx-dF-ile">
-                                        <rect key="frame" x="0.0" y="35.999999999999986" width="350" height="70"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="0SE-1u-OGC"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="66" id="r0O-Qd-cB5"/>
-                                            <constraint firstAttribute="height" constant="70" id="vqE-gW-PQk"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" red="0.73333333329999995" green="0.79607843140000001" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="bLA-Lu-YqF"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zc7-gN-YeL"/>
                         <color key="backgroundColor" red="0.25098039220000001" green="0.28627450980000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="rYA-kI-kd8" firstAttribute="leading" secondItem="zc7-gN-YeL" secondAttribute="leading" constant="16" id="AFg-Bv-ogZ"/>
-                            <constraint firstItem="rYA-kI-kd8" firstAttribute="top" secondItem="zc7-gN-YeL" secondAttribute="top" constant="37.670000000000002" id="Aa4-1G-p6C"/>
-                            <constraint firstItem="rko-HN-4Uq" firstAttribute="centerX" secondItem="WgF-Mw-ndL" secondAttribute="centerX" id="LtU-eU-Aj8"/>
-                            <constraint firstItem="rko-HN-4Uq" firstAttribute="top" secondItem="rYA-kI-kd8" secondAttribute="bottom" constant="62.670000000000002" id="gkc-0y-oBh"/>
-                            <constraint firstItem="rko-HN-4Uq" firstAttribute="centerY" secondItem="WgF-Mw-ndL" secondAttribute="centerY" id="jKZ-cS-1BF"/>
-                            <constraint firstItem="zc7-gN-YeL" firstAttribute="trailing" secondItem="rYA-kI-kd8" secondAttribute="trailing" constant="24" id="mcS-fw-T2c"/>
+                            <constraint firstItem="0VY-Iz-9Uf" firstAttribute="top" secondItem="zc7-gN-YeL" secondAttribute="top" constant="40" id="6Iw-oK-dQM"/>
+                            <constraint firstItem="0VY-Iz-9Uf" firstAttribute="centerX" secondItem="WgF-Mw-ndL" secondAttribute="centerX" id="QpT-w5-CpU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="VxZ-kR-6H7">
@@ -1823,7 +1825,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="BjI-MV-BZj"/>
+        <segue reference="ylT-Yv-D1r"/>
         <segue reference="igD-V9-GtV"/>
     </inferredMetricsTieBreakers>
     <resources>
