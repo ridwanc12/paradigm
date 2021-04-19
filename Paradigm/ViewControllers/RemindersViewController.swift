@@ -26,7 +26,7 @@ class RemindersViewController: UIViewController {
         let time = Date()
 
         formatter.locale = Locale(identifier: "en_gb")
-        formatter.dateFormat = "HH:mm:ss"
+        formatter.dateFormat = "HH:mm"
         
         // Set the text field as the time
         timeTextField.text = formatter.string(from: time)
