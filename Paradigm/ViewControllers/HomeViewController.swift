@@ -21,8 +21,8 @@ class HomeViewController: UITabBarController, UITextFieldDelegate {
                 })
         // Set content for notificaiton
         let content = UNMutableNotificationContent()
-        content.title = "Weekly Staff Meeting"
-        content.body = "Every Tuesday at 2pm"
+        content.title = "Journal Reminder"
+        content.body = "Don't forget to record your short journal today!"
         
         // Configure the recurring date.
         var dateComponents = DateComponents()
@@ -43,11 +43,12 @@ class HomeViewController: UITabBarController, UITextFieldDelegate {
         // Schedule the request with the system.
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.add(request) { (error) in
-           if error != nil {
-              // Handle any errors.
-            print("Error")
-           }
+            if error != nil {
+                // Handle any errors.
+                print("Error")
+            }
         }
+        
         print("Notification set")
         // Do any additional setup after loading the view.
         // Customizing the Tab Bar
