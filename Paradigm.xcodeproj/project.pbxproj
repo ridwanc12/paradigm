@@ -13,6 +13,7 @@
 		561D50DE262A7116006A8853 /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561D50DD262A7116006A8853 /* RemindersViewController.swift */; };
 		562BBC2A260C0C87004B5D31 /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562BBC29260C0C87004B5D31 /* DeleteAccountViewController.swift */; };
 		56585E0F25D3C00600581351 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56585E0E25D3C00600581351 /* LoginViewController.swift */; };
+		566E6076262EA32E0040B651 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566E6075262EA32E0040B651 /* TermsViewController.swift */; };
 		5698EA5725FF170100AC432C /* JournalsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698EA5625FF170100AC432C /* JournalsTableViewController.swift */; };
 		5698EA5D26000D1B00AC432C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698EA5C26000D1B00AC432C /* DetailViewController.swift */; };
 		56A2004425E430E20098E623 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A2004325E430E20098E623 /* EntryViewController.swift */; };
@@ -52,6 +53,7 @@
 		561D50DD262A7116006A8853 /* RemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
 		562BBC29260C0C87004B5D31 /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		56585E0E25D3C00600581351 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		566E6075262EA32E0040B651 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		5698EA5625FF170100AC432C /* JournalsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalsTableViewController.swift; sourceTree = "<group>"; };
 		5698EA5C26000D1B00AC432C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		56A2004325E430E20098E623 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				562BBC29260C0C87004B5D31 /* DeleteAccountViewController.swift */,
 				561D50DD262A7116006A8853 /* RemindersViewController.swift */,
 				6C617129262A895900768166 /* PDFPreviewViewController.swift */,
+				566E6075262EA32E0040B651 /* TermsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				566E6076262EA32E0040B651 /* TermsViewController.swift in Sources */,
 				562BBC2A260C0C87004B5D31 /* DeleteAccountViewController.swift in Sources */,
 				56B78C4E25DCD63B006BF8CD /* ProfileTableViewController.swift in Sources */,
 				56A2004825E433C00098E623 /* JournalViewController.swift in Sources */,
