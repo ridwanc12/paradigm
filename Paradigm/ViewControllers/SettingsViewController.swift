@@ -16,10 +16,14 @@ class SettingsViewController: UITableViewController {
         if notificationSwitch.isOn {
             // Turn on Notifications
             print("Notification switch is On")
+            UserDefaults.standard.set(true, forKey: "notificationsOn")
+            Utils.turnOnNotification()
         }
         else {
             // Turn off Notifications
             print("Notification switch is Off")
+            UserDefaults.standard.set(false, forKey: "notificationsOn")
+            Utils.turnOffNotifications()
         }
     }
     @IBAction func logoutTapped(_ sender: Any) {
@@ -57,6 +61,12 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Settings"
+        
+        if (UserDefaults.standard.object(forKey: "notificationsOn") == nil) {
+            notificationSwitch.isOn = true
+        } else {
+            notificationSwitch.isOn = UserDefaults.standard.object(forKey: "notificationsOn") as! Bool
+        }
 
         
     }
