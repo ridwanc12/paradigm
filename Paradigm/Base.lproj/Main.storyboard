@@ -1164,36 +1164,48 @@
                                     <constraint firstItem="JBx-MM-MKb" firstAttribute="width" secondItem="KWd-jh-9fy" secondAttribute="width" id="lfb-XU-rcc"/>
                                 </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4cW-zf-H7G">
-                                <rect key="frame" x="27" y="183" width="347" height="469"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms and Conditions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5H-x8-HOe" userLabel="Terms and Conditions ">
-                                <rect key="frame" x="20" y="120" width="350" height="41"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="QhX-dj-VUr">
+                                <rect key="frame" x="20" y="120" width="350" height="555"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms and Conditions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5H-x8-HOe" userLabel="Terms and Conditions ">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="41"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="41" id="kaD-vn-Y4l"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="uCT-fg-tGK"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sfM-6z-nQv">
+                                        <rect key="frame" x="0.0" y="91" width="350" height="464"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="tintColor" red="0.98431372549999996" green="0.75686274509999996" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" red="0.20021063089999999" green="0.21161636710000001" blue="0.2235293388" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="kaD-vn-Y4l"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="uCT-fg-tGK"/>
+                                    <constraint firstAttribute="width" constant="350" id="9nU-5R-zIH"/>
+                                    <constraint firstAttribute="height" constant="555" id="bH6-oS-8OV"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bQb-rn-1vw"/>
                         <color key="backgroundColor" red="0.20021063089999999" green="0.21161636710000001" blue="0.2235293388" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="y5H-x8-HOe" firstAttribute="top" secondItem="bQb-rn-1vw" secondAttribute="top" constant="32" id="3Bb-As-Zd6"/>
                             <constraint firstItem="bQb-rn-1vw" firstAttribute="bottom" secondItem="rDl-5j-k4h" secondAttribute="bottom" constant="40" id="D5d-VF-slk"/>
-                            <constraint firstItem="4cW-zf-H7G" firstAttribute="leading" secondItem="bQb-rn-1vw" secondAttribute="leading" constant="27" id="E7t-QM-IhN"/>
-                            <constraint firstItem="y5H-x8-HOe" firstAttribute="centerX" secondItem="sJx-vh-bE2" secondAttribute="centerX" id="On8-Xh-KJ8"/>
+                            <constraint firstItem="bQb-rn-1vw" firstAttribute="trailing" secondItem="QhX-dj-VUr" secondAttribute="trailing" constant="20" id="JNN-Lb-iRs"/>
+                            <constraint firstItem="QhX-dj-VUr" firstAttribute="top" secondItem="bQb-rn-1vw" secondAttribute="top" constant="32" id="OkB-ML-5ro"/>
+                            <constraint firstItem="QhX-dj-VUr" firstAttribute="leading" secondItem="bQb-rn-1vw" secondAttribute="leading" constant="20" id="T8W-uG-pbz"/>
                             <constraint firstItem="rDl-5j-k4h" firstAttribute="centerX" secondItem="sJx-vh-bE2" secondAttribute="centerX" id="Vmo-VE-cke"/>
-                            <constraint firstItem="bQb-rn-1vw" firstAttribute="trailing" secondItem="4cW-zf-H7G" secondAttribute="trailing" constant="27" id="jeC-A3-cgc"/>
-                            <constraint firstItem="4cW-zf-H7G" firstAttribute="top" secondItem="bQb-rn-1vw" secondAttribute="top" constant="28" id="yQp-Ns-yZe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rjU-JP-Kbo"/>
                     <connections>
-                        <outlet property="customView" destination="4cW-zf-H7G" id="sTN-sq-eDC"/>
+                        <outlet property="textView" destination="sfM-6z-nQv" id="UGz-hh-eL2"/>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="accountCreatedSegue" id="FZK-MS-1Pg"/>
                     </connections>
                 </viewController>
@@ -1822,7 +1834,7 @@
         <scene sceneID="M6f-cp-Acz">
             <objects>
                 <viewController id="s1U-wu-HbK" userLabel="Reminders View Controller" customClass="RemindersViewController" customModule="Paradigm" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="WgF-Mw-ndL">
+                    <view key="view" contentMode="scaleToFill" id="WgF-Mw-ndL">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

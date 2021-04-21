@@ -11,8 +11,7 @@ import WebKit
 
 class TermsViewController: UIViewController, WKNavigationDelegate , WKUIDelegate {
 
-    
-    @IBOutlet weak var customView: UIView!
+    @IBOutlet weak var textView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,14 +19,7 @@ class TermsViewController: UIViewController, WKNavigationDelegate , WKUIDelegate
         // Do any additional setup after loading the view.
         
         // Loading the html page for the Terms and Conditions
-        let url = URL(string: "https://developer.apple.com/documentation/webkit/wkwebview")
-            let request = URLRequest(url: url!)
-            let webView = WKWebView(frame: self.customView.frame)
-            webView.autoresizingMask = [.flexibleWidth, .flexibleHeight] //It assigns Custom View height and width
-            webView.navigationDelegate = self
-            
-            webView.load(request)
-            self.customView.addSubview(webView)
+        textView.text = "Welcome to Paradigm. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."
     }
     
     @IBAction func acceptTapped(_ sender: Any) {
