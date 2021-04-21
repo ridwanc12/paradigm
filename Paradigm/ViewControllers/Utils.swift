@@ -15,6 +15,7 @@ class Utils {
     static var global_email = "..."
     static var global_firstName = "firstName"
     static var global_lastName = "lastName"
+    static let notificationCenter = UNUserNotificationCenter.current()
     
     public static func notificationInit() {
         // Ask for permission to send notification
@@ -24,6 +25,21 @@ class Utils {
                         NSLog("error: \(error)")
                     }
                 })
+        
+        // store notification time is userdefaults
+        if (UserDefaults.standard.object(forKey: "notificationHr") == nil) {
+            UserDefaults.standard.set(12, forKey: "notificationHr") //set default hour for notification to be sent
+        }
+        if (UserDefaults.standard.object(forKey: "notificationMin") == nil) {
+            UserDefaults.standard.set(00, forKey: "notificationMin") //set default min for notification to be sent
+        }
+        
+        //create initial default notification
+        turnOnNotification()
+        
+    }
+    
+    public static func turnOnNotification() {
         // Set content for notificaiton
         let content = UNMutableNotificationContent()
         content.title = "Journal Reminder"
@@ -34,8 +50,8 @@ class Utils {
         dateComponents.calendar = Calendar.current
 
         //dateComponents.weekday = 6    // 1 is Sunday, 7 is Saturday
-        dateComponents.hour = 19        // 24 hour format
-        dateComponents.minute = 47      // minute of hour
+        dateComponents.hour = UserDefaults.standard.object(forKey: "notificationHr") as? Int  // 24 hour format
+        dateComponents.minute = UserDefaults.standard.object(forKey: "notificationMin") as? Int // minute of hour
            
         // Create the trigger as a repeating event.
         let trigger = UNCalendarNotificationTrigger(
@@ -46,15 +62,17 @@ class Utils {
                     content: content, trigger: trigger)
 
         // Schedule the request with the system.
-        let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.add(request) { (error) in
             if error != nil {
                 // Handle any errors.
                 print("Error")
             }
         }
-        
         print("Notification set")
+    }
+    
+    public static func turnOffNotifications() {
+        notificationCenter.removeAllDeliveredNotifications()
     }
     
 }

@@ -17,11 +17,13 @@ class SettingsViewController: UITableViewController {
             // Turn on Notifications
             print("Notification switch is On")
             UserDefaults.standard.set(true, forKey: "notificationsOn")
+            Utils.turnOnNotification()
         }
         else {
             // Turn off Notifications
             print("Notification switch is Off")
             UserDefaults.standard.set(false, forKey: "notificationsOn")
+            Utils.turnOffNotifications()
         }
     }
     @IBAction func logoutTapped(_ sender: Any) {
