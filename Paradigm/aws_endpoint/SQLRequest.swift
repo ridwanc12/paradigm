@@ -8,7 +8,7 @@
 
 import Foundation
 
-func insertJournal(userID: Int, journal: String, sentiment: String, rating: Int, topics: String, positive: Double, negative: Double, mixed: Double, neutral: Double, sentScore: Double) {
+func insertJournal(userID: Int, journal: String, sentiment: String, rating: Int, topics: String, positive: Double, negative: Double, mixed: Double, neutral: Double, sentScore: Double) -> String{
     
     // Convert from types to String for database insertion
     let userID2 = String(userID)
@@ -54,7 +54,7 @@ func insertJournal(userID: Int, journal: String, sentiment: String, rating: Int,
     }
     task.resume()
     semaphore.wait()
-    
+    return ret
 }
 
 func getJournals(userID: Int) -> [RetJournal] {
@@ -167,6 +167,39 @@ func getQuote() -> String{
         ret = String(describing: responseString!)
         print(ret)
         semaphore.signal()
+    }
+    task.resume()
+    semaphore.wait()
+    return ret
+}
+
+func databaseRequestEditEntry(jourID: String, entry: String, sentiment: String, sentScore: String, hidden: String, rating: String, topics: String, positive: String, negative: String, mixed: String, neutral: String) -> String {
+    let semaphore = DispatchSemaphore (value: 0)
+    var ret = "";
+    let sentScore2 = (Double(sentScore)! * 100).rounded() / 100
+    
+    let link = "https://boilerbite.000webhostapp.com/paradigm/editEntry.php"
+    let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
+    request.httpMethod = "POST"
+    
+    let postString = "jourID=\(jourID)&entry=\(entry)&sentiment=\(sentiment)&sentScore=\(sentScore2)&hidden=\(hidden)&rating=\(rating)&topics=\(topics)&positive=\(positive)&negative=\(negative)&mixed=\(mixed)&neutral=\(neutral)"
+    request.httpBody = postString.data(using: String.Encoding.utf8)
+    
+    let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+        
+        if error != nil {
+            print("ERROR")
+            print(String(describing: error!))
+            ret = "ERROR"
+            semaphore.signal()
+            return
+        }
+        
+        print("PRINTING DATA")
+        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+        ret = String(describing: responseString!)
+        semaphore.signal()
+        print(ret)
     }
     task.resume()
     semaphore.wait()

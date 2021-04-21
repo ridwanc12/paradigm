@@ -9,12 +9,31 @@
 import UIKit
 import Charts
 
+// extension for converting UIView to an image
+extension UIView {
+
+    // Using a function since `var image` might conflict with an existing variable
+    // (like on `UIImageView`)
+    func asImage() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
+    }
+}
+
 class EntryViewController: UITableViewController {
-    
     
     @IBOutlet weak var chart: LineChartView!
     @IBOutlet weak var chartBackground: UIView!
     @IBOutlet weak var greetingLabel: UILabel!
+    @IBOutlet weak var quoteTextField: UITextView!
+    
+    @IBOutlet weak var daysLoggedLabel: UILabel!
+    var days = 0
+    
+    var formattedQuote: String!
+    var firstTime = true
     
     var tenTopics:[String] = []
     var tenSentiments:[Double] = []
@@ -28,13 +47,24 @@ class EntryViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         greetingLabel.text = "Hello, " + Utils.global_firstName
-
-        
-        // Setup gradient background for chart
-        setGradientBackground()
+        daysLoggedLabel.text = "Total number of journals logged on censequtive days: " + String(days)
+        //set up that should only happen once
+        if (firstTime) {
+            // Setup gradient background for chart
+            setGradientBackground()
+            
+            //retrieve and format quote
+            let quote = databaseRequestGetQuote()
+            let index = quote.firstIndex(of: ".")
+            let authorIndex = quote.index(quote.lastIndex(of: ".")!, offsetBy: 2)
+            formattedQuote = "\"" + quote[..<index!] + "\" -" + quote[authorIndex...]
+            quoteTextField.text = formattedQuote
+            
+            firstTime = false
+        }
         
         let journals:[Double]! = [1, 2, 3, 4, 5, 6, 7]
 //        let sentiments:[Double]! = [0.9, 0.3, -0.1, -0.6, 0.4, -0.7, 0.85]
@@ -48,6 +78,9 @@ class EntryViewController: UITableViewController {
         
         (tenTopics, tenSentiments) = journalTopics(entries: entries)
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -208,15 +241,56 @@ class EntryViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Weekly Topics                             Avg Sentiment"
     }
+    
+    func databaseRequestGetQuote() -> String {
+        let semaphore = DispatchSemaphore (value: 0)
+        var ret = "";
+        
+        let link = "https://boilerbite.000webhostapp.com/paradigm/getQuote.php"
+        let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
+        request.httpMethod = "POST"
+        
+        let postString = ""
+        request.httpBody = postString.data(using: String.Encoding.utf8)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+            
+            if error != nil {
+                print("ERROR")
+                print(String(describing: error!))
+                ret = "ERROR"
+                semaphore.signal()
+                return
+            }
+            
+            print("PRINTING DATA")
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            ret = String(describing: responseString!)
+            semaphore.signal()
+            print(ret)
+        }
+        task.resume()
+        semaphore.wait()
+        return ret
+    }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        //shareReportSegue
+        if (segue.identifier == "shareReportSegue") {
+            let vc = segue.destination as? PDFPreviewViewController
+            vc?.tenTopics = tenTopics
+            vc?.tenSentiments = tenSentiments
+            vc?.chart = chart.asImage()
+        }
+        
     }
-    */
+    
 
 }

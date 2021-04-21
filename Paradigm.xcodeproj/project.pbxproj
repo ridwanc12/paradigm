@@ -10,6 +10,7 @@
 		2A47DEC197D48D4F7BB6D83E /* Pods_Paradigm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 796D05402F64A4BE09599FFC /* Pods_Paradigm.framework */; };
 		560D867925DC3BE60009CBF2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560D867825DC3BE60009CBF2 /* HomeViewController.swift */; };
 		560D867D25DC452E0009CBF2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560D867C25DC452E0009CBF2 /* SettingsViewController.swift */; };
+		561D50DE262A7116006A8853 /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561D50DD262A7116006A8853 /* RemindersViewController.swift */; };
 		562BBC2A260C0C87004B5D31 /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562BBC29260C0C87004B5D31 /* DeleteAccountViewController.swift */; };
 		56585E0F25D3C00600581351 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56585E0E25D3C00600581351 /* LoginViewController.swift */; };
 		5698EA5725FF170100AC432C /* JournalsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698EA5625FF170100AC432C /* JournalsTableViewController.swift */; };
@@ -19,7 +20,10 @@
 		56A2004E25ED99D60098E623 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A2004D25ED99D60098E623 /* PasswordViewController.swift */; };
 		56B0170A25D73462008C3143 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B0170925D73462008C3143 /* SignUpViewController.swift */; };
 		56B78C4E25DCD63B006BF8CD /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B78C4D25DCD63B006BF8CD /* ProfileTableViewController.swift */; };
+		6C617126262A877400768166 /* PDFCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C617125262A877400768166 /* PDFCreator.swift */; };
+		6C61712A262A895900768166 /* PDFPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C617129262A895900768166 /* PDFPreviewViewController.swift */; };
 		6C796FAE25E5EB90009F389D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C796FAD25E5EB90009F389D /* Utils.swift */; };
+		6CBDE2C5262729B90050438C /* TouchIDAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBDE2C4262729B90050438C /* TouchIDAuthentication.swift */; };
 		93050B8125D89CB200DA8BAB /* LambdaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93050B8025D89CB200DA8BAB /* LambdaRequest.swift */; };
 		93050BA025D8A47400DA8BAB /* ParadigmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93050B9F25D8A47400DA8BAB /* ParadigmTests.swift */; };
 		93050BB825D8AD1200DA8BAB /* DataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93050BB725D8AD1200DA8BAB /* DataStructures.swift */; };
@@ -45,6 +49,7 @@
 		217CDC3CCDA517EC42BC293F /* Pods-Paradigm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paradigm.release.xcconfig"; path = "Target Support Files/Pods-Paradigm/Pods-Paradigm.release.xcconfig"; sourceTree = "<group>"; };
 		560D867825DC3BE60009CBF2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		560D867C25DC452E0009CBF2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		561D50DD262A7116006A8853 /* RemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
 		562BBC29260C0C87004B5D31 /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		56585E0E25D3C00600581351 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5698EA5625FF170100AC432C /* JournalsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalsTableViewController.swift; sourceTree = "<group>"; };
@@ -54,7 +59,10 @@
 		56A2004D25ED99D60098E623 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		56B0170925D73462008C3143 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		56B78C4D25DCD63B006BF8CD /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		6C617125262A877400768166 /* PDFCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
+		6C617129262A895900768166 /* PDFPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewViewController.swift; sourceTree = "<group>"; };
 		6C796FAD25E5EB90009F389D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		6CBDE2C4262729B90050438C /* TouchIDAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchIDAuthentication.swift; sourceTree = "<group>"; };
 		796D05402F64A4BE09599FFC /* Pods_Paradigm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Paradigm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93050B8025D89CB200DA8BAB /* LambdaRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LambdaRequest.swift; sourceTree = "<group>"; };
 		93050B9D25D8A47400DA8BAB /* ParadigmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParadigmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +114,8 @@
 				5698EA5625FF170100AC432C /* JournalsTableViewController.swift */,
 				5698EA5C26000D1B00AC432C /* DetailViewController.swift */,
 				562BBC29260C0C87004B5D31 /* DeleteAccountViewController.swift */,
+				561D50DD262A7116006A8853 /* RemindersViewController.swift */,
+				6C617129262A895900768166 /* PDFPreviewViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -116,6 +126,8 @@
 				93DFBDCE26020A5600A9DD61 /* SQLRequest.swift */,
 				93050B8025D89CB200DA8BAB /* LambdaRequest.swift */,
 				93050BB725D8AD1200DA8BAB /* DataStructures.swift */,
+				6CBDE2C4262729B90050438C /* TouchIDAuthentication.swift */,
+				6C617125262A877400768166 /* PDFCreator.swift */,
 			);
 			path = aws_endpoint;
 			sourceTree = "<group>";
@@ -338,10 +350,13 @@
 				56B78C4E25DCD63B006BF8CD /* ProfileTableViewController.swift in Sources */,
 				56A2004825E433C00098E623 /* JournalViewController.swift in Sources */,
 				56A2004425E430E20098E623 /* EntryViewController.swift in Sources */,
+				6C61712A262A895900768166 /* PDFPreviewViewController.swift in Sources */,
+				6C617126262A877400768166 /* PDFCreator.swift in Sources */,
 				93050B8125D89CB200DA8BAB /* LambdaRequest.swift in Sources */,
 				93DFBDCF26020A5600A9DD61 /* SQLRequest.swift in Sources */,
 				56585E0F25D3C00600581351 /* LoginViewController.swift in Sources */,
 				9351741125D1CBFC00BCFCB7 /* AppDelegate.swift in Sources */,
+				6CBDE2C5262729B90050438C /* TouchIDAuthentication.swift in Sources */,
 				56A2004E25ED99D60098E623 /* PasswordViewController.swift in Sources */,
 				5698EA5725FF170100AC432C /* JournalsTableViewController.swift in Sources */,
 				6C796FAE25E5EB90009F389D /* Utils.swift in Sources */,
@@ -349,6 +364,7 @@
 				56B0170A25D73462008C3143 /* SignUpViewController.swift in Sources */,
 				560D867925DC3BE60009CBF2 /* HomeViewController.swift in Sources */,
 				5698EA5D26000D1B00AC432C /* DetailViewController.swift in Sources */,
+				561D50DE262A7116006A8853 /* RemindersViewController.swift in Sources */,
 				9351741325D1CBFC00BCFCB7 /* SceneDelegate.swift in Sources */,
 				560D867D25DC452E0009CBF2 /* SettingsViewController.swift in Sources */,
 			);

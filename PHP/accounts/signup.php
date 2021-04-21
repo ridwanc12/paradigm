@@ -67,6 +67,7 @@ if ($stmt = $pdo->prepare($sql)) {
     $firstName = trim($_POST["firstName"]);
     $lastName = trim($_POST["lastName"]);
 
+
     // Attempt to execute the prepared statement
     if ($stmt->execute()) {
         // Redirect to login page
@@ -92,10 +93,15 @@ if ($stmt = $pdo->prepare($sql)) {
             if ($stmt->execute()) {
                 // If rowcount == 1, email is already registered
                 if ($stmt->rowCount() == 1) {
-                   $stmt->setFetchMode(PDO::FETCH_ASSOC);
-                   $row = $stmt->fetch();
-                   $userID = $row["userID"];
-                   echo "\n" . $userID;
+                    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                    $row = $stmt->fetch();
+                    $userID = $row["userID"];
+                    echo "\n" . $userID;
+                    // Insert userID into streaks table to keep track of streaks
+                    $sql = "INSERT INTO streaks (userID) VALUES (:userID)";
+                    $streak = $pdo->prepare($sql);
+                    $streak->bindParam(":userID", $userID, PDO::PARAM_INT);
+                    $streak->execute();
                 } else {
                     echo "Something went wrong trying to retreive userID.";
                 }
