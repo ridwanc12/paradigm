@@ -10,6 +10,18 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
     
+    @IBOutlet weak var notificationSwitch: UISwitch!
+    
+    @IBAction func switchClicked(_ sender: Any) {
+        if notificationSwitch.isOn {
+            // Turn on Notifications
+            print("Notification switch is On")
+        }
+        else {
+            // Turn off Notifications
+            print("Notification switch is Off")
+        }
+    }
     @IBAction func logoutTapped(_ sender: Any) {
         // When the logout button is tapped
         

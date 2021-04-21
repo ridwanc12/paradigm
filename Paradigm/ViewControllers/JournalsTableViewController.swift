@@ -63,7 +63,7 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var labelText: UILabel!
     @IBOutlet weak var labelNum: UILabel!
     
-    // Temp Static Data for Table view testing
+    // Journals Array
     
     var journals: [Journal] = []
     
@@ -136,7 +136,14 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
         dateFormatter.setLocalizedDateFormatFromTemplate("EEE, `MMM d")
         
         cell.textLabel?.text = dateFormatter.string(from: journal.created)
-        cell.detailTextLabel?.text = journal.topics
+        
+        // Only show the contents of the topics if the journal is not hidden
+        if (journal.hidden == 0) {
+            cell.detailTextLabel?.text = journal.topics
+        }
+        else {
+            cell.detailTextLabel?.text = "Hidden"
+        }
         
         return cell
     }
@@ -145,9 +152,78 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.white
     }
-    
+        
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Check if it selects a "hidden" cell
+        
+        if (self.journals[indexPath.row].hidden == 1) {
+            // Show alert
+
+            let alert = UIAlertController(title: "Hidden Journal", message: "Unhide the journal to view the detailed content.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        }
+        else {
+            // Only perforing the segue if the Journal is not hidden
+            self.performSegue(withIdentifier: "detailJournalSegue", sender: self)
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let cell = tableView.cellForRow(at: indexPath)
+        
+        if (self.journals[indexPath.row].hidden == 0) {
+            let hideAction = UIContextualAction(style: .normal, title: "Hide") { (action, view, completionHandler) in
+                // Hide the journal data
+                cell?.detailTextLabel?.text = "Hidden"
+                
+                // Updating the journal's hidden attribute
+                self.journals[indexPath.row].hidden = 1
+                
+                // TODO: Update the hidden status in the database
+                
+                // After completing what we had to do
+                completionHandler(true)
+                
+            }
+                hideAction.backgroundColor = .systemGray
+                let configuration = UISwipeActionsConfiguration(actions: [hideAction])
+                configuration.performsFirstActionWithFullSwipe = false
+                return configuration
+        }
+        else {
+            let hideAction = UIContextualAction(style: .normal, title: "Unhide") { (action, view, completionHandler) in
+                // Unhide the journal data
+                cell?.detailTextLabel?.text = self.journals[indexPath.row].topics
+                
+                // Updating the journal's hidden attribute
+                self.journals[indexPath.row].hidden = 0
+                
+                // TODO: Update the hidden status in the database
+                
+                // After completing what we had to do
+                completionHandler(true)
+                    
+                
+                
+            }
+                hideAction.backgroundColor = .gray
+                let configuration = UISwipeActionsConfiguration(actions: [hideAction])
+                configuration.performsFirstActionWithFullSwipe = false
+                return configuration
+        }
+        
     }
     
     
@@ -192,7 +268,7 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
         viewDidLoad()
         journals = retToJournal(retjournals: getJournals(userID: Int(Utils.global_userID)!))
         self.tableView.reloadData()
-        print("table reloaded")
+        
     }
     
     

@@ -17,6 +17,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     
+    //biometric login
+    @IBOutlet weak var biometricButton: UIButton!
+    let bioTouch = BiometricIDAuth()
+    @IBAction func bioLoginTapped(_ sender: Any) {
+        let email: String = emailTextField.text ?? ""
+        if (email == "") { //check if email field empty
+            let alert = UIAlertController(title: "Empty Email Field", message: "Please enter your email in order to restore your password.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        } else {
+            bioTouch.authenticateUser() { [weak self] in
+                //self?.performSegue(withIdentifier: "dismissLogin", sender: self)
+                print("successful authentication")
+                print(email)
+                //need php script for obtaining all info from just email
+                //will login with that after getting all info
+            }
+        }
+    }
+    
     @IBAction func restoreButtonTapped (_ sender: UIButton) {
         // When the restore password button is tapped
         
@@ -128,6 +148,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Handling the text fields user input through delegate callbacks
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        
+        //check if biometric login available
+        biometricButton.isHidden = !bioTouch.canEvaluatePolicy()
+        //set corresponding image for touchID or faceID
+        // TODO: Isha set button images if you want that for the UI
+        /*switch bioTouch.biometricType() {
+        case .faceID:
+            biometricButton.setImage(UIImage(named: ""),  for: .normal)
+        default:
+            biometricButton.setImage(UIImage(named: ""),  for: .normal)
+        }*/
+
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

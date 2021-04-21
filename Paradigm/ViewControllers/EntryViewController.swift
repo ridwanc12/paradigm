@@ -9,13 +9,28 @@
 import UIKit
 import Charts
 
+// extension for converting UIView to an image
+extension UIView {
+
+    // Using a function since `var image` might conflict with an existing variable
+    // (like on `UIImageView`)
+    func asImage() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
+    }
+}
+
 class EntryViewController: UITableViewController {
-    
     
     @IBOutlet weak var chart: LineChartView!
     @IBOutlet weak var chartBackground: UIView!
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var quoteTextField: UITextView!
+    
+    @IBOutlet weak var daysLoggedLabel: UILabel!
+    var days = 0
     
     var formattedQuote: String!
     var firstTime = true
@@ -35,7 +50,7 @@ class EntryViewController: UITableViewController {
         
         // Do any additional setup after loading the view.
         greetingLabel.text = "Hello, " + Utils.global_firstName
-        
+        daysLoggedLabel.text = "Total number of journals logged on censequtive days: " + String(days)
         //set up that should only happen once
         if (firstTime) {
             // Setup gradient background for chart
@@ -259,14 +274,23 @@ class EntryViewController: UITableViewController {
         return ret
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        //shareReportSegue
+        if (segue.identifier == "shareReportSegue") {
+            let vc = segue.destination as? PDFPreviewViewController
+            vc?.tenTopics = tenTopics
+            vc?.tenSentiments = tenSentiments
+            vc?.chart = chart.asImage()
+        }
+        
     }
-    */
+    
 
 }
