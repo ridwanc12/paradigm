@@ -30,9 +30,31 @@ function getUser($userID, $pdo) {
     return $row;
 }
 
+function getStreak($userID, $pdo) {
+    $param_userID = $userID;
+    $sql = "SELECT streak, longest, inserted FROM streaks WHERE userID = :userID";
+    if ($stmt = $pdo->prepare($sql)) {
+        // Bind variables to the prepared statement as parameters
+        $stmt->bindParam(":userID", $param_userID, PDO::PARAM_INT);
 
+        // Attempt to execute the prepared statement
+        if ($stmt->execute()) {
+        // If rowcount == 1, user is registered
+            if ($stmt->rowCount() == 1) {
+                // Set result to be associated with column name
+                $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                // Fetch one row from query result
+                $row = $stmt->fetch();
+            } else {
+                // Email not registered
+             return "User not registered.";
+            }
+        }
 
-
-
+        // Close statement
+        unset($stmt);
+    }
+    return $row;
+}
 
 ?>

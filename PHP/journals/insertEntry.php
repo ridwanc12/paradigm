@@ -87,6 +87,26 @@ if ($update = $pdo->prepare($sql)) {
     unset($update);
 }
 
+$row = getStreak($param_userID, $pdo);
+if ($row["inserted"] == 0) {
+    $row["inserted"] = 1;
+    $row["streak"]++;
+    $sql = "UPDATE streaks 
+            SET streak = :param_streak,
+                longest = :param_longest,
+                inserted = :inserted
+            WHERE userID = :userID";
+    if ($row["streak"] > $row["longest"]) {
+        $row["longest"] = $row["streak"];
+    }
+    $update = $pdo->prepare($sql);
+    $update->bindParam(":userID", $param_userID, PDO::PARAM_INT);
+    $update->bindParam(":param_streak", $row["streak"], PDO::PARAM_STR);
+    $update->bindParam(":param_longest", $row["longest"], PDO::PARAM_STR);
+    $update->bindParam(":inserted", $row["inserted"], PDO::PARAM_STR);
+    $update->execute();
+    unset($update);
+}
 // Disconnect from database
 unset($pdo);
 

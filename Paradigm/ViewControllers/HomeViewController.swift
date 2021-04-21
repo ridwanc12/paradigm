@@ -21,8 +21,8 @@ class HomeViewController: UITabBarController, UITextFieldDelegate {
                 })
         // Set content for notificaiton
         let content = UNMutableNotificationContent()
-        content.title = "Weekly Staff Meeting"
-        content.body = "Every Tuesday at 2pm"
+        content.title = "Paradigm"
+        content.body = "How was your day?"
         
         // Configure the recurring date.
         var dateComponents = DateComponents()
@@ -49,6 +49,7 @@ class HomeViewController: UITabBarController, UITextFieldDelegate {
            }
         }
         print("Notification set")
+        
         // Do any additional setup after loading the view.
         // Customizing the Tab Bar
         UITabBar.appearance().tintColor = .black
