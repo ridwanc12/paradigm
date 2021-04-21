@@ -80,13 +80,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 
                 // Using User Defaults to keep a user logged in
                 UserDefaults.standard.set(true, forKey: "status")
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let homeView = storyboard.instantiateViewController(identifier: "HomeViewController")
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                let homeView = storyboard.instantiateViewController(identifier: "HomeViewController")
+//                
+//                // Getting the SceneDelegate object from the view controller
+//                // Changing the root view controller
+//
+//                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(homeView)
                 
-                // Getting the SceneDelegate object from the view controller
-                // Changing the root view controller
-
-                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(homeView)
             } else if (ret == "This email is already registered.") {
                 let alert = UIAlertController(title: "Account already exists.", message: "An account has already been created with this email. Please use a different email.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
