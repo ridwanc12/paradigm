@@ -145,47 +145,17 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         return emailPred.evaluate(with: email)
     }
     
-    func databaseRequestCreateAccount(first: String, last: String, email: String, password: String, confirmPassword: String) -> String {
-        let semaphore = DispatchSemaphore (value: 0)
-        var ret = "";
-        
-        let link = "https://boilerbite.000webhostapp.com/paradigm/signup.php"
-        let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
-        request.httpMethod = "POST"
-        
-        let postString = "email=\(email)&password=\(password)&confirm_password=\(confirmPassword)&firstName=\(first)&lastName=\(last)"
-        request.httpBody = postString.data(using: String.Encoding.utf8)
-        
-        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
-            
-            if error != nil {
-                print("ERROR")
-                print(String(describing: error!))
-                ret = "ERROR"
-                semaphore.signal()
-                return
-            }
-            
-            print("PRINTING DATA")
-            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-            ret = String(describing: responseString!)
-            semaphore.signal()
-            print(ret)
-        }
-        task.resume()
-        semaphore.wait()
-        return ret
-    }
-    
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+     {
+         if segue.destination is TermsViewController {
+             let vc = segue.destination as? TermsViewController
+             vc?.password = confirmPasswordTextField.text ?? ""
+         }
+     }
+    
     
     
 
