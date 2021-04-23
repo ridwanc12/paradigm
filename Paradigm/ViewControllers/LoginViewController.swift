@@ -23,7 +23,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func bioLoginTapped(_ sender: Any) {
         let email: String = emailTextField.text ?? ""
         if (email == "") { //check if email field empty
-            let alert = UIAlertController(title: "Empty Email Field", message: "Please enter your email in order to restore your password.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Empty Email Field", message: "Please enter your email in order to use Biometric login.", preferredStyle: .alert)
             alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
             self.present(alert, animated: true)
         } else {
@@ -150,15 +150,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         
         //check if biometric login available
-        biometricButton.isHidden = !bioTouch.canEvaluatePolicy()
+        //print(!bioTouch.canEvaluatePolicy())
+        biometricButton?.isHidden = !bioTouch.canEvaluatePolicy()
         //set corresponding image for touchID or faceID
         // TODO: Isha set button images if you want that for the UI
-        /*switch bioTouch.biometricType() {
-        case .faceID:
-            biometricButton.setImage(UIImage(named: ""),  for: .normal)
-        default:
-            biometricButton.setImage(UIImage(named: ""),  for: .normal)
-        }*/
+//        switch bioTouch.biometricType() {
+//        case .faceID:
+//            biometricButton.setImage(UIImage(named: ""),  for: .normal)
+//        default:
+//            biometricButton.setImage(UIImage(named: ""),  for: .normal)
+//        }
 
     }
     
