@@ -187,13 +187,26 @@
                                         </view>
                                     </subviews>
                                 </stackView>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9h6-qI-aHr">
+                                    <rect key="frame" x="130" y="421" width="131" height="32"/>
+                                    <segments>
+                                        <segment title="Weekly"/>
+                                        <segment title="Lifetime"/>
+                                    </segments>
+                                    <connections>
+                                        <action selector="chartSelectorPressed:" destination="yP3-d5-SCY" eventType="valueChanged" id="pkB-lm-aSh"/>
+                                    </connections>
+                                </segmentedControl>
                             </subviews>
                             <color key="backgroundColor" red="0.25098039220000001" green="0.28627450980000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstItem="sha-to-hf4" firstAttribute="top" secondItem="UeP-yk-Dei" secondAttribute="bottom" constant="28" id="0S8-Zx-T5e"/>
+                                <constraint firstItem="Bh8-n6-v0p" firstAttribute="top" secondItem="9h6-qI-aHr" secondAttribute="bottom" constant="1" id="Eoq-8Q-mmv"/>
                                 <constraint firstItem="UeP-yk-Dei" firstAttribute="top" secondItem="KoP-s8-hnf" secondAttribute="top" constant="16" id="MFm-EV-nIZ"/>
                                 <constraint firstItem="t5c-Ty-xde" firstAttribute="top" secondItem="sha-to-hf4" secondAttribute="bottom" constant="27.670000000000002" id="NPu-bl-SMt"/>
                                 <constraint firstItem="Bh8-n6-v0p" firstAttribute="top" secondItem="Ub4-DF-eYe" secondAttribute="bottom" constant="38" id="X9y-gD-PzU"/>
+                                <constraint firstAttribute="trailing" secondItem="9h6-qI-aHr" secondAttribute="trailing" constant="129" id="Xr3-nE-Hha"/>
+                                <constraint firstItem="9h6-qI-aHr" firstAttribute="leading" secondItem="KoP-s8-hnf" secondAttribute="leading" constant="130" id="Yji-Uc-BaH"/>
                                 <constraint firstAttribute="trailing" secondItem="UeP-yk-Dei" secondAttribute="trailing" constant="16" id="clp-71-Xuv"/>
                                 <constraint firstItem="t5c-Ty-xde" firstAttribute="centerX" secondItem="KoP-s8-hnf" secondAttribute="centerX" id="mSA-6e-WJz"/>
                                 <constraint firstItem="Bh8-n6-v0p" firstAttribute="centerX" secondItem="KoP-s8-hnf" secondAttribute="centerX" id="rsk-90-r9Y"/>
@@ -242,6 +255,7 @@
                     <connections>
                         <outlet property="chart" destination="Ltm-AT-jOh" id="0Q3-ue-zA3"/>
                         <outlet property="chartBackground" destination="sZ5-xY-oOO" id="mfv-a3-PCz"/>
+                        <outlet property="chartSelector" destination="9h6-qI-aHr" id="2cK-jV-37d"/>
                         <outlet property="daysLoggedLabel" destination="Ub4-DF-eYe" id="y6O-tI-uJR"/>
                         <outlet property="greetingLabel" destination="nlJ-r3-eN5" id="9Fh-bu-yOj"/>
                         <outlet property="quoteTextField" destination="jHd-3e-L3V" id="aCt-8S-0WQ"/>
