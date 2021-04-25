@@ -28,6 +28,7 @@ class EntryViewController: UITableViewController {
     @IBOutlet weak var chartBackground: UIView!
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var quoteTextField: UITextView!
+    @IBOutlet weak var chartSelector: UISegmentedControl!
     
     @IBOutlet weak var daysLoggedLabel: UILabel!
     var days = 0
@@ -50,7 +51,7 @@ class EntryViewController: UITableViewController {
         
         // Do any additional setup after loading the view.
         greetingLabel.text = "Hello, " + Utils.global_firstName
-        daysLoggedLabel.text = "Total number of journals logged on censequtive days: " + String(days)
+        daysLoggedLabel.text = "Total number of journals logged on consecutive days: " + String(days)
         //set up that should only happen once
         if (firstTime) {
             // Setup gradient background for chart
@@ -63,20 +64,19 @@ class EntryViewController: UITableViewController {
             formattedQuote = "\"" + quote[..<index!] + "\" -" + quote[authorIndex...]
             quoteTextField.text = formattedQuote
             
+            // set up weekly chart
+            let entries = getJournalsRecent(userID: Int(Utils.global_userID)!, num: 7)
+            
+            let journals:[Double]! = Array(stride(from: 1.0, through: Double(entries.count), by: 1.0))
+            
+            let sentiments = journalSentiments(entries: entries)
+            
+            chartInitializer(journals: journals, sentiments: sentiments)
+            
+            (tenTopics, tenSentiments) = journalTopics(entries: entries)
+            
             firstTime = false
         }
-        
-        let journals:[Double]! = [1, 2, 3, 4, 5, 6, 7]
-//        let sentiments:[Double]! = [0.9, 0.3, -0.1, -0.6, 0.4, -0.7, 0.85]
-        
-        let entries = getJournalsRecent(userID: Int(Utils.global_userID)!, num: 7)
-//        let entries = getJournals(userID: Int(Utils.global_userID)!)
-        
-        let sentiments = journalSentiments(entries: entries)
-        
-        chartInitializer(journals: journals, sentiments: sentiments)
-        
-        (tenTopics, tenSentiments) = journalTopics(entries: entries)
         
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -95,6 +95,31 @@ class EntryViewController: UITableViewController {
         }
         
         return sents
+    }
+    
+    @IBAction func chartSelectorPressed(_ sender: UISegmentedControl) {
+        if (chartSelector.selectedSegmentIndex == 1) {
+            // Switch to lifetime chart
+            let entries = getJournals(userID: Int(Utils.global_userID)!)
+            let journals:[Double]! = Array(stride(from: 1.0, through: Double(entries.count), by: 1.0))
+            
+            let sentiments = journalSentiments(entries: entries)
+            
+            chartInitializer(journals: journals, sentiments: sentiments)
+            
+            (tenTopics, tenSentiments) = journalTopics(entries: entries)
+        }
+        else {
+            // Switch to weekly chart
+            let entries = getJournalsRecent(userID: Int(Utils.global_userID)!, num: 7)
+            let journals:[Double]! = Array(stride(from: 1.0, through: Double(entries.count), by: 1.0))
+            
+            let sentiments = journalSentiments(entries: entries)
+            
+            chartInitializer(journals: journals, sentiments: sentiments)
+            
+            (tenTopics, tenSentiments) = journalTopics(entries: entries)
+        }
     }
     
     func chartInitializer(journals:[Double], sentiments:[Double]) {
