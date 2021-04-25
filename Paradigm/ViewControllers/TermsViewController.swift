@@ -12,7 +12,7 @@ import WebKit
 class TermsViewController: UIViewController, WKNavigationDelegate , WKUIDelegate {
 
     
-    @IBOutlet weak var customView: UIView!
+    @IBOutlet weak var textView: UITextView!
     
     var password:String = ""
     
