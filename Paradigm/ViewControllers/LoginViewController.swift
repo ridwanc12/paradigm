@@ -145,6 +145,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view
         
+        // First launch is done
+        // Setting the User Defaults to true
+        UserDefaults.standard.set(true, forKey: "firstLaunch")
+        
         // Handling the text fields user input through delegate callbacks
         emailTextField.delegate = self
         passwordTextField.delegate = self
