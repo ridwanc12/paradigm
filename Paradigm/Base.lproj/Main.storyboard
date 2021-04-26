@@ -1338,7 +1338,6 @@
                             <constraint firstItem="bQb-rn-1vw" firstAttribute="bottom" secondItem="rDl-5j-k4h" secondAttribute="bottom" constant="40" id="D5d-VF-slk"/>
                             <constraint firstItem="857-UO-nkM" firstAttribute="top" secondItem="y5H-x8-HOe" secondAttribute="bottom" constant="25" id="JAe-nC-bbq"/>
                             <constraint firstItem="y5H-x8-HOe" firstAttribute="centerX" secondItem="sJx-vh-bE2" secondAttribute="centerX" id="On8-Xh-KJ8"/>
-                            <constraint firstItem="bQb-rn-1vw" firstAttribute="trailing" secondItem="syZ-to-YOX" secondAttribute="trailing" constant="27" id="Py0-y8-gwP"/>
                             <constraint firstItem="rDl-5j-k4h" firstAttribute="centerX" secondItem="sJx-vh-bE2" secondAttribute="centerX" id="Vmo-VE-cke"/>
                             <constraint firstItem="bQb-rn-1vw" firstAttribute="trailing" secondItem="857-UO-nkM" secondAttribute="trailing" constant="27" id="bd5-rP-ucp"/>
                             <constraint firstItem="857-UO-nkM" firstAttribute="leading" secondItem="bQb-rn-1vw" secondAttribute="leading" constant="27" id="ram-Lo-YXW"/>
@@ -2064,10 +2063,32 @@
             </objects>
             <point key="canvasLocation" x="1587.6923076923076" y="1374.8815165876777"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="ia9-1U-z46">
+            <objects>
+                <viewController id="hEY-1n-U3y" userLabel="View Controller" customClass="JournalViewController" customModule="Paradigm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ccd-Nn-sdq">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Help and Resources" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEB-7x-siJ">
+                                <rect key="frame" x="38" y="115" width="314.66666666666669" height="40.666666666666664"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                <color key="textColor" red="0.25098039220000001" green="0.28627450980000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RMs-7H-QrC"/>
+                        <color key="backgroundColor" red="0.73333333329999995" green="0.79607843140000001" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gTb-ab-IFh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L6Q-bZ-Q9A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2355" y="2859"/>
+        </scene>
     </scenes>
-    <designables>
-        <designable name="ZZS-jO-Jmt"/>
-    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="BjI-MV-BZj"/>
         <segue reference="FZK-MS-1Pg"/>
