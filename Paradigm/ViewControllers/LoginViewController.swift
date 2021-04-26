@@ -229,4 +229,37 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         semaphore.wait()
         return ret
     }
+    
+    // Logging in through biometrics
+    func databaseRequestLogInBio(email: String) -> String {
+        let semaphore = DispatchSemaphore (value: 0)
+        var ret = "";
+        
+        let link = "https://boilerbite.000webhostapp.com/paradigm/bio_login.php"
+        let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
+        request.httpMethod = "POST"
+        
+        let postString = "email=\(email)"
+        request.httpBody = postString.data(using: String.Encoding.utf8)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+            
+            if error != nil {
+                print("ERROR")
+                print(String(describing: error!))
+                ret = "ERROR"
+                semaphore.signal()
+                return
+            }
+            
+            print("PRINTING DATA")
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            ret = String(describing: responseString!)
+            semaphore.signal()
+        }
+        task.resume()
+        semaphore.wait()
+        return ret
+    }
+    
 }

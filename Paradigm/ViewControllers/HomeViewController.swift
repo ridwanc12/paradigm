@@ -19,36 +19,7 @@ class HomeViewController: UITabBarController, UITextFieldDelegate {
                         NSLog("error: \(error)")
                     }
                 })
-        // Set content for notificaiton
-        let content = UNMutableNotificationContent()
-        content.title = "Paradigm"
-        content.body = "How was your day?"
         
-        // Configure the recurring date.
-        var dateComponents = DateComponents()
-        dateComponents.calendar = Calendar.current
-
-        //dateComponents.weekday = 6    // 1 is Sunday, 7 is Saturday
-        dateComponents.hour = 16        // 24 hour format
-        dateComponents.minute = 57      // minute of hour
-           
-        // Create the trigger as a repeating event.
-        let trigger = UNCalendarNotificationTrigger(
-                 dateMatching: dateComponents, repeats: true)
-        // Create the request
-        let uuidString = UUID().uuidString
-        let request = UNNotificationRequest(identifier: uuidString,
-                    content: content, trigger: trigger)
-
-        // Schedule the request with the system.
-        let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.add(request) { (error) in
-           if error != nil {
-              // Handle any errors.
-            print("Error")
-           }
-        }
-        print("Notification set")
         
         // Do any additional setup after loading the view.
         // Customizing the Tab Bar

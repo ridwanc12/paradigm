@@ -30,7 +30,7 @@ class EntryViewController: UITableViewController {
     @IBOutlet weak var quoteTextField: UITextView!
     
     @IBOutlet weak var daysLoggedLabel: UILabel!
-    var days = 0
+    var streaks = "0"
     
     var formattedQuote: String!
     var firstTime = true
@@ -47,10 +47,10 @@ class EntryViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        streaks = getStreak(userID: Int(Utils.global_userID)!)
         // Do any additional setup after loading the view.
         greetingLabel.text = "Hello, " + Utils.global_firstName
-        daysLoggedLabel.text = "Total number of journals logged on censequtive days: " + String(days)
+        daysLoggedLabel.text = "Total number of journals logged on censequtive days: " + String(streaks)
         //set up that should only happen once
         if (firstTime) {
             // Setup gradient background for chart
