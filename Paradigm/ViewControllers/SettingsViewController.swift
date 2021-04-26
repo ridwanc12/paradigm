@@ -34,8 +34,9 @@ class SettingsViewController: UITableViewController {
         
         alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action: UIAlertAction!) in
             // Log out the user
-            // Setting the User Defaults to false
+            // Setting the User Defaults
             UserDefaults.standard.set(false, forKey: "status")
+            UserDefaults.standard.set(true, forKey: "firstLaunch")
             
             // After user has successfully logged out
       

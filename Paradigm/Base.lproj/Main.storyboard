@@ -1636,7 +1636,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.74205550799999997" green="0.79607843140000001" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
-                                            <segue destination="KH1-Cj-wXU" kind="presentation" identifier="updateJournalSegue" modalPresentationStyle="fullScreen" id="ylT-Yv-D1r"/>
+                                            <segue destination="KH1-Cj-wXU" kind="show" identifier="updateJournalSegue" id="ylT-Yv-D1r"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1913,9 +1913,6 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.73333333329999995" green="0.79607843140000001" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <accessibility key="accessibilityConfiguration" identifier="Journal Cell"/>
-                                        <connections>
-                                            <segue destination="W3F-54-5Uk" kind="show" id="hft-WG-DRf"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1964,6 +1961,7 @@
                         <outlet property="labelNum" destination="gLI-pq-kRk" id="Sbf-9k-YVB"/>
                         <outlet property="labelText" destination="U5r-Lr-z3T" id="cIz-T1-u4n"/>
                         <outlet property="tableView" destination="led-j6-zgD" id="mnK-PA-IXI"/>
+                        <segue destination="W3F-54-5Uk" kind="show" identifier="detailJournalSegue" id="oZn-zW-aF1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S03-ti-3Mh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2090,7 +2088,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="BjI-MV-BZj"/>
+        <segue reference="ylT-Yv-D1r"/>
         <segue reference="FZK-MS-1Pg"/>
     </inferredMetricsTieBreakers>
     <resources>
