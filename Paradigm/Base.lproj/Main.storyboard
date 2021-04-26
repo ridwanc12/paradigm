@@ -1856,7 +1856,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="15V-2Z-Qvh"/>
-                        <color key="backgroundColor" red="0.73333333329999995" green="0.79607843140000001" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.71764705882352942" green="0.80000000000000004" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="1nJ-Bf-RRU" firstAttribute="centerY" secondItem="1Zr-Ou-bdx" secondAttribute="centerY" id="6LS-z9-7n5"/>
                             <constraint firstItem="1nJ-Bf-RRU" firstAttribute="centerX" secondItem="1Zr-Ou-bdx" secondAttribute="centerX" id="6Yq-HK-4Kr"/>
@@ -2061,35 +2061,85 @@
             </objects>
             <point key="canvasLocation" x="1587.6923076923076" y="1374.8815165876777"/>
         </scene>
-        <!--View Controller-->
+        <!--Resource View Controller-->
         <scene sceneID="ia9-1U-z46">
             <objects>
-                <viewController id="hEY-1n-U3y" userLabel="View Controller" customClass="JournalViewController" customModule="Paradigm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResourceViewController" id="hEY-1n-U3y" userLabel="Resource View Controller" customClass="ResourceViewController" customModule="Paradigm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ccd-Nn-sdq">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Help and Resources" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEB-7x-siJ">
-                                <rect key="frame" x="38" y="115" width="314.66666666666669" height="40.666666666666664"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey there," textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEB-7x-siJ">
+                                <rect key="frame" x="114" y="104" width="162" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="162" id="Fly-iR-msR"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
                                 <color key="textColor" red="0.25098039220000001" green="0.28627450980000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRf-uf-luP" userLabel="Add Button">
+                                <rect key="frame" x="34" y="660" width="322" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="3NJ-XR-2lU"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="Ben-OO-KKJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Okay" backgroundImage="Button"/>
+                                <connections>
+                                    <action selector="okayButtonClicked:" destination="hEY-1n-U3y" eventType="touchUpInside" id="2JV-UU-4XT"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tIn-O7-Fbu">
+                                <rect key="frame" x="16" y="153" width="358" height="479"/>
+                                <color key="backgroundColor" red="0.71944677830000003" green="0.79933458570000004" blue="0.82745844130000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="358" id="n8t-BZ-QzH"/>
+                                </constraints>
+                                <mutableString key="text">We noticed you’ve been having a pretty rough week. We get it. Taking care of your mental wellbeing is tough, and we want to help.
+
+There are a number of different collegiate self-help resources available to Purdue students. Details regarding those resources can be found here:
+https://www.purdue.edu/caps/services/self-help/index.html
+
+If you’re on or near the Purdue campus, CAPS (Counseling and Psychological Services) has scheduled programs multiple times per semester that you may find helpful. The full schedule can be found here:
+https://www.purdue.edu/caps/services/outreach/available_programs.html
+
+If you need more personal help, you can book an initial consultation with them by calling 765-494-6995. More information about therapy services at CAPS can be found here:
+https://www.purdue.edu/caps/services/therapy/index.html</mutableString>
+                                <color key="textColor" red="0.24467587469999999" green="0.28523445130000002" blue="0.32941925529999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RMs-7H-QrC"/>
                         <color key="backgroundColor" red="0.73333333329999995" green="0.79607843140000001" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="tIn-O7-Fbu" firstAttribute="top" secondItem="hEB-7x-siJ" secondAttribute="bottom" constant="8" symbolic="YES" id="5LA-tK-3U2"/>
+                            <constraint firstItem="hEB-7x-siJ" firstAttribute="top" secondItem="RMs-7H-QrC" secondAttribute="top" constant="60" id="Jf6-Mx-T1W"/>
+                            <constraint firstItem="tIn-O7-Fbu" firstAttribute="leading" secondItem="RMs-7H-QrC" secondAttribute="leading" constant="16" id="P1W-lb-geJ"/>
+                            <constraint firstItem="WRf-uf-luP" firstAttribute="leading" secondItem="RMs-7H-QrC" secondAttribute="leading" constant="34" id="SYT-17-wQT"/>
+                            <constraint firstItem="hEB-7x-siJ" firstAttribute="leading" secondItem="RMs-7H-QrC" secondAttribute="leading" constant="114" id="SkR-km-9xx"/>
+                            <constraint firstItem="WRf-uf-luP" firstAttribute="top" secondItem="tIn-O7-Fbu" secondAttribute="bottom" constant="28" id="YaV-qv-QG5"/>
+                            <constraint firstItem="RMs-7H-QrC" firstAttribute="bottom" secondItem="WRf-uf-luP" secondAttribute="bottom" constant="85" id="zZT-7r-oIj"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gTb-ab-IFh"/>
+                    <connections>
+                        <outlet property="okayButton" destination="WRf-uf-luP" id="pk7-ER-ZVg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L6Q-bZ-Q9A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2355" y="2859"/>
+            <point key="canvasLocation" x="-2355.3846153846152" y="2858.5308056872036"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="ZZS-jO-Jmt"/>
+    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="ylT-Yv-D1r"/>
-        <segue reference="FZK-MS-1Pg"/>
+        <segue reference="E1y-lB-H9A"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Button" width="322" height="63"/>

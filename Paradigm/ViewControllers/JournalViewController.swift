@@ -100,18 +100,23 @@ class JournalViewController: UIViewController, UITextFieldDelegate, UITextViewDe
             journalTextField.text! = ""
             
             if (negSentDetected()) {
-                print("Abnormal negative sentiment detected")
+//                print("Abnormal negative sentiment detected")
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let resourceView = storyboard.instantiateViewController(identifier: "ResourceViewController")
+                
+                alert.addAction(UIAlertAction( title: "OK", style: .default, handler: {(alert: UIAlertAction!) in (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(resourceView)}))
+                
+                self.present(alert, animated: true, completion: nil)
             }
             else {
-                print("No abnormal negative sentiment")
+//                print("No abnormal negative sentiment")
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let homeView = storyboard.instantiateViewController(identifier: "HomeViewController")
+                
+                alert.addAction(UIAlertAction( title: "OK", style: .default, handler: {(alert: UIAlertAction!) in (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(homeView)}))
+                
+                self.present(alert, animated: true, completion: nil)
             }
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let homeView = storyboard.instantiateViewController(identifier: "HomeViewController")
-            
-            alert.addAction(UIAlertAction( title: "OK", style: .default, handler: {(alert: UIAlertAction!) in (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(homeView)}))
-            
-            self.present(alert, animated: true, completion: nil)
             
         }
     }
