@@ -37,6 +37,7 @@
 		9351741A25D1CBFC00BCFCB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9351741825D1CBFC00BCFCB7 /* Main.storyboard */; };
 		9351741C25D1CBFE00BCFCB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9351741B25D1CBFE00BCFCB7 /* Assets.xcassets */; };
 		9351741F25D1CBFE00BCFCB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9351741D25D1CBFE00BCFCB7 /* LaunchScreen.storyboard */; };
+		93CBFD2026374DA400AE12AD /* ResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CBFD1F26374DA300AE12AD /* ResourceViewController.swift */; };
 		93DFBDCF26020A5600A9DD61 /* SQLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DFBDCE26020A5600A9DD61 /* SQLRequest.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,7 @@
 		9351741B25D1CBFE00BCFCB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9351741E25D1CBFE00BCFCB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9351742025D1CBFE00BCFCB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93CBFD1F26374DA300AE12AD /* ResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceViewController.swift; sourceTree = "<group>"; };
 		93DFBDCE26020A5600A9DD61 /* SQLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLRequest.swift; sourceTree = "<group>"; };
 		B5A6A9FF51A0B015E82F037A /* Pods-Paradigm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paradigm.debug.xcconfig"; path = "Target Support Files/Pods-Paradigm/Pods-Paradigm.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,6 +126,7 @@
 				5698EA5625FF170100AC432C /* JournalsTableViewController.swift */,
 				5698EA5C26000D1B00AC432C /* DetailViewController.swift */,
 				562BBC29260C0C87004B5D31 /* DeleteAccountViewController.swift */,
+				93CBFD1F26374DA300AE12AD /* ResourceViewController.swift */,
 				561D50DD262A7116006A8853 /* RemindersViewController.swift */,
 				6C617129262A895900768166 /* PDFPreviewViewController.swift */,
 				566E6075262EA32E0040B651 /* TermsViewController.swift */,
@@ -386,6 +389,7 @@
 				9351741125D1CBFC00BCFCB7 /* AppDelegate.swift in Sources */,
 				6CBDE2C5262729B90050438C /* TouchIDAuthentication.swift in Sources */,
 				56A2004E25ED99D60098E623 /* PasswordViewController.swift in Sources */,
+				93CBFD2026374DA400AE12AD /* ResourceViewController.swift in Sources */,
 				5698EA5725FF170100AC432C /* JournalsTableViewController.swift in Sources */,
 				6C796FAE25E5EB90009F389D /* Utils.swift in Sources */,
 				93050BB825D8AD1200DA8BAB /* DataStructures.swift in Sources */,
