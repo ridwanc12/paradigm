@@ -70,23 +70,7 @@ class RemindersViewController: UIViewController {
     @IBAction func setReminderTapped(_ sender: Any) {
         // When the set reminder button is tapped
         reminderTime = timePicker?.date ?? Date()
-        let timeString = formatter.string(from: reminderTime)
-        print(timeString)
-        let colonIndex = timeString.index(timeString.startIndex, offsetBy: 1)
-        let minIndex = timeString.index(timeString.startIndex, offsetBy: 3)
-        let updatedHr = timeString[...colonIndex]
-        let updatedMin = timeString[minIndex...]
-        // update stored time for notification
-        UserDefaults.standard.set(Int(updatedHr), forKey: "notificationHr")
-        UserDefaults.standard.set(Int(updatedMin), forKey: "notificationMin")
-        
-        // remove notification at old time and create new one with updated time
-        if (UserDefaults.standard.object(forKey: "notificationsOn") == nil ||
-            UserDefaults.standard.object(forKey: "notificationsOn") as! Bool) {
-            Utils.turnOffNotifications()
-            Utils.turnOnNotification()
-            print("notification time updated")
-        }
+        print(formatter.string(from: reminderTime))
 
     }
     
