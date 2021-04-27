@@ -7,7 +7,6 @@ target 'Paradigm' do
 
   # Pods for Paradigm
   pod 'Charts'
-  pod 'lottie-ios'
 
   # target 'ParadigmTests' do
   #   inherit! :search_paths

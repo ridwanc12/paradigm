@@ -23,7 +23,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func bioLoginTapped(_ sender: Any) {
         let email: String = emailTextField.text ?? ""
         if (email == "") { //check if email field empty
-            let alert = UIAlertController(title: "Empty Email Field", message: "Please enter your email in order to use Biometric login.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Empty Email Field", message: "Please enter your email in order to restore your password.", preferredStyle: .alert)
             alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
             self.present(alert, animated: true)
         } else {
@@ -145,25 +145,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view
         
-        // First launch is done
-        // Setting the User Defaults to true
-        UserDefaults.standard.set(true, forKey: "firstLaunch")
-        
         // Handling the text fields user input through delegate callbacks
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
         //check if biometric login available
-        //print(!bioTouch.canEvaluatePolicy())
-        biometricButton?.isHidden = !bioTouch.canEvaluatePolicy()
+        biometricButton.isHidden = !bioTouch.canEvaluatePolicy()
         //set corresponding image for touchID or faceID
         // TODO: Isha set button images if you want that for the UI
-//        switch bioTouch.biometricType() {
-//        case .faceID:
-//            biometricButton.setImage(UIImage(named: ""),  for: .normal)
-//        default:
-//            biometricButton.setImage(UIImage(named: ""),  for: .normal)
-//        }
+        /*switch bioTouch.biometricType() {
+        case .faceID:
+            biometricButton.setImage(UIImage(named: ""),  for: .normal)
+        default:
+            biometricButton.setImage(UIImage(named: ""),  for: .normal)
+        }*/
 
     }
     
@@ -234,4 +229,37 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         semaphore.wait()
         return ret
     }
+    
+    // Logging in through biometrics
+    func databaseRequestLogInBio(email: String) -> String {
+        let semaphore = DispatchSemaphore (value: 0)
+        var ret = "";
+        
+        let link = "https://boilerbite.000webhostapp.com/paradigm/bio_login.php"
+        let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
+        request.httpMethod = "POST"
+        
+        let postString = "email=\(email)"
+        request.httpBody = postString.data(using: String.Encoding.utf8)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+            
+            if error != nil {
+                print("ERROR")
+                print(String(describing: error!))
+                ret = "ERROR"
+                semaphore.signal()
+                return
+            }
+            
+            print("PRINTING DATA")
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            ret = String(describing: responseString!)
+            semaphore.signal()
+        }
+        task.resume()
+        semaphore.wait()
+        return ret
+    }
+    
 }

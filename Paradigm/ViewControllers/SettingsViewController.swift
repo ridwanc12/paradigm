@@ -16,14 +16,40 @@ class SettingsViewController: UITableViewController {
         if notificationSwitch.isOn {
             // Turn on Notifications
             print("Notification switch is On")
-            UserDefaults.standard.set(true, forKey: "notificationsOn")
-            Utils.turnOnNotification()
+            // Set content for notificaiton
+            let content = UNMutableNotificationContent()
+            content.title = "Paradigm"
+            content.body = "How was your day?"
+            
+            // Configure the recurring date.
+            var dateComponents = DateComponents()
+            dateComponents.calendar = Calendar.current
+
+            //dateComponents.weekday = 6    // 1 is Sunday, 7 is Saturday
+            dateComponents.hour = 17        // 24 hour format
+            dateComponents.minute = 01      // minute of hour
+               
+            // Create the trigger as a repeating event.
+            let trigger = UNCalendarNotificationTrigger(
+                     dateMatching: dateComponents, repeats: true)
+            // Create the request
+            let uuidString = UUID().uuidString
+            let request = UNNotificationRequest(identifier: uuidString,
+                        content: content, trigger: trigger)
+
+            // Schedule the request with the system.
+            let notificationCenter = UNUserNotificationCenter.current()
+            notificationCenter.add(request) { (error) in
+               if error != nil {
+                  // Handle any errors.
+                print("Error")
+               }
+            }
+            print("Notification set")
         }
         else {
             // Turn off Notifications
             print("Notification switch is Off")
-            UserDefaults.standard.set(false, forKey: "notificationsOn")
-            Utils.turnOffNotifications()
         }
     }
     @IBAction func logoutTapped(_ sender: Any) {
@@ -34,9 +60,8 @@ class SettingsViewController: UITableViewController {
         
         alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action: UIAlertAction!) in
             // Log out the user
-            // Setting the User Defaults
+            // Setting the User Defaults to false
             UserDefaults.standard.set(false, forKey: "status")
-            UserDefaults.standard.set(true, forKey: "firstLaunch")
             
             // After user has successfully logged out
       
@@ -62,12 +87,6 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Settings"
-        
-        if (UserDefaults.standard.object(forKey: "notificationsOn") == nil) {
-            notificationSwitch.isOn = true
-        } else {
-            notificationSwitch.isOn = UserDefaults.standard.object(forKey: "notificationsOn") as! Bool
-        }
 
         
     }

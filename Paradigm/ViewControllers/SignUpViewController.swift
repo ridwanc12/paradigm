@@ -80,14 +80,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 
                 // Using User Defaults to keep a user logged in
                 UserDefaults.standard.set(true, forKey: "status")
-//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                let homeView = storyboard.instantiateViewController(identifier: "HomeViewController")
-//                
-//                // Getting the SceneDelegate object from the view controller
-//                // Changing the root view controller
-//
-//                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(homeView)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let homeView = storyboard.instantiateViewController(identifier: "HomeViewController")
                 
+                // Getting the SceneDelegate object from the view controller
+                // Changing the root view controller
+
+                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(homeView)
             } else if (ret == "This email is already registered.") {
                 let alert = UIAlertController(title: "Account already exists.", message: "An account has already been created with this email. Please use a different email.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
@@ -145,17 +144,47 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         return emailPred.evaluate(with: email)
     }
     
+    func databaseRequestCreateAccount(first: String, last: String, email: String, password: String, confirmPassword: String) -> String {
+        let semaphore = DispatchSemaphore (value: 0)
+        var ret = "";
+        
+        let link = "https://boilerbite.000webhostapp.com/paradigm/signup.php"
+        let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
+        request.httpMethod = "POST"
+        
+        let postString = "email=\(email)&password=\(password)&confirm_password=\(confirmPassword)&firstName=\(first)&lastName=\(last)"
+        request.httpBody = postString.data(using: String.Encoding.utf8)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+            
+            if error != nil {
+                print("ERROR")
+                print(String(describing: error!))
+                ret = "ERROR"
+                semaphore.signal()
+                return
+            }
+            
+            print("PRINTING DATA")
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            ret = String(describing: responseString!)
+            semaphore.signal()
+            print(ret)
+        }
+        task.resume()
+        semaphore.wait()
+        return ret
+    }
+    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-     {
-         if segue.destination is TermsViewController {
-             let vc = segue.destination as? TermsViewController
-             vc?.password = confirmPasswordTextField.text ?? ""
-         }
-     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
     
     
 
