@@ -12,14 +12,8 @@ class HomeViewController: UITabBarController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Ask for permission to send notification
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { (granted, error) in
-                    NSLog("granted: \(granted)")
-                    if let error = error {
-                        NSLog("error: \(error)")
-                    }
-                })
-        
+        // Initialize notifications
+        Utils.notificationInit()
         
         // Do any additional setup after loading the view.
         // Customizing the Tab Bar
