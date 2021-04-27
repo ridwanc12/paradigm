@@ -26,7 +26,7 @@ class DeleteAccountViewController: UIViewController {
             deleteAccountAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
                 
                 //try to delete account from database
-                let ret = self.databaseRequestDeleteAccount(email: Utils.global_email, pass: confirmPass)
+                let ret = databaseRequestDeleteAccount(email: Utils.global_email, pass: confirmPass)
                 print("RET VALUE: " + ret)
                 
                 if (ret == "User deleted.") {
@@ -67,38 +67,6 @@ class DeleteAccountViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
-    
-    func databaseRequestDeleteAccount(email: String, pass: String) -> String {
-        let semaphore = DispatchSemaphore (value: 0)
-        var ret = "";
-        
-        let link = "https://boilerbite.000webhostapp.com/paradigm/deleteUser.php"
-        let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
-        request.httpMethod = "POST"
-        
-        let postString = "email=\(email)&password=\(pass)"
-        request.httpBody = postString.data(using: String.Encoding.utf8)
-        
-        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
-            
-            if error != nil {
-                print("ERROR")
-                print(String(describing: error!))
-                ret = "ERROR"
-                semaphore.signal()
-                return
-            }
-            
-            print("PRINTING DATA")
-            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-            ret = String(describing: responseString!)
-            semaphore.signal()
-            print(ret)
-        }
-        task.resume()
-        semaphore.wait()
-        return ret
     }
     
 

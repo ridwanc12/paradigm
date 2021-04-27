@@ -50,6 +50,8 @@ class SettingsViewController: UITableViewController {
         else {
             // Turn off Notifications
             print("Notification switch is Off")
+            UserDefaults.standard.set(false, forKey: "notificationsOn")
+            Utils.turnOffNotifications()
         }
     }
     @IBAction func logoutTapped(_ sender: Any) {
@@ -60,8 +62,9 @@ class SettingsViewController: UITableViewController {
         
         alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action: UIAlertAction!) in
             // Log out the user
-            // Setting the User Defaults to false
+            // Setting the User Defaults
             UserDefaults.standard.set(false, forKey: "status")
+            UserDefaults.standard.set(true, forKey: "firstLaunch")
             
             // After user has successfully logged out
       
@@ -87,6 +90,12 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Settings"
+        
+        if (UserDefaults.standard.object(forKey: "notificationsOn") == nil) {
+            notificationSwitch.isOn = true
+        } else {
+            notificationSwitch.isOn = UserDefaults.standard.object(forKey: "notificationsOn") as! Bool
+        }
 
         
     }
