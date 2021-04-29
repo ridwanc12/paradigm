@@ -7,14 +7,15 @@
 //
 
 import UIKit
-
+var reminderTime = Date()
+var notificationSet = 1
 class RemindersViewController: UIViewController {
 
     @IBOutlet weak var timeTextField: UITextField!
     
     // Date/Time Picker
     private var timePicker: UIDatePicker?
-    var reminderTime = Date()
+    //var reminderTime = Date()
     let formatter = DateFormatter()
     
     override func viewDidLoad() {
@@ -23,13 +24,15 @@ class RemindersViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         // Creating a Time Formatter
-        let time = Date()
+        var time = DateComponents()
+        time.hour = UserDefaults.standard.object(forKey: "notificationHr") as? Int
+        time.minute = UserDefaults.standard.object(forKey: "notificationMin") as? Int
 
         formatter.locale = Locale(identifier: "en_gb")
         formatter.dateFormat = "HH:mm"
         
         // Set the text field as the time
-        timeTextField.text = formatter.string(from: time)
+        timeTextField.text = formatter.string(from: Calendar.current.date(from: time)!)
         
         // Creating a tool bar
         let toolbar = UIToolbar()
@@ -87,6 +90,7 @@ class RemindersViewController: UIViewController {
             Utils.turnOnNotification()
             print("notification time updated")
         }
+        notificationSet = 1
 
     }
     

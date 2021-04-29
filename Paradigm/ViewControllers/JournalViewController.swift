@@ -95,6 +95,40 @@ class JournalViewController: UIViewController, UITextFieldDelegate, UITextViewDe
                 alert = UIAlertController(title: "Account Not Verified", message: "Please verify your account before inserting a journal.", preferredStyle: .alert)
             } else {
                 alert = UIAlertController(title: "Journal Entered", message: "Your journal has been successfully entered!", preferredStyle: .alert)
+                if (notificationSet != 0) {
+                    // Delete existing notifications and set new ones startinf from tomorrow
+                    Utils.turnOffNotifications()
+                    // Set content for notificaiton
+                    let content = UNMutableNotificationContent()
+                    content.title = "Journal Reminder"
+                    content.body = "Don't forget to record your short journal today!"
+                    var currentDay = Calendar.current.dateComponents(in: TimeZone.init(abbreviation: "EDT")!, from: Date())
+                    currentDay.calendar = Calendar.current
+                    currentDay.hour = Calendar.current.component(.hour, from: Date())
+                    currentDay.minute = Calendar.current.component(.minute, from: Date())
+
+                    
+//                    currentDay.day! += 1
+                    print(currentDay)
+
+
+                    // Create the trigger as a repeating event.
+                    let trigger = UNCalendarNotificationTrigger(
+                             dateMatching: currentDay, repeats: true)
+                    // Create the request
+//                    let uuidString = UUID().uuidString
+                    let request = UNNotificationRequest(identifier: uuidString,
+                                content: content, trigger: trigger)
+
+                    // Schedule the request with the system.
+                    Utils.notificationCenter.add(request) { (error) in
+                        if error != nil {
+                            // Handle any errors.
+                            print("Error")
+                        }
+                    }
+                    print("Notification set")
+                }
             }
             
             journalTextField.text! = ""
