@@ -70,7 +70,7 @@ class JournalViewController: UIViewController, UITextFieldDelegate, UITextViewDe
             self.present(alert, animated: true, completion: nil)
             
         } else {
-            // Add a new journal
+            
             let analysis = getJournalAnalysis(journal: entry)!
             print(analysis)
             
@@ -99,12 +99,6 @@ class JournalViewController: UIViewController, UITextFieldDelegate, UITextViewDe
             
             journalTextField.text! = ""
             
-            if (negSentDetected()) {
-                print("Abnormal negative sentiment detected")
-            }
-            else {
-                print("No abnormal negative sentiment")
-            }
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let homeView = storyboard.instantiateViewController(identifier: "HomeViewController")
@@ -114,29 +108,6 @@ class JournalViewController: UIViewController, UITextFieldDelegate, UITextViewDe
             self.present(alert, animated: true, completion: nil)
             
         }
-    }
-    
-    func negSentDetected() -> Bool {
-        let entries = getJournalsRecent(userID: Int(Utils.global_userID)!, num: 7)
-        
-        // If 6 of 7 entries in the past week are negative AND
-        // avg sent score is less than -0.5, detect abnormal negative activity
-        
-        var count_neg = 0
-        var total_sentiment = 0.0
-        for entry in entries {
-            total_sentiment += Double(entry.sentScore)!
-            if (entry.sentiment == "NEGATIVE") {
-                count_neg += 1
-            }
-        }
-        
-        let avg_sentiment = total_sentiment / 7
-        
-        if ( (count_neg >= 6) && (avg_sentiment < 0.5) ) {
-            return true;
-        }
-        return false;
     }
     
     override func viewDidLoad() {

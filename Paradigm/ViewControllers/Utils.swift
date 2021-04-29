@@ -74,10 +74,7 @@ class Utils {
     public static func turnOffNotifications() {
         notificationCenter.removeAllDeliveredNotifications()
     }
-    
 }
-
-
 
 func timeLabeler(label: inout String, date: Date) {
     let dateFormatter = DateFormatter()

@@ -11,12 +11,8 @@
 		560D867925DC3BE60009CBF2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560D867825DC3BE60009CBF2 /* HomeViewController.swift */; };
 		560D867D25DC452E0009CBF2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560D867C25DC452E0009CBF2 /* SettingsViewController.swift */; };
 		561D50DE262A7116006A8853 /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561D50DD262A7116006A8853 /* RemindersViewController.swift */; };
-		561DB97F26335E5B002E3029 /* lottieAnalysis.json in Resources */ = {isa = PBXBuildFile; fileRef = 561DB97D26335E5A002E3029 /* lottieAnalysis.json */; };
-		561DB98026335E5B002E3029 /* lottieJournal.json in Resources */ = {isa = PBXBuildFile; fileRef = 561DB97E26335E5B002E3029 /* lottieJournal.json */; };
-		561DB9842634A64E002E3029 /* lottieList.json in Resources */ = {isa = PBXBuildFile; fileRef = 561DB9832634A64E002E3029 /* lottieList.json */; };
 		562BBC2A260C0C87004B5D31 /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562BBC29260C0C87004B5D31 /* DeleteAccountViewController.swift */; };
 		56585E0F25D3C00600581351 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56585E0E25D3C00600581351 /* LoginViewController.swift */; };
-		566E6076262EA32E0040B651 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566E6075262EA32E0040B651 /* TermsViewController.swift */; };
 		5698EA5725FF170100AC432C /* JournalsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698EA5625FF170100AC432C /* JournalsTableViewController.swift */; };
 		5698EA5D26000D1B00AC432C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698EA5C26000D1B00AC432C /* DetailViewController.swift */; };
 		56A2004425E430E20098E623 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A2004325E430E20098E623 /* EntryViewController.swift */; };
@@ -24,7 +20,6 @@
 		56A2004E25ED99D60098E623 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A2004D25ED99D60098E623 /* PasswordViewController.swift */; };
 		56B0170A25D73462008C3143 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B0170925D73462008C3143 /* SignUpViewController.swift */; };
 		56B78C4E25DCD63B006BF8CD /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B78C4D25DCD63B006BF8CD /* ProfileTableViewController.swift */; };
-		56E2BBC026334D4E002CFD99 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E2BBBF26334D4E002CFD99 /* OnboardingViewController.swift */; };
 		6C617126262A877400768166 /* PDFCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C617125262A877400768166 /* PDFCreator.swift */; };
 		6C61712A262A895900768166 /* PDFPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C617129262A895900768166 /* PDFPreviewViewController.swift */; };
 		6C796FAE25E5EB90009F389D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C796FAD25E5EB90009F389D /* Utils.swift */; };
@@ -55,12 +50,8 @@
 		560D867825DC3BE60009CBF2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		560D867C25DC452E0009CBF2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		561D50DD262A7116006A8853 /* RemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
-		561DB97D26335E5A002E3029 /* lottieAnalysis.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lottieAnalysis.json; sourceTree = "<group>"; };
-		561DB97E26335E5B002E3029 /* lottieJournal.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lottieJournal.json; sourceTree = "<group>"; };
-		561DB9832634A64E002E3029 /* lottieList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lottieList.json; sourceTree = "<group>"; };
 		562BBC29260C0C87004B5D31 /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		56585E0E25D3C00600581351 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		566E6075262EA32E0040B651 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		5698EA5625FF170100AC432C /* JournalsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalsTableViewController.swift; sourceTree = "<group>"; };
 		5698EA5C26000D1B00AC432C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		56A2004325E430E20098E623 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
@@ -68,7 +59,6 @@
 		56A2004D25ED99D60098E623 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		56B0170925D73462008C3143 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		56B78C4D25DCD63B006BF8CD /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
-		56E2BBBF26334D4E002CFD99 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		6C617125262A877400768166 /* PDFCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
 		6C617129262A895900768166 /* PDFPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewViewController.swift; sourceTree = "<group>"; };
 		6C796FAD25E5EB90009F389D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -126,20 +116,8 @@
 				562BBC29260C0C87004B5D31 /* DeleteAccountViewController.swift */,
 				561D50DD262A7116006A8853 /* RemindersViewController.swift */,
 				6C617129262A895900768166 /* PDFPreviewViewController.swift */,
-				566E6075262EA32E0040B651 /* TermsViewController.swift */,
-				56E2BBBF26334D4E002CFD99 /* OnboardingViewController.swift */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		56E2BBC8263359D2002CFD99 /* Assests */ = {
-			isa = PBXGroup;
-			children = (
-				561DB9832634A64E002E3029 /* lottieList.json */,
-				561DB97D26335E5A002E3029 /* lottieAnalysis.json */,
-				561DB97E26335E5B002E3029 /* lottieJournal.json */,
-			);
-			path = Assests;
 			sourceTree = "<group>";
 		};
 		93050B8725D8A19E00DA8BAB /* aws_endpoint */ = {
@@ -186,7 +164,6 @@
 		9351740F25D1CBFC00BCFCB7 /* Paradigm */ = {
 			isa = PBXGroup;
 			children = (
-				56E2BBC8263359D2002CFD99 /* Assests */,
 				93050B8725D8A19E00DA8BAB /* aws_endpoint */,
 				56B0170825D73421008C3143 /* ViewControllers */,
 				9351741025D1CBFC00BCFCB7 /* AppDelegate.swift */,
@@ -306,11 +283,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				561DB97F26335E5B002E3029 /* lottieAnalysis.json in Resources */,
 				9351741F25D1CBFE00BCFCB7 /* LaunchScreen.storyboard in Resources */,
-				561DB9842634A64E002E3029 /* lottieList.json in Resources */,
 				9351741C25D1CBFE00BCFCB7 /* Assets.xcassets in Resources */,
-				561DB98026335E5B002E3029 /* lottieJournal.json in Resources */,
 				9351741A25D1CBFC00BCFCB7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,11 +346,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				566E6076262EA32E0040B651 /* TermsViewController.swift in Sources */,
 				562BBC2A260C0C87004B5D31 /* DeleteAccountViewController.swift in Sources */,
 				56B78C4E25DCD63B006BF8CD /* ProfileTableViewController.swift in Sources */,
 				56A2004825E433C00098E623 /* JournalViewController.swift in Sources */,
-				56E2BBC026334D4E002CFD99 /* OnboardingViewController.swift in Sources */,
 				56A2004425E430E20098E623 /* EntryViewController.swift in Sources */,
 				6C61712A262A895900768166 /* PDFPreviewViewController.swift in Sources */,
 				6C617126262A877400768166 /* PDFCreator.swift in Sources */,

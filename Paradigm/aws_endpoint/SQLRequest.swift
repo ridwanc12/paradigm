@@ -173,15 +173,16 @@ func getQuote() -> String{
     return ret
 }
 
-func databaseRequestCreateAccount(first: String, last: String, email: String, password: String, confirmPassword: String) -> String {
+func databaseRequestEditEntry(jourID: String, entry: String, sentiment: String, sentScore: String, hidden: String, rating: String, topics: String, positive: String, negative: String, mixed: String, neutral: String) -> String {
     let semaphore = DispatchSemaphore (value: 0)
     var ret = "";
+    let sentScore2 = (Double(sentScore)! * 100).rounded() / 100
     
-    let link = "https://boilerbite.000webhostapp.com/paradigm/signup.php"
+    let link = "https://boilerbite.000webhostapp.com/paradigm/editEntry.php"
     let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
     request.httpMethod = "POST"
     
-    let postString = "email=\(email)&password=\(password)&confirm_password=\(confirmPassword)&firstName=\(first)&lastName=\(last)"
+    let postString = "jourID=\(jourID)&entry=\(entry)&sentiment=\(sentiment)&sentScore=\(sentScore2)&hidden=\(hidden)&rating=\(rating)&topics=\(topics)&positive=\(positive)&negative=\(negative)&mixed=\(mixed)&neutral=\(neutral)"
     request.httpBody = postString.data(using: String.Encoding.utf8)
     
     let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
@@ -205,16 +206,16 @@ func databaseRequestCreateAccount(first: String, last: String, email: String, pa
     return ret
 }
 
-func databaseRequestEditEntry(jourID: String, entry: String, sentiment: String, sentScore: String, hidden: String, rating: String, topics: String, positive: String, negative: String, mixed: String, neutral: String) -> String {
+func getStreak(userID: Int) -> String{
+
     let semaphore = DispatchSemaphore (value: 0)
     var ret = "";
-    let sentScore2 = (Double(sentScore)! * 100).rounded() / 100
     
-    let link = "https://boilerbite.000webhostapp.com/paradigm/editEntry.php"
+    let link = "https://boilerbite.000webhostapp.com/paradigm/streaks.php"
     let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
     request.httpMethod = "POST"
     
-    let postString = "jourID=\(jourID)&entry=\(entry)&sentiment=\(sentiment)&sentScore=\(sentScore2)&hidden=\(hidden)&rating=\(rating)&topics=\(topics)&positive=\(positive)&negative=\(negative)&mixed=\(mixed)&neutral=\(neutral)"
+    let postString = "userID=\(userID)"
     request.httpBody = postString.data(using: String.Encoding.utf8)
     
     let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
@@ -269,3 +270,4 @@ func databaseRequestDeleteAccount(email: String, pass: String) -> String {
     semaphore.wait()
     return ret
 }
+
