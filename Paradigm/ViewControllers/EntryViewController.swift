@@ -31,7 +31,7 @@ class EntryViewController: UITableViewController {
     @IBOutlet weak var chartSelector: UISegmentedControl!
     
     @IBOutlet weak var daysLoggedLabel: UILabel!
-    var days = 0
+    var days = "0"
     
     var formattedQuote: String!
     var firstTime = true
@@ -51,7 +51,11 @@ class EntryViewController: UITableViewController {
         
         // Do any additional setup after loading the view.
         greetingLabel.text = "Hello, " + Utils.global_firstName
+        
+        
+        days = getStreak(userID: Int(Utils.global_userID)!)
         daysLoggedLabel.text = "Total number of journals logged on consecutive days: " + String(days)
+        
         //set up that should only happen once
         if (firstTime) {
             // Setup gradient background for chart
