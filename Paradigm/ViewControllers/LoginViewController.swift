@@ -196,7 +196,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         //check if biometric login available
         print(!bioTouch.canEvaluatePolicy())
-        biometricButton.isHidden = !bioTouch.canEvaluatePolicy()
+        
+        biometricButton?.isHidden = bioTouch.canEvaluatePolicy()
         //set corresponding image for touchID or faceID
         // TODO: Isha set button images if you want that for the UI
         /*switch bioTouch.biometricType() {
@@ -205,6 +206,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         default:
             biometricButton.setImage(UIImage(named: ""),  for: .normal)
         }*/
+        
+        UserDefaults.standard.set(false, forKey: "firstLaunch")
 
     }
     
