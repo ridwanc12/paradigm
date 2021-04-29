@@ -13,7 +13,9 @@ class HomeViewController: UITabBarController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Initialize notifications
-        Utils.notificationInit()
+        if (notificationSet == 0){
+            Utils.notificationInit()
+        }
         
         // Do any additional setup after loading the view.
         // Customizing the Tab Bar
