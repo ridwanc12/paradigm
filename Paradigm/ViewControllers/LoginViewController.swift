@@ -23,7 +23,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func bioLoginTapped(_ sender: Any) {
         let email: String = emailTextField.text ?? ""
         if (email == "") { //check if email field empty
-            let alert = UIAlertController(title: "Empty Email Field", message: "Please enter your email in order to restore your password.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Empty Email Field", message: "Please enter your email in order to login.", preferredStyle: .alert)
             alert.addAction(UIAlertAction( title: "Ok", style: .cancel, handler: nil))
             self.present(alert, animated: true)
         } else {
