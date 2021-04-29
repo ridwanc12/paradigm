@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 
 let uuidString = UUID().uuidString
+var notificationSet = 1
 
 class Utils {
 

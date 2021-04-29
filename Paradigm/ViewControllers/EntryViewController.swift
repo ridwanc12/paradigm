@@ -48,11 +48,13 @@ class EntryViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        days = getStreak(userID: Int(Utils.global_userID)!)
         // Do any additional setup after loading the view.
         greetingLabel.text = "Hello, " + Utils.global_firstName
-        daysLoggedLabel.text = "Total number of journals logged on consecutive days: " + days
+        
+        
+        days = getStreak(userID: Int(Utils.global_userID)!)
+        daysLoggedLabel.text = "Total number of journals logged on consecutive days: " + String(days)
+        
         //set up that should only happen once
         if (firstTime) {
             // Setup gradient background for chart
