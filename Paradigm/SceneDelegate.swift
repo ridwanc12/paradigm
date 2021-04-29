@@ -23,17 +23,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
         let isLoggedIn = UserDefaults.standard.bool(forKey: "status")
+        let firstLaunch = UserDefaults.standard.bool(forKey: "firstLaunch")
         
-        if (isLoggedIn) {
-            // Instantiate the Home View Controller
-            let homeView = storyboard.instantiateViewController(identifier: "HomeViewController")
-            window?.rootViewController = homeView
+        // Setting the first launch as true
+        print("first launch:")
+        print(UserDefaults.standard.object(forKey: "firstLaunch"))
+        
+        if (UserDefaults.standard.object(forKey: "firstLaunch") == nil) {
+            let onboardingView = storyboard.instantiateViewController(identifier: "OnboardingViewController")
+            window?.rootViewController = onboardingView
         }
         else {
-            // Instantiate the Login View Controller
-            let loginView = storyboard.instantiateViewController(identifier: "LoginViewController")
-            window?.rootViewController = loginView
+            if (isLoggedIn) {
+                // Instantiate the Home View Controller
+                let homeView = storyboard.instantiateViewController(identifier: "HomeViewController")
+                window?.rootViewController = homeView
+            }
+            else {
+                // Instantiate the Login View Controller
+                // TODO: Change to Login
+                let loginView = storyboard.instantiateViewController(identifier: "LoginViewController")
+                window?.rootViewController = loginView
+            }
         }
+        
+        
     }
     
     func changeRootViewController(_ vc: UIViewController, animated: Bool = true) {
