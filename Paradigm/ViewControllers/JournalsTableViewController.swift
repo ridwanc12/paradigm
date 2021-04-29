@@ -192,7 +192,8 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
                 self.journals[indexPath.row].hidden = 1
                 
                 // TODO: Update the hidden status in the database
-                
+                let ret = hideJournal(jourID: self.journals[indexPath.row].id)
+                print(ret)
                 // After completing what we had to do
                 completionHandler(true)
                 
@@ -211,12 +212,11 @@ class JournalsTableViewController: UIViewController, UITableViewDataSource, UITa
                 self.journals[indexPath.row].hidden = 0
                 
                 // TODO: Update the hidden status in the database
-                
+                let ret = unhideJournal(jourID: self.journals[indexPath.row].id)
+                print(ret)
                 // After completing what we had to do
                 completionHandler(true)
                     
-                
-                
             }
                 hideAction.backgroundColor = .gray
                 let configuration = UISwipeActionsConfiguration(actions: [hideAction])

@@ -36,6 +36,12 @@ if ($stmt = $pdo->prepare($sql)) {
                                         WHERE userID = :userID";
                     $delete = $pdo->prepare($delete_journals);
                     $delete->bindParam(":userID", $param_userID, PDO::PARAM_INT);
+                    $delete->execute();
+                    unset($delete);
+                    $delete_streaks = "DELETE FROM streaks 
+                                        WHERE userID = :userID";
+                    $delete = $pdo->prepare($delete_streaks);
+                    $delete->bindParam(":userID", $param_userID, PDO::PARAM_INT);
                     if ($delete->execute()) {
                         unset($delete);
                         echo "User deleted.";

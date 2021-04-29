@@ -13,6 +13,9 @@ $param_sentScore = trim($_POST["sentScore"]);
 $param_hidden = trim($_POST["hidden"]);
 $param_rating = trim($_POST["rating"]);
 $param_topics = trim($_POST["topics"]);
+if ($param_topics == "") {
+    $param_topics = "Topics unavaliable";
+}
 $param_positive = trim($_POST["positive"]);
 $param_negative = trim($_POST["negative"]);
 $param_mixed = trim($_POST["mixed"]);
@@ -43,6 +46,14 @@ if ($insert = $pdo->prepare($sql)) {
     mcrypt_generic_deinit($mcrypt);
     mcrypt_module_close($mcrypt);
 
+    $mcrypt = mcrypt_module_open('rijndael-256', '', 'cbc', '');//Opens the module
+    mcrypt_generic_init($mcrypt, $key, $iv);
+    $encrypted_topics = mcrypt_generic($mcrypt, $param_topics);//Encrypt user topic
+    $encrypted_topics = base64_encode($encrypted_topics);// base_64 encode the encrypted entry
+    // Remember to close mcrypt buffers and module
+    mcrypt_generic_deinit($mcrypt);//Close buffers
+    mcrypt_module_close($mcrypt);//Close MCrypt module
+
     // Bind variables to the prepared statement as parameters
     $insert->bindParam(":jourID", $param_jourID, PDO::PARAM_INT);
     $insert->bindParam(":entry", $encrypted_entry, PDO::PARAM_STR);
@@ -51,7 +62,7 @@ if ($insert = $pdo->prepare($sql)) {
     $insert->bindParam(":hidden", $param_hidden, PDO::PARAM_INT);
     $insert->bindParam(":rating", $param_rating, PDO::PARAM_INT);
     $insert->bindParam(":lastEdited", $lastEdited, PDO::PARAM_STR);
-    $insert->bindParam(":topics", $param_topics, PDO::PARAM_STR);
+    $insert->bindParam(":topics", $encrypted_topics, PDO::PARAM_STR);
     $insert->bindParam(":positive", $param_positive, PDO::PARAM_STR);
     $insert->bindParam(":negative", $param_negative, PDO::PARAM_STR);
     $insert->bindParam(":mixed", $param_mixed, PDO::PARAM_STR);

@@ -9,6 +9,8 @@
 import UIKit
 import Foundation
 
+let uuidString = UUID().uuidString
+
 class Utils {
 
     static var global_userID = "0"
@@ -57,7 +59,7 @@ class Utils {
         let trigger = UNCalendarNotificationTrigger(
                  dateMatching: dateComponents, repeats: true)
         // Create the request
-        let uuidString = UUID().uuidString
+//        let uuidString = UUID().uuidString
         let request = UNNotificationRequest(identifier: uuidString,
                     content: content, trigger: trigger)
 
@@ -72,7 +74,7 @@ class Utils {
     }
     
     public static func turnOffNotifications() {
-        notificationCenter.removeAllDeliveredNotifications()
+        notificationCenter.removeAllPendingNotificationRequests()
     }
 }
 

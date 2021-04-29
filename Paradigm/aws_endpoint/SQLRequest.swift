@@ -182,6 +182,7 @@ func databaseRequestEditEntry(jourID: String, entry: String, sentiment: String, 
     let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
     request.httpMethod = "POST"
     
+    
     let postString = "jourID=\(jourID)&entry=\(entry)&sentiment=\(sentiment)&sentScore=\(sentScore2)&hidden=\(hidden)&rating=\(rating)&topics=\(topics)&positive=\(positive)&negative=\(negative)&mixed=\(mixed)&neutral=\(neutral)"
     request.httpBody = postString.data(using: String.Encoding.utf8)
     
@@ -271,3 +272,68 @@ func databaseRequestDeleteAccount(email: String, pass: String) -> String {
     return ret
 }
 
+func hideJournal(jourID: Int) -> String{
+
+    let semaphore = DispatchSemaphore (value: 0)
+    var ret = "";
+    
+    let link = "https://boilerbite.000webhostapp.com/paradigm/hideJournal.php"
+    let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
+    request.httpMethod = "POST"
+    
+    let postString = "jourID=\(jourID)"
+    request.httpBody = postString.data(using: String.Encoding.utf8)
+    
+    let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+        
+        if error != nil {
+            print("ERROR")
+            print(String(describing: error!))
+            ret = "ERROR"
+            semaphore.signal()
+            return
+        }
+        
+        print("PRINTING DATA")
+        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+        ret = String(describing: responseString!)
+        semaphore.signal()
+        print(ret)
+    }
+    task.resume()
+    semaphore.wait()
+    return ret
+}
+
+func unhideJournal(jourID: Int) -> String{
+
+    let semaphore = DispatchSemaphore (value: 0)
+    var ret = "";
+    
+    let link = "https://boilerbite.000webhostapp.com/paradigm/unhideJournal.php"
+    let request = NSMutableURLRequest(url: NSURL(string: link)! as URL)
+    request.httpMethod = "POST"
+    
+    let postString = "jourID=\(jourID)"
+    request.httpBody = postString.data(using: String.Encoding.utf8)
+    
+    let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+        
+        if error != nil {
+            print("ERROR")
+            print(String(describing: error!))
+            ret = "ERROR"
+            semaphore.signal()
+            return
+        }
+        
+        print("PRINTING DATA")
+        let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+        ret = String(describing: responseString!)
+        semaphore.signal()
+        print(ret)
+    }
+    task.resume()
+    semaphore.wait()
+    return ret
+}
