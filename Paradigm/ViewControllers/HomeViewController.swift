@@ -7,13 +7,13 @@
 //
 
 import UIKit
-
+var journalSetNoti = 0
 class HomeViewController: UITabBarController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Initialize notifications
-        if (notificationSet == 0){
+        if (journalSetNoti == 0){
             Utils.notificationInit()
         }
         

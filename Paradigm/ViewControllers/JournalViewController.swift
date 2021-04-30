@@ -126,6 +126,7 @@ class JournalViewController: UIViewController, UITextFieldDelegate, UITextViewDe
                             print("Error")
                         }
                     }
+                    journalSetNoti = 1
                     print("Notification set")
                 }
             }
