@@ -1346,7 +1346,6 @@
                     <navigationItem key="navigationItem" id="rjU-JP-Kbo"/>
                     <connections>
                         <outlet property="textView" destination="857-UO-nkM" id="GsJ-LJ-wS7"/>
-                        <segue destination="49e-Tb-3d3" kind="show" identifier="accountCreatedSegue" id="FZK-MS-1Pg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="usM-zu-Nbv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2139,7 +2138,6 @@ https://www.purdue.edu/caps/services/therapy/index.html</string>
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="BjI-MV-BZj"/>
-        <segue reference="FZK-MS-1Pg"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Button" width="322" height="63"/>

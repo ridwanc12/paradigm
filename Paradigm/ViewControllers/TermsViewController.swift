@@ -46,6 +46,9 @@ Paradigm is intended for users who are at least 18 years old. Persons under the 
         // Getting the SceneDelegate object from the view controller
         // Changing the root view controller
 
+        // Using User Defaults to keep a user logged in
+        UserDefaults.standard.set(true, forKey: "status")
+        
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(homeView)
     }
     
