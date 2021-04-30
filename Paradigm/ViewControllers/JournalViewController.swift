@@ -102,7 +102,7 @@ class JournalViewController: UIViewController, UITextFieldDelegate, UITextViewDe
                     let content = UNMutableNotificationContent()
                     content.title = "Journal Reminder"
                     content.body = "Don't forget to record your short journal today!"
-                    var currentDay = Calendar.current.dateComponents(in: TimeZone.init(abbreviation: "EDT")!, from: Date())
+                    var currentDay = DateComponents()
                     currentDay.calendar = Calendar.current
                     currentDay.hour = Calendar.current.component(.hour, from: Date())
                     currentDay.minute = Calendar.current.component(.minute, from: Date())
@@ -110,7 +110,6 @@ class JournalViewController: UIViewController, UITextFieldDelegate, UITextViewDe
                     
 //                    currentDay.day! += 1
                     print(currentDay)
-
 
                     // Create the trigger as a repeating event.
                     let trigger = UNCalendarNotificationTrigger(
@@ -127,6 +126,7 @@ class JournalViewController: UIViewController, UITextFieldDelegate, UITextViewDe
                             print("Error")
                         }
                     }
+                    journalSetNoti = 1
                     print("Notification set")
                 }
             }
